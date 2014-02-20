@@ -1,8 +1,11 @@
+/**
+ * Labyrinth
+ *
+ * Created by Eduardo Almeida and João Almeida.
+ */
+
 package pt.up.fe.lpoo;
 
-/**
- * Created by MegaEduX on 20/02/14.
- */
 public class Coordinate {
     public int x;
     public int y;

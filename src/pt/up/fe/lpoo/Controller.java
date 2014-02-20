@@ -1,10 +1,10 @@
-package pt.up.fe.lpoo;
-
 /**
- * Created by MegaEduX on 20/02/14.
+ * Labyrinth
+ *
+ * Created by Eduardo Almeida and João Almeida.
  */
 
-import pt.up.fe.lpoo.Board;
+package pt.up.fe.lpoo;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -23,19 +23,21 @@ public class Controller {
         try {
             System.out.println();
 
+            System.out.println("Please type (U)p/(L)eft/(D)own/(R)ight to play, followed by Return.");
+
             readLine = br.readLine();
 
             System.out.println();
 
             while (!readLine.equalsIgnoreCase("quit")) {
                 if (readLine.equalsIgnoreCase("up") || readLine.equalsIgnoreCase("u"))
-                    brd.moveHeroTo(Board.Direction.UP);
+                    brd.movePieceTo(Board.Type.HERO, Board.Direction.UP);
                 else if (readLine.equalsIgnoreCase("down") || readLine.equalsIgnoreCase("d"))
-                    brd.moveHeroTo(Board.Direction.DOWN);
+                    brd.movePieceTo(Board.Type.HERO, Board.Direction.DOWN);
                 else if (readLine.equalsIgnoreCase("right") || readLine.equalsIgnoreCase("r"))
-                    brd.moveHeroTo(Board.Direction.RIGHT);
+                    brd.movePieceTo(Board.Type.HERO, Board.Direction.RIGHT);
                 else if (readLine.equalsIgnoreCase("left") || readLine.equalsIgnoreCase("l"))
-                    brd.moveHeroTo(Board.Direction.LEFT);
+                    brd.movePieceTo(Board.Type.HERO, Board.Direction.LEFT);
 
                 System.out.println();
 
@@ -52,6 +54,8 @@ public class Controller {
 
                     break;
                 }
+
+                System.out.println("Please type (U)p/(L)eft/(D)own/(R)ight to play, followed by Return.");
 
                 readLine = br.readLine();
             }

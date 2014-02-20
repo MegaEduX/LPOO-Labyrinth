@@ -1,13 +1,15 @@
 /**
- * Created by MegaEduX on 20/02/14.
+ * Labyrinth
+ *
+ * Created by Eduardo Almeida and João Almeida.
  */
 
 package pt.up.fe.lpoo;
 
-import pt.up.fe.lpoo.Coordinate;
+import java.util.Random;
 
 public class Board {
-    public enum Type {WALL, HERO, SWORD, DRAGON, EXIT, BLANK};
+    public enum Type {WALL, HERO, SWORD, DRAGON, MIXED_SD, EXIT, BLANK};
     public enum Direction {UP, LEFT, DOWN, RIGHT};
     public enum State {RUNNING, LOST, WON};
 
@@ -44,13 +46,93 @@ public class Board {
         return gameState;
     }
 
+    private Direction[] _getMovePossibilities(Type piece) throws Exception {
+        Coordinate pieceLoc;
+
+        Direction[] pb = new Direction[4];
+
+        try {
+            pieceLoc = getLocation(piece);
+        } catch (Exception exc) {
+            throw exc;
+        }
+
+        /*
+         *  As far as I noticed, .length returns the length of the array, not the number of objects that currently
+         *  reside in it (which was what I needed), so I had to do a small workaround involving an extra int and then
+         *  creating another array with the correct length. Ugh!
+         */
+
+        int currIndex = 0;
+
+        if (boardRep[pieceLoc.y][pieceLoc.x - 1] == Type.BLANK || boardRep[pieceLoc.y][pieceLoc.x - 1] == Type.SWORD)
+            pb[currIndex++] = Direction.LEFT;
+
+        if (boardRep[pieceLoc.y][pieceLoc.x + 1] == Type.BLANK || boardRep[pieceLoc.y][pieceLoc.x + 1] == Type.SWORD)
+            pb[currIndex++] = Direction.RIGHT;
+
+        if (boardRep[pieceLoc.y - 1][pieceLoc.x] == Type.BLANK || boardRep[pieceLoc.y - 1][pieceLoc.x] == Type.SWORD)
+            pb[currIndex++] = Direction.UP;
+
+        if (boardRep[pieceLoc.y + 1][pieceLoc.x] == Type.BLANK || boardRep[pieceLoc.y + 1][pieceLoc.x] == Type.SWORD)
+            pb[currIndex++] = Direction.DOWN;
+
+        Direction[] pbRet = new Direction[currIndex];
+
+        for (int i = 0; i < currIndex; i++)
+            pbRet[i] = pb[i];
+
+        return pbRet;
+    }
+
+    private void _moveDragon() throws Exception {
+        Type dragType = Type.DRAGON;
+
+        try {
+            getLocation(Type.DRAGON);
+        } catch (Exception exc) {
+            try {
+                getLocation(Type.MIXED_SD);
+
+                dragType = Type.MIXED_SD;
+            } catch (Exception secondExc) {
+                //  The dragon is gone!
+
+                return;
+            }
+
+            throw exc;  //  What?
+        }
+
+        Direction[] dir;
+
+        try {
+            dir = _getMovePossibilities(dragType);
+        } catch (Exception exc) {
+            throw exc;
+        }
+
+        Random rand = new Random();
+
+        int randVal = rand.nextInt(dir.length + 1);
+
+        if (dir.length == randVal)
+            return;
+
+        movePieceTo(dragType, dir[randVal]);
+    }
+
     private DragonSearchResult _isNearDragon() throws Exception {
         Coordinate dragonLoc;
 
         try {
             dragonLoc = getLocation(Type.DRAGON);
         } catch (Exception exc) {
-            return DragonSearchResult.ALREADY_DEFEATED;
+            try {
+                dragonLoc = getLocation(Type.MIXED_SD);
+            } catch (Exception secondExc) {
+                return DragonSearchResult.ALREADY_DEFEATED;
+            }
         }
 
         Coordinate heroLoc;
@@ -92,7 +174,11 @@ public class Board {
             try {
                 dragonLoc = getLocation(Type.DRAGON);
             } catch (Exception exc) {
-                throw exc;
+                try {
+                    dragonLoc = getLocation(Type.MIXED_SD);
+                } catch (Exception secondExc) {
+                    throw secondExc;
+                }
             }
 
             boardRep[dragonLoc.y][dragonLoc.x] = Type.BLANK;
@@ -105,17 +191,19 @@ public class Board {
         return DragonFightResult.LOST;
     }
 
-    public Boolean moveHeroTo(Direction dir) {
+    public Boolean movePieceTo(Type piece, Direction dir) {
         if (gameState != State.RUNNING)
             return false;
 
         Coordinate loc;
 
         try {
-            loc = getLocation(Type.HERO);
+            loc = getLocation(piece);
         } catch (Exception exc) {
             return false;
         }
+
+        Boolean f = false;
 
         switch (dir) {
 
@@ -123,20 +211,32 @@ public class Board {
 
                 if (boardRep[loc.y - 1][loc.x] == Type.BLANK || boardRep[loc.y - 1][loc.x] == Type.EXIT || boardRep[loc.y - 1][loc.x] == Type.SWORD) {
                     if (boardRep[loc.y - 1][loc.x] == Type.EXIT) {
-                        if (!hero.armed)
+                        if (!hero.armed || piece != Type.HERO)
                             return false;
 
                         gameState = State.WON;
-                    } else if (boardRep[loc.y - 1][loc.x] == Type.SWORD)
-                        hero.armed = true;
+                    } else if (boardRep[loc.y - 1][loc.x] == Type.SWORD) {
+                        if (piece == Type.HERO)
+                            hero.armed = true;
+                        else
+                            f = true;
+                    }
 
-                    boardRep[loc.y - 1][loc.x] = Type.HERO;
-                    boardRep[loc.y][loc.x] = Type.BLANK;
+                    if (piece == Type.MIXED_SD) {
+                        boardRep[loc.y - 1][loc.x] = Type.DRAGON;
+                        boardRep[loc.y][loc.x] = Type.SWORD;
+                    } else {
+                        boardRep[loc.y - 1][loc.x] = (f ? Type.MIXED_SD : piece);
+                        boardRep[loc.y][loc.x] = Type.BLANK;
+                    }
 
                     try {
                         _checkDragon();
+
+                        if (piece == Type.HERO)
+                            _moveDragon();
                     } catch (Exception e) {
-                        System.out.println("Exception in _checkDragon(), proceeding anyway...");
+
                     }
 
                     return true;
@@ -148,20 +248,32 @@ public class Board {
 
                 if (boardRep[loc.y][loc.x - 1] == Type.BLANK  || boardRep[loc.y][loc.x - 1] == Type.EXIT || boardRep[loc.y][loc.x - 1] == Type.SWORD) {
                     if (boardRep[loc.y][loc.x - 1] == Type.EXIT) {
-                        if (!hero.armed)
+                        if (!hero.armed || piece != Type.HERO)
                             return false;
 
                         gameState = State.WON;
-                    } else if (boardRep[loc.y][loc.x - 1] == Type.SWORD)
-                        hero.armed = true;
+                    } else if (boardRep[loc.y][loc.x - 1] == Type.SWORD) {
+                        if (piece == Type.HERO)
+                            hero.armed = true;
+                        else
+                            f = true;
+                    }
 
-                    boardRep[loc.y][loc.x - 1] = Type.HERO;
-                    boardRep[loc.y][loc.x] = Type.BLANK;
+                    if (piece == Type.MIXED_SD) {
+                        boardRep[loc.y][loc.x - 1] = Type.DRAGON;
+                        boardRep[loc.y][loc.x] = Type.SWORD;
+                    } else {
+                        boardRep[loc.y][loc.x - 1] = (f ? Type.MIXED_SD : piece);
+                        boardRep[loc.y][loc.x] = Type.BLANK;
+                    }
 
                     try {
                         _checkDragon();
+
+                        if (piece == Type.HERO)
+                            _moveDragon();
                     } catch (Exception e) {
-                        System.out.println("Exception in _checkDragon(), proceeding anyway...");
+
                     }
 
                     return true;
@@ -173,20 +285,32 @@ public class Board {
 
                 if (boardRep[loc.y + 1][loc.x] == Type.BLANK || boardRep[loc.y + 1][loc.x] == Type.EXIT || boardRep[loc.y + 1][loc.x] == Type.SWORD) {
                     if (boardRep[loc.y + 1][loc.x] == Type.EXIT) {
-                        if (!hero.armed)
+                        if (!hero.armed || piece != Type.HERO)
                             return false;
 
                         gameState = State.WON;
-                    } else if (boardRep[loc.y + 1][loc.x] == Type.SWORD)
-                        hero.armed = true;
+                    } else if (boardRep[loc.y + 1][loc.x] == Type.SWORD) {
+                        if (piece == Type.HERO)
+                            hero.armed = true;
+                        else
+                            f = true;
+                    }
 
-                    boardRep[loc.y + 1][loc.x] = Type.HERO;
-                    boardRep[loc.y][loc.x] = Type.BLANK;
+                    if (piece == Type.MIXED_SD) {
+                        boardRep[loc.y + 1][loc.x] = Type.DRAGON;
+                        boardRep[loc.y][loc.x] = Type.SWORD;
+                    } else {
+                        boardRep[loc.y + 1][loc.x] = (f ? Type.MIXED_SD : piece);
+                        boardRep[loc.y][loc.x] = Type.BLANK;
+                    }
 
                     try {
                         _checkDragon();
+
+                        if (piece == Type.HERO)
+                            _moveDragon();
                     } catch (Exception e) {
-                        System.out.println("Exception in _checkDragon(), proceeding anyway...");
+
                     }
 
                     return true;
@@ -198,20 +322,32 @@ public class Board {
 
                 if (boardRep[loc.y][loc.x + 1] == Type.BLANK || boardRep[loc.y][loc.x + 1] == Type.EXIT || boardRep[loc.y][loc.x + 1] == Type.SWORD) {
                     if (boardRep[loc.y][loc.x + 1] == Type.EXIT) {
-                        if (!hero.armed)
+                        if (!hero.armed || piece != Type.HERO)
                             return false;
 
                         gameState = State.WON;
-                    } else if (boardRep[loc.y][loc.x + 1] == Type.SWORD)
-                        hero.armed = true;
+                    } else if (boardRep[loc.y][loc.x + 1] == Type.SWORD) {
+                        if (piece == Type.HERO)
+                            hero.armed = true;
+                        else
+                            f = true;
+                    }
 
-                    boardRep[loc.y][loc.x + 1] = Type.HERO;
-                    boardRep[loc.y][loc.x] = Type.BLANK;
+                    if (piece == Type.MIXED_SD) {
+                        boardRep[loc.y][loc.x + 1] = Type.DRAGON;
+                        boardRep[loc.y][loc.x] = Type.SWORD;
+                    } else {
+                        boardRep[loc.y][loc.x + 1] = (f ? Type.MIXED_SD : piece);
+                        boardRep[loc.y][loc.x] = Type.BLANK;
+                    }
 
                     try {
                         _checkDragon();
+
+                        if (piece == Type.HERO)
+                            _moveDragon();
                     } catch (Exception e) {
-                        System.out.println("Exception in _checkDragon(), proceeding anyway...");
+
                     }
 
                     return true;
@@ -233,7 +369,7 @@ public class Board {
                 switch (boardRep[i][j]) {
                     case WALL:
 
-                        outStr += "=";
+                        outStr += "█";
 
                         break;
 
@@ -252,6 +388,12 @@ public class Board {
                     case DRAGON:
 
                         outStr += "D";
+
+                        break;
+
+                    case MIXED_SD:
+
+                        outStr += "F";
 
                         break;
 
