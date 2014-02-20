@@ -47,6 +47,10 @@ public class Controller {
                     System.out.println("You won, congratulations!");
 
                     break;
+                } else if (brd.getGameState() == Board.State.LOST) {
+                    System.out.println("You lost... :(");
+
+                    break;
                 }
 
                 readLine = br.readLine();

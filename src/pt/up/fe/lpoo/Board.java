@@ -7,9 +7,12 @@ package pt.up.fe.lpoo;
 import pt.up.fe.lpoo.Coordinate;
 
 public class Board {
-    public enum Type {WALL, HERO, SWORD, EXIT, BLANK};
+    public enum Type {WALL, HERO, SWORD, DRAGON, EXIT, BLANK};
     public enum Direction {UP, LEFT, DOWN, RIGHT};
     public enum State {RUNNING, LOST, WON};
+
+    private enum DragonFightResult {NOT_FOUND, ALREADY_DEFEATED, LOST, WON};
+    private enum DragonSearchResult {NOT_FOUND, FOUND, ALREADY_DEFEATED};
 
     private State gameState = State.RUNNING;
 
@@ -19,7 +22,7 @@ public class Board {
             {Type.WALL, Type.WALL, Type.WALL, Type.WALL, Type.WALL, Type.WALL, Type.WALL, Type.WALL, Type.WALL, Type.WALL},
             {Type.WALL, Type.HERO, Type.BLANK, Type.BLANK, Type.BLANK, Type.BLANK, Type.BLANK, Type.BLANK, Type.BLANK, Type.WALL},
             {Type.WALL, Type.BLANK, Type.WALL, Type.WALL, Type.BLANK, Type.WALL, Type.BLANK, Type.WALL, Type.BLANK, Type.WALL},
-            {Type.WALL, Type.BLANK, Type.WALL, Type.WALL, Type.BLANK, Type.WALL, Type.BLANK, Type.WALL, Type.BLANK, Type.WALL},
+            {Type.WALL, Type.DRAGON, Type.WALL, Type.WALL, Type.BLANK, Type.WALL, Type.BLANK, Type.WALL, Type.BLANK, Type.WALL},
             {Type.WALL, Type.BLANK, Type.WALL, Type.WALL, Type.BLANK, Type.WALL, Type.BLANK, Type.WALL, Type.BLANK, Type.WALL},
             {Type.WALL, Type.BLANK, Type.BLANK, Type.BLANK, Type.BLANK, Type.BLANK, Type.BLANK, Type.WALL, Type.BLANK, Type.EXIT},
             {Type.WALL, Type.BLANK, Type.WALL, Type.WALL, Type.BLANK, Type.WALL, Type.BLANK, Type.WALL, Type.BLANK, Type.WALL},
@@ -41,8 +44,65 @@ public class Board {
         return gameState;
     }
 
-    public Boolean getHeroIsArmed() {
-        return hero.armed;
+    private DragonSearchResult _isNearDragon() throws Exception {
+        Coordinate dragonLoc;
+
+        try {
+            dragonLoc = getLocation(Type.DRAGON);
+        } catch (Exception exc) {
+            return DragonSearchResult.ALREADY_DEFEATED;
+        }
+
+        Coordinate heroLoc;
+
+        try {
+            heroLoc = getLocation(Type.HERO);
+        } catch (Exception exc) {
+            throw new Exception("Hero Not Found?!");
+        }
+
+        if (dragonLoc.x == heroLoc.x)
+            if (dragonLoc.y == heroLoc.y || dragonLoc.y - 1 == heroLoc.y || dragonLoc.y + 1 == heroLoc.y)
+                return DragonSearchResult.FOUND;
+
+        if (dragonLoc.y == heroLoc.y)
+            if (dragonLoc.x == heroLoc.x || dragonLoc.x - 1 == heroLoc.x || dragonLoc.x + 1 == heroLoc.x)
+                return DragonSearchResult.FOUND;
+
+        return DragonSearchResult.NOT_FOUND;
+    }
+
+    private DragonFightResult _checkDragon() throws Exception {
+        try {
+            DragonSearchResult res = _isNearDragon();
+
+            if (res == DragonSearchResult.ALREADY_DEFEATED)
+                return DragonFightResult.ALREADY_DEFEATED;
+
+            if (res == DragonSearchResult.NOT_FOUND)
+                return DragonFightResult.NOT_FOUND;
+
+        } catch (Exception exc) {
+            throw exc;
+        }
+
+        if (hero.armed) {
+            Coordinate dragonLoc;
+
+            try {
+                dragonLoc = getLocation(Type.DRAGON);
+            } catch (Exception exc) {
+                throw exc;
+            }
+
+            boardRep[dragonLoc.y][dragonLoc.x] = Type.BLANK;
+
+            return DragonFightResult.WON;
+        }
+
+        gameState = State.LOST;
+
+        return DragonFightResult.LOST;
     }
 
     public Boolean moveHeroTo(Direction dir) {
@@ -73,6 +133,12 @@ public class Board {
                     boardRep[loc.y - 1][loc.x] = Type.HERO;
                     boardRep[loc.y][loc.x] = Type.BLANK;
 
+                    try {
+                        _checkDragon();
+                    } catch (Exception e) {
+                        System.out.println("Exception in _checkDragon(), proceeding anyway...");
+                    }
+
                     return true;
                 }
 
@@ -91,6 +157,12 @@ public class Board {
 
                     boardRep[loc.y][loc.x - 1] = Type.HERO;
                     boardRep[loc.y][loc.x] = Type.BLANK;
+
+                    try {
+                        _checkDragon();
+                    } catch (Exception e) {
+                        System.out.println("Exception in _checkDragon(), proceeding anyway...");
+                    }
 
                     return true;
                 }
@@ -111,6 +183,12 @@ public class Board {
                     boardRep[loc.y + 1][loc.x] = Type.HERO;
                     boardRep[loc.y][loc.x] = Type.BLANK;
 
+                    try {
+                        _checkDragon();
+                    } catch (Exception e) {
+                        System.out.println("Exception in _checkDragon(), proceeding anyway...");
+                    }
+
                     return true;
                 }
 
@@ -130,12 +208,19 @@ public class Board {
                     boardRep[loc.y][loc.x + 1] = Type.HERO;
                     boardRep[loc.y][loc.x] = Type.BLANK;
 
+                    try {
+                        _checkDragon();
+                    } catch (Exception e) {
+                        System.out.println("Exception in _checkDragon(), proceeding anyway...");
+                    }
+
                     return true;
                 }
 
                 break;
 
         }
+
 
         return false;
     }
@@ -161,6 +246,12 @@ public class Board {
                     case SWORD:
 
                         outStr += "E";
+
+                        break;
+
+                    case DRAGON:
+
+                        outStr += "D";
 
                         break;
 
