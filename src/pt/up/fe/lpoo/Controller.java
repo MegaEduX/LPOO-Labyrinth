@@ -28,13 +28,13 @@ public class Controller {
             System.out.println();
 
             while (!readLine.equalsIgnoreCase("quit")) {
-                if (readLine.equalsIgnoreCase("up"))
+                if (readLine.equalsIgnoreCase("up") || readLine.equalsIgnoreCase("u"))
                     brd.moveHeroTo(Board.Direction.UP);
-                else if (readLine.equalsIgnoreCase("down"))
+                else if (readLine.equalsIgnoreCase("down") || readLine.equalsIgnoreCase("d"))
                     brd.moveHeroTo(Board.Direction.DOWN);
-                else if (readLine.equalsIgnoreCase("right"))
+                else if (readLine.equalsIgnoreCase("right") || readLine.equalsIgnoreCase("r"))
                     brd.moveHeroTo(Board.Direction.RIGHT);
-                else if (readLine.equalsIgnoreCase("left"))
+                else if (readLine.equalsIgnoreCase("left") || readLine.equalsIgnoreCase("l"))
                     brd.moveHeroTo(Board.Direction.LEFT);
 
                 System.out.println();

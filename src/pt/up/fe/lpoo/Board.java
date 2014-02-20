@@ -7,11 +7,13 @@ package pt.up.fe.lpoo;
 import pt.up.fe.lpoo.Coordinate;
 
 public class Board {
-    public enum Type {WALL, HERO, EXIT, BLANK};
+    public enum Type {WALL, HERO, SWORD, EXIT, BLANK};
     public enum Direction {UP, LEFT, DOWN, RIGHT};
     public enum State {RUNNING, LOST, WON};
 
     private State gameState = State.RUNNING;
+
+    private Hero hero = new Hero();
 
     private Type boardRep[][] = {
             {Type.WALL, Type.WALL, Type.WALL, Type.WALL, Type.WALL, Type.WALL, Type.WALL, Type.WALL, Type.WALL, Type.WALL},
@@ -22,7 +24,7 @@ public class Board {
             {Type.WALL, Type.BLANK, Type.BLANK, Type.BLANK, Type.BLANK, Type.BLANK, Type.BLANK, Type.WALL, Type.BLANK, Type.EXIT},
             {Type.WALL, Type.BLANK, Type.WALL, Type.WALL, Type.BLANK, Type.WALL, Type.BLANK, Type.WALL, Type.BLANK, Type.WALL},
             {Type.WALL, Type.BLANK, Type.WALL, Type.WALL, Type.BLANK, Type.WALL, Type.BLANK, Type.WALL, Type.BLANK, Type.WALL},
-            {Type.WALL, Type.BLANK, Type.WALL, Type.WALL, Type.BLANK, Type.BLANK, Type.BLANK, Type.BLANK, Type.BLANK, Type.WALL},
+            {Type.WALL, Type.SWORD, Type.WALL, Type.WALL, Type.BLANK, Type.BLANK, Type.BLANK, Type.BLANK, Type.BLANK, Type.WALL},
             {Type.WALL, Type.WALL, Type.WALL, Type.WALL, Type.WALL, Type.WALL, Type.WALL, Type.WALL, Type.WALL, Type.WALL}
     };
 
@@ -37,6 +39,10 @@ public class Board {
 
     public State getGameState() {
         return gameState;
+    }
+
+    public Boolean getHeroIsArmed() {
+        return hero.armed;
     }
 
     public Boolean moveHeroTo(Direction dir) {
@@ -55,9 +61,14 @@ public class Board {
 
             case UP:
 
-                if (boardRep[loc.y - 1][loc.x] == Type.BLANK || boardRep[loc.y - 1][loc.x] == Type.EXIT) {
-                    if (boardRep[loc.y - 1][loc.x] == Type.EXIT)
+                if (boardRep[loc.y - 1][loc.x] == Type.BLANK || boardRep[loc.y - 1][loc.x] == Type.EXIT || boardRep[loc.y - 1][loc.x] == Type.SWORD) {
+                    if (boardRep[loc.y - 1][loc.x] == Type.EXIT) {
+                        if (!hero.armed)
+                            return false;
+
                         gameState = State.WON;
+                    } else if (boardRep[loc.y - 1][loc.x] == Type.SWORD)
+                        hero.armed = true;
 
                     boardRep[loc.y - 1][loc.x] = Type.HERO;
                     boardRep[loc.y][loc.x] = Type.BLANK;
@@ -69,9 +80,14 @@ public class Board {
 
             case LEFT:
 
-                if (boardRep[loc.y][loc.x - 1] == Type.BLANK  || boardRep[loc.y][loc.x - 1] == Type.EXIT) {
-                    if (boardRep[loc.y][loc.x - 1] == Type.EXIT)
+                if (boardRep[loc.y][loc.x - 1] == Type.BLANK  || boardRep[loc.y][loc.x - 1] == Type.EXIT || boardRep[loc.y][loc.x - 1] == Type.SWORD) {
+                    if (boardRep[loc.y][loc.x - 1] == Type.EXIT) {
+                        if (!hero.armed)
+                            return false;
+
                         gameState = State.WON;
+                    } else if (boardRep[loc.y][loc.x - 1] == Type.SWORD)
+                        hero.armed = true;
 
                     boardRep[loc.y][loc.x - 1] = Type.HERO;
                     boardRep[loc.y][loc.x] = Type.BLANK;
@@ -83,9 +99,14 @@ public class Board {
 
             case DOWN:
 
-                if (boardRep[loc.y + 1][loc.x] == Type.BLANK || boardRep[loc.y + 1][loc.x] == Type.EXIT) {
-                    if (boardRep[loc.y + 1][loc.x] == Type.EXIT)
+                if (boardRep[loc.y + 1][loc.x] == Type.BLANK || boardRep[loc.y + 1][loc.x] == Type.EXIT || boardRep[loc.y + 1][loc.x] == Type.SWORD) {
+                    if (boardRep[loc.y + 1][loc.x] == Type.EXIT) {
+                        if (!hero.armed)
+                            return false;
+
                         gameState = State.WON;
+                    } else if (boardRep[loc.y + 1][loc.x] == Type.SWORD)
+                        hero.armed = true;
 
                     boardRep[loc.y + 1][loc.x] = Type.HERO;
                     boardRep[loc.y][loc.x] = Type.BLANK;
@@ -97,9 +118,14 @@ public class Board {
 
             case RIGHT:
 
-                if (boardRep[loc.y][loc.x + 1] == Type.BLANK || boardRep[loc.y][loc.x + 1] == Type.EXIT) {
-                    if (boardRep[loc.y][loc.x + 1] == Type.EXIT)
+                if (boardRep[loc.y][loc.x + 1] == Type.BLANK || boardRep[loc.y][loc.x + 1] == Type.EXIT || boardRep[loc.y][loc.x + 1] == Type.SWORD) {
+                    if (boardRep[loc.y][loc.x + 1] == Type.EXIT) {
+                        if (!hero.armed)
+                            return false;
+
                         gameState = State.WON;
+                    } else if (boardRep[loc.y][loc.x + 1] == Type.SWORD)
+                        hero.armed = true;
 
                     boardRep[loc.y][loc.x + 1] = Type.HERO;
                     boardRep[loc.y][loc.x] = Type.BLANK;
@@ -129,6 +155,12 @@ public class Board {
                     case HERO:
 
                         outStr += "H";
+
+                        break;
+
+                    case SWORD:
+
+                        outStr += "E";
 
                         break;
 
