@@ -5,9 +5,7 @@
 package pt.up.fe.lpoo;
 
 public class Board {
-    public enum Type {WALL, HERO, EXIT, BLANK}
-
-    ;
+    public enum Type {WALL, HERO, EXIT, BLANK};
 
     private Type boardRep[][] = {
             {Type.WALL, Type.WALL, Type.WALL, Type.WALL, Type.WALL, Type.WALL, Type.WALL, Type.WALL, Type.WALL, Type.WALL},
