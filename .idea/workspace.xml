@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/Board.java" line="211" mnemonic="9" />
+    <bookmark url="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/Board.java" line="207" mnemonic="9" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="308771da-778d-4cb1-ae28-0ce3924c26db" name="Default" comment="Initial Commit" />
@@ -70,27 +70,28 @@
       <file leaf-file-name="Hero.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/Hero.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="22" selection-start="139" selection-end="139" vertical-scroll-proportion="0.0" vertical-offset="135" max-vertical-offset="255">
+            <state line="11" column="0" selection-start="153" selection-end="153" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="195">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Board.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="Board.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/Board.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="119" column="19" selection-start="4290" selection-end="4426" vertical-scroll-proportion="-11.269231" vertical-offset="1462" max-vertical-offset="6300">
+            <state line="99" column="13" selection-start="4067" selection-end="4067" vertical-scroll-proportion="0.8011364" vertical-offset="1143" max-vertical-offset="6210">
               <folding>
-                <element signature="n#!!doc" expanded="true" />
+                <element signature="e#2225#2226#0" expanded="true" />
+                <element signature="e#2257#2258#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BoardGenerator.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="BoardGenerator.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/BoardGenerator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="32" column="5" selection-start="2278" selection-end="2278" vertical-scroll-proportion="0.7058824" vertical-offset="0" max-vertical-offset="855">
+            <state line="37" column="24" selection-start="2599" selection-end="2599" vertical-scroll-proportion="-2.7636364" vertical-offset="403" max-vertical-offset="1005">
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -110,8 +111,10 @@
       <file leaf-file-name="Controller.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="102" selection-start="583" selection-end="583" vertical-scroll-proportion="0.0" vertical-offset="345" max-vertical-offset="1080">
-              <folding />
+            <state line="33" column="54" selection-start="857" selection-end="857" vertical-scroll-proportion="0.0" vertical-offset="350" max-vertical-offset="1020">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -139,8 +142,8 @@
         <option value="$PROJECT_DIR$/src/pt/up/fe/lpoo/Coordinate.java" />
         <option value="$PROJECT_DIR$/src/pt/up/fe/lpoo/Hero.java" />
         <option value="$PROJECT_DIR$/src/pt/up/fe/lpoo/Controller.java" />
-        <option value="$PROJECT_DIR$/src/pt/up/fe/lpoo/Board.java" />
         <option value="$PROJECT_DIR$/src/pt/up/fe/lpoo/BoardGenerator.java" />
+        <option value="$PROJECT_DIR$/src/pt/up/fe/lpoo/Board.java" />
       </list>
     </option>
   </component>
@@ -190,6 +193,8 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -228,8 +233,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -266,7 +269,13 @@
       <option name="PASS_PARENT_ENVS" value="true" />
       <module name="LPOO-Labirinto" />
       <envs />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="" />
+        <option name="TRANSPORT" value="0" />
+        <option name="LOCAL" value="true" />
+      </RunnerSettings>
       <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Debug" />
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
@@ -445,25 +454,50 @@
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32871014" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32871014" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.39971346" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3252149" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24963397" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32871014" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24924472" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32808024" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="21" y="269" width="1324" height="229" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32732317" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32871014" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
+    <layout-to-restore>
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32944834" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32871014" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32871014" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32732317" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24963397" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32871014" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+    </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
     <option name="RECENTLY_FILTERED_USER_GROUPS">
@@ -490,6 +524,90 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/Hero.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="22" selection-start="139" selection-end="139" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="195">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/Board.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="41" column="48" selection-start="2156" selection-end="2156" vertical-scroll-proportion="0.0" vertical-offset="615" max-vertical-offset="6330">
+          <folding>
+            <element signature="e#2225#2226#0" expanded="true" />
+            <element signature="e#2257#2258#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/BoardGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="29" column="27" selection-start="2246" selection-end="2246" vertical-scroll-proportion="0.0" vertical-offset="435" max-vertical-offset="855">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/Coordinate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="13" selection-start="110" selection-end="110" vertical-scroll-proportion="0.0" vertical-offset="120" max-vertical-offset="345">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="102" selection-start="583" selection-end="583" vertical-scroll-proportion="0.0" vertical-offset="375" max-vertical-offset="1080">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/Hero.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="22" selection-start="139" selection-end="139" vertical-scroll-proportion="0.0" vertical-offset="135" max-vertical-offset="255">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/Board.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="119" column="19" selection-start="4290" selection-end="4426" vertical-scroll-proportion="0.0" vertical-offset="1785" max-vertical-offset="6330">
+          <folding>
+            <element signature="e#2225#2226#0" expanded="true" />
+            <element signature="e#2257#2258#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/BoardGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="32" column="5" selection-start="2278" selection-end="2278" vertical-scroll-proportion="0.0" vertical-offset="480" max-vertical-offset="855">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/Coordinate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="13" selection-start="110" selection-end="110" vertical-scroll-proportion="0.0" vertical-offset="120" max-vertical-offset="345">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="102" selection-start="583" selection-end="583" vertical-scroll-proportion="0.0" vertical-offset="375" max-vertical-offset="1080">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/LPOO-Labirinto.iml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="270" />
@@ -499,7 +617,8 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="48" column="0" selection-start="2297" selection-end="2297" vertical-scroll-proportion="0.0" vertical-offset="720" max-vertical-offset="4170">
           <folding>
-            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#2225#2226#0" expanded="true" />
+            <element signature="e#2257#2258#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -521,7 +640,9 @@
     <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="52" column="26" selection-start="1640" selection-end="1640" vertical-scroll-proportion="0.0" vertical-offset="780" max-vertical-offset="1020">
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -534,7 +655,8 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="24" column="44" selection-start="977" selection-end="981" vertical-scroll-proportion="0.0" vertical-offset="360" max-vertical-offset="4200">
           <folding>
-            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#2225#2226#0" expanded="true" />
+            <element signature="e#2257#2258#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -556,7 +678,9 @@
     <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="52" column="26" selection-start="1640" selection-end="1640" vertical-scroll-proportion="0.0" vertical-offset="186" max-vertical-offset="1020">
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -569,7 +693,8 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="7" column="47" selection-start="137" selection-end="137" vertical-scroll-proportion="0.0" vertical-offset="105" max-vertical-offset="945">
           <folding>
-            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#2225#2226#0" expanded="true" />
+            <element signature="e#2257#2258#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -577,7 +702,9 @@
     <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="4" column="7" selection-start="75" selection-end="75" vertical-scroll-proportion="0.0" vertical-offset="60" max-vertical-offset="285">
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -590,7 +717,8 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="6" column="0" selection-start="114" selection-end="114" vertical-scroll-proportion="0.0" vertical-offset="90" max-vertical-offset="210">
           <folding>
-            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#2225#2226#0" expanded="true" />
+            <element signature="e#2257#2258#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -602,15 +730,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/Hero.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="22" selection-start="139" selection-end="139" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="255">
+        <state line="11" column="0" selection-start="153" selection-end="153" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="195">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="102" selection-start="583" selection-end="583" vertical-scroll-proportion="0.0" vertical-offset="345" max-vertical-offset="1080">
-          <folding />
+        <state line="33" column="54" selection-start="857" selection-end="857" vertical-scroll-proportion="0.0" vertical-offset="350" max-vertical-offset="1020">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -621,20 +751,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/Board.java">
+    <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/BoardGenerator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="119" column="19" selection-start="4290" selection-end="4426" vertical-scroll-proportion="-11.269231" vertical-offset="1462" max-vertical-offset="6300">
+        <state line="37" column="24" selection-start="2599" selection-end="2599" vertical-scroll-proportion="-2.7636364" vertical-offset="403" max-vertical-offset="1005">
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/BoardGenerator.java">
+    <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/Board.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="5" selection-start="2278" selection-end="2278" vertical-scroll-proportion="0.7058824" vertical-offset="0" max-vertical-offset="855">
+        <state line="99" column="13" selection-start="4067" selection-end="4067" vertical-scroll-proportion="0.8011364" vertical-offset="1143" max-vertical-offset="6210">
           <folding>
-            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#2225#2226#0" expanded="true" />
+            <element signature="e#2257#2258#0" expanded="true" />
           </folding>
         </state>
       </provider>
