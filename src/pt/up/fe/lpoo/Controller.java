@@ -14,6 +14,17 @@ public class Controller {
     public static void main(String args[]) {
         Board brd = new Board();
 
+        BoardGenerator brdGen = new BoardGenerator();
+
+        try {
+            Board.Type[][] gdBoard = brdGen.generateBoard();
+
+            brd.setBoardRepresentation(gdBoard);
+        } catch (Exception exc) {
+            System.out.println("Unable to generate a new board.");
+            System.out.println(exc.getMessage());
+        }
+
         brd.printBoard();
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
