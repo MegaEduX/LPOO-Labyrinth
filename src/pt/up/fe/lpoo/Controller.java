@@ -14,22 +14,33 @@ public class Controller {
     public static void main(String args[]) {
         Board brd = new Board();
 
-        BoardGenerator brdGen = new BoardGenerator();
-
-        try {
-            Board.Type[][] gdBoard = brdGen.generateBoard();
-
-            brd.setBoardRepresentation(gdBoard);
-        } catch (Exception exc) {
-            System.out.println("Unable to generate a new board.");
-            System.out.println(exc.getMessage());
-        }
-
-        brd.printBoard();
+        int width = 20;
+        int height = 12;
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         String readLine;
+
+        try {
+            readLine = br.readLine();
+        } catch (IOException exception) {
+            
+        }
+
+        try {
+            BoardGenerator brdGen = new BoardGenerator(width, height);
+
+            Board.Type[][] gdBoard = brdGen.generateBoard();
+
+            brd.setBoardRepresentation(gdBoard);
+
+            brd.setWidth(width);
+            brd.setHeight(height);
+        } catch (Exception exc) {
+            System.out.println("Unable to generate a new board. Reason: " + exc.getMessage());
+        }
+
+        brd.printBoard();
 
         try {
             System.out.println();

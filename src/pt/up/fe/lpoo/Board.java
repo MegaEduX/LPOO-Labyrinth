@@ -24,7 +24,7 @@ public class Board {
             {Type.WALL, Type.WALL, Type.WALL, Type.WALL, Type.WALL, Type.WALL, Type.WALL, Type.WALL, Type.WALL, Type.WALL},
             {Type.WALL, Type.HERO, Type.BLANK, Type.BLANK, Type.BLANK, Type.BLANK, Type.BLANK, Type.BLANK, Type.BLANK, Type.WALL},
             {Type.WALL, Type.BLANK, Type.WALL, Type.WALL, Type.BLANK, Type.WALL, Type.BLANK, Type.WALL, Type.BLANK, Type.WALL},
-            {Type.WALL, Type.DRAGON, Type.BLANK, Type.WALL, Type.WALL, Type.BLANK, Type.WALL, Type.BLANK, Type.WALL, Type.BLANK, Type.WALL},
+            {Type.WALL, Type.DRAGON, Type.WALL, Type.WALL, Type.BLANK, Type.WALL, Type.BLANK, Type.WALL, Type.BLANK, Type.WALL},
             {Type.WALL, Type.BLANK, Type.WALL, Type.WALL, Type.BLANK, Type.WALL, Type.BLANK, Type.WALL, Type.BLANK, Type.WALL},
             {Type.WALL, Type.BLANK, Type.BLANK, Type.BLANK, Type.BLANK, Type.BLANK, Type.BLANK, Type.WALL, Type.BLANK, Type.EXIT},
             {Type.WALL, Type.BLANK, Type.WALL, Type.WALL, Type.BLANK, Type.WALL, Type.BLANK, Type.WALL, Type.BLANK, Type.WALL},
@@ -33,13 +33,24 @@ public class Board {
             {Type.WALL, Type.WALL, Type.WALL, Type.WALL, Type.WALL, Type.WALL, Type.WALL, Type.WALL, Type.WALL, Type.WALL}
     };
 
+    private int width = 10;
+    private int height = 10;
+
     public Coordinate getLocation(Type piece) throws Exception {
-        for (int i = 0; i < 10; i++)
-            for (int j = 0; j < 10; j++)
+        for (int i = 0; i < height; i++)
+            for (int j = 0; j < width; j++)
                 if (boardRep[i][j] == piece)
                     return new Coordinate(j, i);
 
         throw new Exception("Piece Not Found.");
+    }
+
+    public void setWidth(int w) {
+        width = w;
+    }
+
+    public void setHeight(int h) {
+        height = h;
     }
 
     public State getGameState() {
@@ -362,10 +373,10 @@ public class Board {
     }
 
     public void printBoard() {
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < height; i++) {
             String outStr = "";
 
-            for (int j = 0; j < 10; j++)
+            for (int j = 0; j < width; j++)
                 switch (boardRep[i][j]) {
                     case WALL:
 

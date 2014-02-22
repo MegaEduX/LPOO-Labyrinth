@@ -10,6 +10,9 @@ import java.util.Random;
 import java.util.Stack;
 
 public class BoardGenerator {
+    private int _width = 0;  //  x size
+    private int _height = 0; //  y size
+
     Board.Type boardRep[][] = {
             {Board.Type.LOCKED_WALL, Board.Type.LOCKED_WALL, Board.Type.LOCKED_WALL, Board.Type.LOCKED_WALL, Board.Type.LOCKED_WALL, Board.Type.LOCKED_WALL, Board.Type.LOCKED_WALL, Board.Type.LOCKED_WALL, Board.Type.LOCKED_WALL, Board.Type.LOCKED_WALL},
             {Board.Type.LOCKED_WALL, Board.Type.WALL, Board.Type.WALL, Board.Type.WALL, Board.Type.WALL, Board.Type.WALL, Board.Type.WALL, Board.Type.WALL, Board.Type.WALL, Board.Type.LOCKED_WALL},
@@ -22,6 +25,28 @@ public class BoardGenerator {
             {Board.Type.LOCKED_WALL, Board.Type.WALL, Board.Type.WALL, Board.Type.WALL, Board.Type.WALL, Board.Type.WALL, Board.Type.WALL, Board.Type.WALL, Board.Type.WALL, Board.Type.LOCKED_WALL},
             {Board.Type.LOCKED_WALL, Board.Type.LOCKED_WALL, Board.Type.LOCKED_WALL, Board.Type.LOCKED_WALL, Board.Type.LOCKED_WALL, Board.Type.LOCKED_WALL, Board.Type.LOCKED_WALL, Board.Type.LOCKED_WALL, Board.Type.LOCKED_WALL, Board.Type.LOCKED_WALL}
     };
+
+    private BoardGenerator() {
+        //  Calling this method directly is unsupported.
+    }
+
+    public BoardGenerator(int w, int h) throws Exception {
+        if (w < 3 || h < 3)
+            throw new Exception("Both dimensions need to be >= 3.");
+
+        boardRep = new Board.Type[h][w];
+
+        for (int i = 0; i < h; i++) {
+            for (int j = 0; j < w; j++) {
+                boardRep[i][j] = ((i == 0 || i == (h - 1)) ? Board.Type.LOCKED_WALL :
+                        ((j == 0 || j == (w - 1)) ? Board.Type.LOCKED_WALL :
+                                Board.Type.WALL));
+            }
+        }
+
+        _width = w;
+        _height = h;
+    }
 
     public Board.Type[][] generateBoard() throws Exception {
         Coordinate stp;
@@ -65,8 +90,8 @@ public class BoardGenerator {
             crdHistory.push(position);
         }
 
-        for (int i = 0; i < 10; i++)
-            for (int j = 0; j < 10; j++)
+        for (int i = 0; i < _height; i++)
+            for (int j = 0; j < _width; j++)
                 if (boardRep[i][j] == Board.Type.LOCKED_WALL)
                     boardRep[i][j] = Board.Type.WALL;
 
@@ -79,6 +104,8 @@ public class BoardGenerator {
         Coordinate[] whiteSpaces = _getWhitespaces();
 
         Random rand = new Random();
+
+        /*  Seems dirty, but it's optimized. So, profit! ^^ */
 
         int val = rand.nextInt(whiteSpaces.length);
         int val2 = rand.nextInt(whiteSpaces.length);
@@ -96,12 +123,12 @@ public class BoardGenerator {
     }
 
     private Coordinate[] _getWhitespaces() {
-        Coordinate coords[] = new Coordinate[100];
+        Coordinate coords[] = new Coordinate[_width * _height];
 
         int currIndex = 0;
 
-        for (int i = 0; i < 10; i++)
-            for (int j = 0; j < 10; j++)
+        for (int i = 0; i < _height; i++)
+            for (int j = 0; j < _width; j++)
                 if (boardRep[i][j] == Board.Type.BLANK)
                     coords[currIndex++] = new Coordinate(j, i);
 
@@ -114,6 +141,11 @@ public class BoardGenerator {
     }
 
     private Coordinate[] _possibleMoves(Coordinate pos) {
+        /*
+         *  Th'arr be monst'arrs below, lad!
+         *  Don't dive too deep without the help of your crew, capt'n!
+         */
+
         Coordinate[] crds = new Coordinate[4];
 
         int ccIndex = 0;
@@ -122,7 +154,13 @@ public class BoardGenerator {
 
         try {
             if (boardRep[pos.y - 1][pos.x] == Board.Type.WALL)
-                crds[ccIndex++] = new Coordinate(pos.x, pos.y - 1);
+                if (!(boardRep[pos.y - 1][pos.x - 1] == Board.Type.BLANK &&
+                        boardRep[pos.y - 2][pos.x - 1] == Board.Type.BLANK &&
+                        boardRep[pos.y - 2][pos.x] == Board.Type.BLANK))
+                    if (!(boardRep[pos.y - 2][pos.x] == Board.Type.BLANK &&
+                            boardRep[pos.y - 2][pos.x + 1] == Board.Type.BLANK &&
+                            boardRep[pos.y - 1][pos.x + 1] == Board.Type.BLANK))
+                        crds[ccIndex++] = new Coordinate(pos.x, pos.y - 1);
         } catch (Exception exc) {
 
         }
@@ -131,7 +169,13 @@ public class BoardGenerator {
 
         try {
             if (boardRep[pos.y + 1][pos.x] == Board.Type.WALL)
-                crds[ccIndex++] = new Coordinate(pos.x, pos.y + 1);
+                if (!(boardRep[pos.y + 1][pos.x - 1] == Board.Type.BLANK &&
+                        boardRep[pos.y + 2][pos.x - 1] == Board.Type.BLANK &&
+                        boardRep[pos.y + 2][pos.x] == Board.Type.BLANK))
+                    if (!(boardRep[pos.y + 2][pos.x] == Board.Type.BLANK &&
+                            boardRep[pos.y + 2][pos.x + 1] == Board.Type.BLANK &&
+                            boardRep[pos.y + 1][pos.x + 1] == Board.Type.BLANK))
+                        crds[ccIndex++] = new Coordinate(pos.x, pos.y + 1);
         } catch (Exception exc) {
 
         }
@@ -140,7 +184,13 @@ public class BoardGenerator {
 
         try {
             if (boardRep[pos.y][pos.x + 1] == Board.Type.WALL)
-                crds[ccIndex++] = new Coordinate(pos.x + 1, pos.y);
+                if (!(boardRep[pos.y - 1][pos.x + 1] == Board.Type.BLANK &&
+                        boardRep[pos.y - 1][pos.x + 2] == Board.Type.BLANK &&
+                        boardRep[pos.y][pos.x + 2] == Board.Type.BLANK))
+                    if (!(boardRep[pos.y][pos.x + 2] == Board.Type.BLANK &&
+                            boardRep[pos.y + 1][pos.x + 2] == Board.Type.BLANK &&
+                            boardRep[pos.y + 1][pos.x + 1] == Board.Type.BLANK))
+                        crds[ccIndex++] = new Coordinate(pos.x + 1, pos.y);
         } catch (Exception exc) {
 
         }
@@ -149,7 +199,13 @@ public class BoardGenerator {
 
         try {
             if (boardRep[pos.y][pos.x - 1] == Board.Type.WALL)
-                crds[ccIndex++] = new Coordinate(pos.x - 1, pos.y);
+                if (!(boardRep[pos.y - 1][pos.x - 1] == Board.Type.BLANK &&
+                        boardRep[pos.y - 1][pos.x - 2] == Board.Type.BLANK &&
+                        boardRep[pos.y][pos.x - 2] == Board.Type.BLANK))
+                    if (!(boardRep[pos.y][pos.x - 2] == Board.Type.BLANK &&
+                            boardRep[pos.y + 1][pos.x - 2] == Board.Type.BLANK &&
+                            boardRep[pos.y + 1][pos.x - 1] == Board.Type.BLANK))
+                        crds[ccIndex++] = new Coordinate(pos.x - 1, pos.y);
         } catch (Exception exc) {
 
         }
@@ -172,7 +228,7 @@ public class BoardGenerator {
         int index = rand.nextInt(8) + 1;
 
         switch (val) {
-            case 0:  //   Top-Most Line
+            case 0:  // Top-Most Line
 
                 return new Coordinate(val, 0);
 
@@ -180,13 +236,17 @@ public class BoardGenerator {
 
                 return new Coordinate(9, val);
 
-            case 2:
+            case 2: //  Bottom-Most Line
 
                 return new Coordinate(val, 9);
 
-            case 3:
+            case 3: //  Left-Most Line
 
                 return new Coordinate(0, val);
+
+            default:    //  ...
+
+                break;
         }
 
         throw new Exception("Say What?!");
