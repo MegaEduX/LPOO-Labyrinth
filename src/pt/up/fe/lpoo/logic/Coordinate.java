@@ -4,7 +4,7 @@
  * Created by Eduardo Almeida and João Almeida.
  */
 
-package pt.up.fe.lpoo;
+package pt.up.fe.lpoo.logic;
 
 public class Coordinate {
     public int x;

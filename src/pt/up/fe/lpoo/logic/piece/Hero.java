@@ -4,8 +4,8 @@
  * Created by Eduardo Almeida and João Almeida.
  */
 
-package pt.up.fe.lpoo;
+package pt.up.fe.lpoo.logic.piece;
 
-public class Hero {
+public class Hero extends Piece {
     public Boolean armed = false;
 }

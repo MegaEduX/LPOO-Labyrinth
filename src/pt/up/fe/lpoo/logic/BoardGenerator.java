@@ -4,7 +4,7 @@
  * Created by Eduardo Almeida and João Almeida.
  */
 
-package pt.up.fe.lpoo;
+package pt.up.fe.lpoo.logic;
 
 import java.util.Random;
 import java.util.Stack;
@@ -13,18 +13,7 @@ public class BoardGenerator {
     private int _width = 0;  //  x size
     private int _height = 0; //  y size
 
-    Board.Type boardRep[][] = {
-            {Board.Type.LOCKED_WALL, Board.Type.LOCKED_WALL, Board.Type.LOCKED_WALL, Board.Type.LOCKED_WALL, Board.Type.LOCKED_WALL, Board.Type.LOCKED_WALL, Board.Type.LOCKED_WALL, Board.Type.LOCKED_WALL, Board.Type.LOCKED_WALL, Board.Type.LOCKED_WALL},
-            {Board.Type.LOCKED_WALL, Board.Type.WALL, Board.Type.WALL, Board.Type.WALL, Board.Type.WALL, Board.Type.WALL, Board.Type.WALL, Board.Type.WALL, Board.Type.WALL, Board.Type.LOCKED_WALL},
-            {Board.Type.LOCKED_WALL, Board.Type.WALL, Board.Type.WALL, Board.Type.WALL, Board.Type.WALL, Board.Type.WALL, Board.Type.WALL, Board.Type.WALL, Board.Type.WALL, Board.Type.LOCKED_WALL},
-            {Board.Type.LOCKED_WALL, Board.Type.WALL, Board.Type.WALL, Board.Type.WALL, Board.Type.WALL, Board.Type.WALL, Board.Type.WALL, Board.Type.WALL, Board.Type.WALL, Board.Type.LOCKED_WALL},
-            {Board.Type.LOCKED_WALL, Board.Type.WALL, Board.Type.WALL, Board.Type.WALL, Board.Type.WALL, Board.Type.WALL, Board.Type.WALL, Board.Type.WALL, Board.Type.WALL, Board.Type.LOCKED_WALL},
-            {Board.Type.LOCKED_WALL, Board.Type.WALL, Board.Type.WALL, Board.Type.WALL, Board.Type.WALL, Board.Type.WALL, Board.Type.WALL, Board.Type.WALL, Board.Type.WALL, Board.Type.LOCKED_WALL},
-            {Board.Type.LOCKED_WALL, Board.Type.WALL, Board.Type.WALL, Board.Type.WALL, Board.Type.WALL, Board.Type.WALL, Board.Type.WALL, Board.Type.WALL, Board.Type.WALL, Board.Type.LOCKED_WALL},
-            {Board.Type.LOCKED_WALL, Board.Type.WALL, Board.Type.WALL, Board.Type.WALL, Board.Type.WALL, Board.Type.WALL, Board.Type.WALL, Board.Type.WALL, Board.Type.WALL, Board.Type.LOCKED_WALL},
-            {Board.Type.LOCKED_WALL, Board.Type.WALL, Board.Type.WALL, Board.Type.WALL, Board.Type.WALL, Board.Type.WALL, Board.Type.WALL, Board.Type.WALL, Board.Type.WALL, Board.Type.LOCKED_WALL},
-            {Board.Type.LOCKED_WALL, Board.Type.LOCKED_WALL, Board.Type.LOCKED_WALL, Board.Type.LOCKED_WALL, Board.Type.LOCKED_WALL, Board.Type.LOCKED_WALL, Board.Type.LOCKED_WALL, Board.Type.LOCKED_WALL, Board.Type.LOCKED_WALL, Board.Type.LOCKED_WALL}
-    };
+    private Board.Type boardRep[][];
 
     private BoardGenerator() {
         //  Calling this method directly is unsupported.
@@ -95,6 +84,9 @@ public class BoardGenerator {
                 if (boardRep[i][j] == Board.Type.LOCKED_WALL)
                     boardRep[i][j] = Board.Type.WALL;
 
+        if (!_validateBoard())
+            generateBoard();
+
         _fillWithCharacters();
 
         return boardRep;
@@ -120,6 +112,41 @@ public class BoardGenerator {
         boardRep[whiteSpaces[val].y][whiteSpaces[val].x] = Board.Type.DRAGON;
         boardRep[whiteSpaces[val2].y][whiteSpaces[val2].x] = Board.Type.HERO;
         boardRep[whiteSpaces[val3].y][whiteSpaces[val3].x] = Board.Type.SWORD;
+    }
+
+    private Boolean _validateBoard() {
+        for (int i = 0; i < _height; i++)
+            for (int j = 0; j < _width; j++) {
+                try {
+                    if (boardRep[i][j] == Board.Type.BLANK &&
+                            boardRep[i + 1][j] == Board.Type.BLANK &&
+                            boardRep[i][j + 1] == Board.Type.BLANK &&
+                            boardRep[i + 1][j + 1] == Board.Type.BLANK)
+                        return false;
+                } catch (Exception exc) {
+
+                }
+            }
+
+        /*  for (int i = 0; i < _height; i++)
+            for (int j = 0; j < _width; j++) {
+                try {
+                    if (boardRep[i][j] == Board.Type.WALL &&
+                            boardRep[i + 1][j] == Board.Type.WALL &&
+                            boardRep[i + 2][j] == Board.Type.WALL &&
+                            boardRep[i][j + 1] == Board.Type.WALL &&
+                            boardRep[i + 1][j + 1] == Board.Type.WALL &&
+                            boardRep[i + 2][j + 1] == Board.Type.WALL &&
+                            boardRep[i][j + 2] == Board.Type.WALL &&
+                            boardRep[i + 1][j + 2] == Board.Type.WALL &&
+                            boardRep[i + 2][j + 2] == Board.Type.WALL)
+                        return false;
+                } catch (Exception exc) {
+
+                }
+            }   */
+
+        return true;
     }
 
     private Coordinate[] _getWhitespaces() {
@@ -154,11 +181,10 @@ public class BoardGenerator {
 
         try {
             if (boardRep[pos.y - 1][pos.x] == Board.Type.WALL)
-                if (!(boardRep[pos.y - 1][pos.x - 1] == Board.Type.BLANK &&
-                        boardRep[pos.y - 2][pos.x - 1] == Board.Type.BLANK &&
+                if (!(boardRep[pos.y - 1][pos.x - 1] == Board.Type.BLANK ||
+                        boardRep[pos.y - 2][pos.x - 1] == Board.Type.BLANK ||
                         boardRep[pos.y - 2][pos.x] == Board.Type.BLANK))
-                    if (!(boardRep[pos.y - 2][pos.x] == Board.Type.BLANK &&
-                            boardRep[pos.y - 2][pos.x + 1] == Board.Type.BLANK &&
+                    if (!(boardRep[pos.y - 2][pos.x + 1] == Board.Type.BLANK ||
                             boardRep[pos.y - 1][pos.x + 1] == Board.Type.BLANK))
                         crds[ccIndex++] = new Coordinate(pos.x, pos.y - 1);
         } catch (Exception exc) {
@@ -169,11 +195,10 @@ public class BoardGenerator {
 
         try {
             if (boardRep[pos.y + 1][pos.x] == Board.Type.WALL)
-                if (!(boardRep[pos.y + 1][pos.x - 1] == Board.Type.BLANK &&
-                        boardRep[pos.y + 2][pos.x - 1] == Board.Type.BLANK &&
+                if (!(boardRep[pos.y + 1][pos.x - 1] == Board.Type.BLANK ||
+                        boardRep[pos.y + 2][pos.x - 1] == Board.Type.BLANK ||
                         boardRep[pos.y + 2][pos.x] == Board.Type.BLANK))
-                    if (!(boardRep[pos.y + 2][pos.x] == Board.Type.BLANK &&
-                            boardRep[pos.y + 2][pos.x + 1] == Board.Type.BLANK &&
+                    if (!(boardRep[pos.y + 2][pos.x + 1] == Board.Type.BLANK ||
                             boardRep[pos.y + 1][pos.x + 1] == Board.Type.BLANK))
                         crds[ccIndex++] = new Coordinate(pos.x, pos.y + 1);
         } catch (Exception exc) {
@@ -184,11 +209,10 @@ public class BoardGenerator {
 
         try {
             if (boardRep[pos.y][pos.x + 1] == Board.Type.WALL)
-                if (!(boardRep[pos.y - 1][pos.x + 1] == Board.Type.BLANK &&
-                        boardRep[pos.y - 1][pos.x + 2] == Board.Type.BLANK &&
+                if (!(boardRep[pos.y - 1][pos.x + 1] == Board.Type.BLANK ||
+                        boardRep[pos.y - 1][pos.x + 2] == Board.Type.BLANK ||
                         boardRep[pos.y][pos.x + 2] == Board.Type.BLANK))
-                    if (!(boardRep[pos.y][pos.x + 2] == Board.Type.BLANK &&
-                            boardRep[pos.y + 1][pos.x + 2] == Board.Type.BLANK &&
+                    if (!(boardRep[pos.y + 1][pos.x + 2] == Board.Type.BLANK ||
                             boardRep[pos.y + 1][pos.x + 1] == Board.Type.BLANK))
                         crds[ccIndex++] = new Coordinate(pos.x + 1, pos.y);
         } catch (Exception exc) {
@@ -199,11 +223,10 @@ public class BoardGenerator {
 
         try {
             if (boardRep[pos.y][pos.x - 1] == Board.Type.WALL)
-                if (!(boardRep[pos.y - 1][pos.x - 1] == Board.Type.BLANK &&
-                        boardRep[pos.y - 1][pos.x - 2] == Board.Type.BLANK &&
+                if (!(boardRep[pos.y - 1][pos.x - 1] == Board.Type.BLANK ||
+                        boardRep[pos.y - 1][pos.x - 2] == Board.Type.BLANK ||
                         boardRep[pos.y][pos.x - 2] == Board.Type.BLANK))
-                    if (!(boardRep[pos.y][pos.x - 2] == Board.Type.BLANK &&
-                            boardRep[pos.y + 1][pos.x - 2] == Board.Type.BLANK &&
+                    if (!(boardRep[pos.y + 1][pos.x - 2] == Board.Type.BLANK ||
                             boardRep[pos.y + 1][pos.x - 1] == Board.Type.BLANK))
                         crds[ccIndex++] = new Coordinate(pos.x - 1, pos.y);
         } catch (Exception exc) {

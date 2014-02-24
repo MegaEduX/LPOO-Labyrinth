@@ -4,7 +4,9 @@
  * Created by Eduardo Almeida and João Almeida.
  */
 
-package pt.up.fe.lpoo;
+package pt.up.fe.lpoo.logic;
+
+import pt.up.fe.lpoo.logic.piece.Hero;
 
 import java.util.Random;
 
