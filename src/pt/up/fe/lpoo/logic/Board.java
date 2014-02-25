@@ -6,7 +6,7 @@
 
 package pt.up.fe.lpoo.logic;
 
-import pt.up.fe.lpoo.logic.piece.Hero;
+import pt.up.fe.lpoo.logic.piece.itemizable.Hero;
 
 import java.util.Random;
 
