@@ -20,11 +20,11 @@ public class Board {
     public enum Direction {UP, LEFT, DOWN, RIGHT};
     public enum State {RUNNING, LOST, WON};
 
-    private enum DragonFightResult {NOT_FOUND, ALREADY_DEFEATED, LOST, WON, SLEEPING}
+    private enum DragonFightResult {NOT_FOUND, ALREADY_DEFEATED, LOST, WON,}
 
     ;
 
-    private enum DragonSearchResult {NOT_FOUND, FOUND, ALREADY_DEFEATED, SLEEPING}
+    private enum DragonSearchResult {NOT_FOUND, FOUND, ALREADY_DEFEATED,}
 
     ;
 

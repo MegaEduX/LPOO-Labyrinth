@@ -3,10 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="308771da-778d-4cb1-ae28-0ce3924c26db" name="Default" comment="O dragão já adormece">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/Board.java" afterPath="$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/Board.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/piece/itemizable/Dragon.java" afterPath="$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/piece/itemizable/Dragon.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pt/up/fe/lpoo/cli/Printer.java" afterPath="$PROJECT_DIR$/src/pt/up/fe/lpoo/cli/Printer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="LPOO-Labirinto.iws" />
@@ -91,13 +87,15 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Board.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="Board.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/Board.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="35" column="43" selection-start="924" selection-end="924" vertical-scroll-proportion="0.0" vertical-offset="85" max-vertical-offset="7820">
+            <state line="157" column="27" selection-start="4715" selection-end="4715" vertical-scroll-proportion="0.33252427" vertical-offset="2141" max-vertical-offset="8517">
               <folding>
-                <element signature="imports" expanded="false" />
-                <element signature="method#_getMovePossibilities#0;class#Board#0" expanded="false" />
+                <element signature="e#4361#4362#0" expanded="true" />
+                <element signature="e#4397#4398#0" expanded="true" />
+                <element signature="e#4442#4443#0" expanded="true" />
+                <element signature="e#4477#4478#0" expanded="true" />
                 <element signature="method#_getMovePossibilities#1;class#Board#0" expanded="false" />
                 <element signature="method#_moveDragon#0;class#Board#0" expanded="false" />
               </folding>
@@ -183,10 +181,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Dragon.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Dragon.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/piece/itemizable/Dragon.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="13" selection-start="321" selection-end="321" vertical-scroll-proportion="0.3317647" vertical-offset="80" max-vertical-offset="969">
+            <state line="17" column="13" selection-start="321" selection-end="321" vertical-scroll-proportion="0.0" vertical-offset="80" max-vertical-offset="969">
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#999#1000#0" expanded="true" />
@@ -237,10 +235,10 @@
         <option value="$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/BoardGenerator.java" />
         <option value="$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/piece/Piece.java" />
         <option value="$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/piece/itemizable/ItemizablePiece.java" />
-        <option value="$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/Board.java" />
         <option value="$PROJECT_DIR$/src/pt/up/fe/lpoo/cli/Controller.java" />
         <option value="$PROJECT_DIR$/src/pt/up/fe/lpoo/cli/Printer.java" />
         <option value="$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/piece/itemizable/Dragon.java" />
+        <option value="$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/Board.java" />
       </list>
     </option>
   </component>
@@ -630,6 +628,11 @@
       <created>1392861313774</created>
       <updated>1392861313774</updated>
     </task>
+    <task id="LOCAL-00001" summary="O dragão já adormece">
+      <created>1393356816438</created>
+      <updated>1393356816438</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -736,8 +739,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="125" column="22" selection-start="4065" selection-end="4065" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="9741">
           <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="method#_getMovePossibilities#0;class#Board#0" expanded="false" />
+            <element signature="e#4361#4362#0" expanded="true" />
+            <element signature="e#4397#4398#0" expanded="true" />
+            <element signature="e#4442#4443#0" expanded="true" />
+            <element signature="e#4477#4478#0" expanded="true" />
             <element signature="method#_getMovePossibilities#1;class#Board#0" expanded="false" />
             <element signature="method#_moveDragon#0;class#Board#0" expanded="false" />
           </folding>
@@ -821,8 +826,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="12" column="0" selection-start="0" selection-end="14999" vertical-scroll-proportion="0.0" vertical-offset="180" max-vertical-offset="7350">
           <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="method#_getMovePossibilities#0;class#Board#0" expanded="false" />
+            <element signature="e#4361#4362#0" expanded="true" />
+            <element signature="e#4397#4398#0" expanded="true" />
+            <element signature="e#4442#4443#0" expanded="true" />
+            <element signature="e#4477#4478#0" expanded="true" />
             <element signature="method#_getMovePossibilities#1;class#Board#0" expanded="false" />
             <element signature="method#_moveDragon#0;class#Board#0" expanded="false" />
           </folding>
@@ -910,18 +917,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/Board.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="43" selection-start="924" selection-end="924" vertical-scroll-proportion="0.0" vertical-offset="85" max-vertical-offset="7820">
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="method#_getMovePossibilities#0;class#Board#0" expanded="false" />
-            <element signature="method#_getMovePossibilities#1;class#Board#0" expanded="false" />
-            <element signature="method#_moveDragon#0;class#Board#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/piece/itemizable/ItemizablePiece.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="11" column="13" selection-start="213" selection-end="213" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="561">
@@ -988,11 +983,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/piece/itemizable/Dragon.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="13" selection-start="321" selection-end="321" vertical-scroll-proportion="0.3317647" vertical-offset="80" max-vertical-offset="969">
+        <state line="17" column="13" selection-start="321" selection-end="321" vertical-scroll-proportion="0.0" vertical-offset="80" max-vertical-offset="969">
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#999#1000#0" expanded="true" />
             <element signature="e#1030#1031#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/Board.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="157" column="27" selection-start="4715" selection-end="4715" vertical-scroll-proportion="0.33252427" vertical-offset="2141" max-vertical-offset="8517">
+          <folding>
+            <element signature="e#4361#4362#0" expanded="true" />
+            <element signature="e#4397#4398#0" expanded="true" />
+            <element signature="e#4442#4443#0" expanded="true" />
+            <element signature="e#4477#4478#0" expanded="true" />
+            <element signature="method#_getMovePossibilities#1;class#Board#0" expanded="false" />
+            <element signature="method#_moveDragon#0;class#Board#0" expanded="false" />
           </folding>
         </state>
       </provider>
