@@ -6,10 +6,11 @@
 
 package pt.up.fe.lpoo.logic;
 
+import pt.up.fe.lpoo.logic.piece.Blank;
+import pt.up.fe.lpoo.logic.piece.Piece;
+import pt.up.fe.lpoo.logic.piece.Wall;
 import pt.up.fe.lpoo.logic.piece.itemizable.Dragon;
 import pt.up.fe.lpoo.logic.piece.itemizable.Hero;
-
-import pt.up.fe.lpoo.logic.piece.*;
 
 import java.util.Random;
 import java.util.Vector;
@@ -19,8 +20,13 @@ public class Board {
     public enum Direction {UP, LEFT, DOWN, RIGHT};
     public enum State {RUNNING, LOST, WON};
 
-    private enum DragonFightResult {NOT_FOUND, ALREADY_DEFEATED, LOST, WON};
-    private enum DragonSearchResult {NOT_FOUND, FOUND, ALREADY_DEFEATED};
+    private enum DragonFightResult {NOT_FOUND, ALREADY_DEFEATED, LOST, WON, SLEEPING}
+
+    ;
+
+    private enum DragonSearchResult {NOT_FOUND, FOUND, ALREADY_DEFEATED, SLEEPING}
+
+    ;
 
     private State gameState = State.RUNNING;
 
