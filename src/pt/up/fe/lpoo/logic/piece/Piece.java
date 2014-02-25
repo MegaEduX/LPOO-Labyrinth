@@ -8,6 +8,7 @@ package pt.up.fe.lpoo.logic.piece;
 
 import pt.up.fe.lpoo.logic.Board;
 import pt.up.fe.lpoo.logic.Coordinate;
+import pt.up.fe.lpoo.logic.piece.itemizable.Blank;
 import pt.up.fe.lpoo.logic.piece.itemizable.Hero;
 
 import java.util.Vector;
@@ -61,6 +62,7 @@ public class Piece {
         }
 
         Piece nextObj;
+
         int x = 0, y = 0;
 
         switch (dir) {
@@ -116,6 +118,10 @@ public class Piece {
                     ((Blank) nextObj).setHasItem(false);
                 }
             }
+
+            nextObj.setCoordinate(_position);
+
+            _position = new Coordinate(_position.x + x, _position.y + y);
 
             return true;
         }

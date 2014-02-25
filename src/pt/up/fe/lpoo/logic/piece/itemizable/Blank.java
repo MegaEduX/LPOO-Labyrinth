@@ -4,13 +4,14 @@
  * Created by Eduardo Almeida and João Almeida.
  */
 
-package pt.up.fe.lpoo.logic.piece;
+package pt.up.fe.lpoo.logic.piece.itemizable;
 
 import pt.up.fe.lpoo.logic.Coordinate;
+import pt.up.fe.lpoo.logic.piece.Piece;
 
 public class Blank extends Piece {
-    private Boolean _isExit;
-    private Boolean _hasItem;
+    private Boolean _isExit = false;
+    private Boolean _hasItem = false;
 
     public Boolean getIsExit() {
         return _isExit;

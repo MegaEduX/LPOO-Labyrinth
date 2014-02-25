@@ -6,6 +6,7 @@
 
 package pt.up.fe.lpoo.logic;
 
+import pt.up.fe.lpoo.logic.piece.itemizable.Blank;
 import pt.up.fe.lpoo.logic.piece.itemizable.Dragon;
 import pt.up.fe.lpoo.logic.piece.itemizable.Hero;
 
@@ -24,7 +25,7 @@ public class Board {
 
     private State gameState = State.RUNNING;
 
-    private Hero hero = new Hero();
+    //  private Hero hero = new Hero();
 
     private Type boardRep[][] = {
             {Type.WALL, Type.WALL, Type.WALL, Type.WALL, Type.WALL, Type.WALL, Type.WALL, Type.WALL, Type.WALL, Type.WALL},
@@ -240,39 +241,6 @@ public class Board {
         }
     }
 
-    /*  private void _moveDragon() throws Exception {
-        Type dragType = Type.DRAGON;
-
-        try {
-            getLocation(Type.DRAGON);
-        } catch (Exception exc) {
-            try {
-                getLocation(Type.MIXED_SD);
-
-                dragType = Type.MIXED_SD;
-            } catch (Exception secondExc) {
-                throw exc;
-            }
-        }
-
-        Direction[] dir;
-
-        try {
-            dir = _getMovePossibilities(dragType);
-        } catch (Exception exc) {
-            throw exc;
-        }
-
-        Random rand = new Random();
-
-        int randVal = rand.nextInt(dir.length + 1);
-
-        if (dir.length == randVal)
-            return;
-
-        movePieceTo(dragType, dir[randVal]);
-    }   */
-
     private DragonSearchResult _isNearDragon() throws Exception {
         Coordinate dragonLoc;
 
@@ -319,6 +287,8 @@ public class Board {
             throw exc;
         }
 
+        Hero hero = (Hero) getPiecesWithType(Type.HERO).get(0);
+
         if (hero.getHasItem()) {
             Coordinate dragonLoc;
 
@@ -341,227 +311,4 @@ public class Board {
 
         return DragonFightResult.LOST;
     }
-
-    /*  public Boolean movePieceTo(Type piece, Direction dir) {
-        if (gameState != State.RUNNING)
-            return false;
-
-        Coordinate loc;
-
-        try {
-            loc = getLocation(piece);
-        } catch (Exception exc) {
-            return false;
-        }
-
-        Boolean f = false;
-
-        switch (dir) {
-
-            case UP:
-
-                if (boardRep[loc.y - 1][loc.x] == Type.BLANK || boardRep[loc.y - 1][loc.x] == Type.EXIT || boardRep[loc.y - 1][loc.x] == Type.SWORD) {
-                    if (boardRep[loc.y - 1][loc.x] == Type.EXIT) {
-                        if (!hero.armed || piece != Type.HERO)
-                            return false;
-
-                        gameState = State.WON;
-                    } else if (boardRep[loc.y - 1][loc.x] == Type.SWORD) {
-                        if (piece == Type.HERO)
-                            hero.armed = true;
-                        else
-                            f = true;
-                    }
-
-                    if (piece == Type.MIXED_SD) {
-                        boardRep[loc.y - 1][loc.x] = Type.DRAGON;
-                        boardRep[loc.y][loc.x] = Type.SWORD;
-                    } else {
-                        boardRep[loc.y - 1][loc.x] = (f ? Type.MIXED_SD : piece);
-                        boardRep[loc.y][loc.x] = Type.BLANK;
-                    }
-
-                    try {
-                        _checkDragon();
-
-                        if (piece == Type.HERO)
-                            _moveDragon();
-                    } catch (Exception e) {
-
-                    }
-
-                    return true;
-                }
-
-                break;
-
-            case LEFT:
-
-                if (boardRep[loc.y][loc.x - 1] == Type.BLANK  || boardRep[loc.y][loc.x - 1] == Type.EXIT || boardRep[loc.y][loc.x - 1] == Type.SWORD) {
-                    if (boardRep[loc.y][loc.x - 1] == Type.EXIT) {
-                        if (!hero.armed || piece != Type.HERO)
-                            return false;
-
-                        gameState = State.WON;
-                    } else if (boardRep[loc.y][loc.x - 1] == Type.SWORD) {
-                        if (piece == Type.HERO)
-                            hero.armed = true;
-                        else
-                            f = true;
-                    }
-
-                    if (piece == Type.MIXED_SD) {
-                        boardRep[loc.y][loc.x - 1] = Type.DRAGON;
-                        boardRep[loc.y][loc.x] = Type.SWORD;
-                    } else {
-                        boardRep[loc.y][loc.x - 1] = (f ? Type.MIXED_SD : piece);
-                        boardRep[loc.y][loc.x] = Type.BLANK;
-                    }
-
-                    try {
-                        _checkDragon();
-
-                        if (piece == Type.HERO)
-                            _moveDragon();
-                    } catch (Exception e) {
-
-                    }
-
-                    return true;
-                }
-
-                break;
-
-            case DOWN:
-
-                if (boardRep[loc.y + 1][loc.x] == Type.BLANK || boardRep[loc.y + 1][loc.x] == Type.EXIT || boardRep[loc.y + 1][loc.x] == Type.SWORD) {
-                    if (boardRep[loc.y + 1][loc.x] == Type.EXIT) {
-                        if (!hero.armed || piece != Type.HERO)
-                            return false;
-
-                        gameState = State.WON;
-                    } else if (boardRep[loc.y + 1][loc.x] == Type.SWORD) {
-                        if (piece == Type.HERO)
-                            hero.armed = true;
-                        else
-                            f = true;
-                    }
-
-                    if (piece == Type.MIXED_SD) {
-                        boardRep[loc.y + 1][loc.x] = Type.DRAGON;
-                        boardRep[loc.y][loc.x] = Type.SWORD;
-                    } else {
-                        boardRep[loc.y + 1][loc.x] = (f ? Type.MIXED_SD : piece);
-                        boardRep[loc.y][loc.x] = Type.BLANK;
-                    }
-
-                    try {
-                        _checkDragon();
-
-                        if (piece == Type.HERO)
-                            _moveDragon();
-                    } catch (Exception e) {
-
-                    }
-
-                    return true;
-                }
-
-                break;
-
-            case RIGHT:
-
-                if (boardRep[loc.y][loc.x + 1] == Type.BLANK || boardRep[loc.y][loc.x + 1] == Type.EXIT || boardRep[loc.y][loc.x + 1] == Type.SWORD) {
-                    if (boardRep[loc.y][loc.x + 1] == Type.EXIT) {
-                        if (!hero.armed || piece != Type.HERO)
-                            return false;
-
-                        gameState = State.WON;
-                    } else if (boardRep[loc.y][loc.x + 1] == Type.SWORD) {
-                        if (piece == Type.HERO)
-                            hero.armed = true;
-                        else
-                            f = true;
-                    }
-
-                    if (piece == Type.MIXED_SD) {
-                        boardRep[loc.y][loc.x + 1] = Type.DRAGON;
-                        boardRep[loc.y][loc.x] = Type.SWORD;
-                    } else {
-                        boardRep[loc.y][loc.x + 1] = (f ? Type.MIXED_SD : piece);
-                        boardRep[loc.y][loc.x] = Type.BLANK;
-                    }
-
-                    try {
-                        _checkDragon();
-
-                        if (piece == Type.HERO)
-                            _moveDragon();
-                    } catch (Exception e) {
-
-                    }
-
-                    return true;
-                }
-
-                break;
-
-        }
-
-
-        return false;
-    }   */
-
-    /*  public void printBoard() {
-        for (int i = 0; i < height; i++) {
-            String outStr = "";
-
-            for (int j = 0; j < width; j++)
-                switch (boardRep[i][j]) {
-                    case WALL:
-
-                        outStr += "█";
-
-                        break;
-
-                    case HERO:
-
-                        outStr += (hero.armed ? "A" : "H");
-
-                        break;
-
-                    case SWORD:
-
-                        outStr += "E";
-
-                        break;
-
-                    case DRAGON:
-
-                        outStr += "D";
-
-                        break;
-
-                    case MIXED_SD:
-
-                        outStr += "F";
-
-                        break;
-
-                    case EXIT:
-
-                        outStr += "S";
-
-                        break;
-
-                    case BLANK:
-
-                        outStr += " ";
-
-                        break;
-                }
-
-            System.out.println(outStr);
-        }
-    }   */
 }

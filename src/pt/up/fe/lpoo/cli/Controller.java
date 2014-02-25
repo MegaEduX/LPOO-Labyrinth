@@ -9,6 +9,8 @@ package pt.up.fe.lpoo.cli;
 import pt.up.fe.lpoo.logic.Board;
 import pt.up.fe.lpoo.logic.BoardGenerator;
 
+import pt.up.fe.lpoo.logic.piece.Piece;
+
 import pt.up.fe.lpoo.logic.piece.itemizable.Hero;
 
 import pt.up.fe.lpoo.cli.Printer;
@@ -16,6 +18,7 @@ import pt.up.fe.lpoo.cli.Printer;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Vector;
 
 public class Controller {
     public static void main(String args[]) {
@@ -97,9 +100,16 @@ public class Controller {
                 try {
                     BoardGenerator brdGen = new BoardGenerator(width, height);
 
-                    Board.Type[][] gdBoard = brdGen.generateBoard();
+                    //  Board.Type[][] gdBoard = brdGen.generateBoard();
+                    Vector<Piece> ooBoard = brdGen.generateBoardObj();
 
-                    brd.setBoardRepresentation(gdBoard);
+                    for (Piece pc : ooBoard) {
+                        pc.setBoard(brd);
+                    }
+
+                    //  brd.setBoardRepresentation(gdBoard);
+
+                    brd.setBoardPieces(ooBoard);
 
                     brd.setWidth(width);
                     brd.setHeight(height);

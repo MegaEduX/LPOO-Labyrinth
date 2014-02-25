@@ -6,12 +6,11 @@
 
 package pt.up.fe.lpoo.logic;
 
-import pt.up.fe.lpoo.logic.piece.Blank;
+import pt.up.fe.lpoo.logic.piece.itemizable.Blank;
 import pt.up.fe.lpoo.logic.piece.Piece;
 import pt.up.fe.lpoo.logic.piece.Wall;
 import pt.up.fe.lpoo.logic.piece.itemizable.Dragon;
 import pt.up.fe.lpoo.logic.piece.itemizable.Hero;
-import sun.jvm.hotspot.debugger.cdbg.basic.BasicNamedFieldIdentifier;
 
 import java.util.Random;
 import java.util.Stack;

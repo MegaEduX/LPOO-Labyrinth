@@ -24,7 +24,7 @@ public class Printer {
     }
 
     public void printBoard() {
-        for (int i = 0; i < _board.getHeight(); i++)
+        for (int i = 0; i < _board.getHeight(); i++) {
             for (int j = 0; j < _board.getWidth(); j++) {
                 Piece pc;
 
@@ -46,6 +46,11 @@ public class Printer {
                     System.out.print(((Dragon) pc).getHasItem() ? "F" : "D");
                 else if (pc instanceof Blank && ((Blank) pc).getIsExit())
                     System.out.print("S");
+                else
+                    System.out.print(" ");
             }
+
+            System.out.println();
+        }
     }
 }
