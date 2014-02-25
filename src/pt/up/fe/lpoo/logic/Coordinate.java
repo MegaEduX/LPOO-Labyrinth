@@ -14,4 +14,8 @@ public class Coordinate {
         x = xCrd;
         y = yCrd;
     }
+
+    public boolean equals(Coordinate o) {
+        return (x == o.x && y == o.y);
+    }
 }

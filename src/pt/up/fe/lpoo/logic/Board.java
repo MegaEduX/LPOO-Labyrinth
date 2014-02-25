@@ -6,9 +6,13 @@
 
 package pt.up.fe.lpoo.logic;
 
+import pt.up.fe.lpoo.logic.piece.itemizable.Dragon;
 import pt.up.fe.lpoo.logic.piece.itemizable.Hero;
 
+import pt.up.fe.lpoo.logic.piece.*;
+
 import java.util.Random;
+import java.util.Vector;
 
 public class Board {
     public enum Type {WALL, HERO, SWORD, DRAGON, MIXED_SD, EXIT, BLANK, LOCKED_WALL};
@@ -35,6 +39,8 @@ public class Board {
             {Type.WALL, Type.WALL, Type.WALL, Type.WALL, Type.WALL, Type.WALL, Type.WALL, Type.WALL, Type.WALL, Type.WALL}
     };
 
+    private Vector<Piece> _boardPieces = new Vector<Piece>();
+
     private int width = 10;
     private int height = 10;
 
@@ -45,6 +51,63 @@ public class Board {
                     return new Coordinate(j, i);
 
         throw new Exception("Piece Not Found.");
+    }
+
+    public Piece getPiece(Coordinate crd) throws Exception {
+        for (Piece pc : _boardPieces)
+            if (pc.getCoordinate().equals(crd))
+                return pc;
+
+        throw new Exception("404: Piece Not Found");
+    }
+
+    public Vector<Piece> getPiecesWithType(Type type) throws Exception {
+        Vector<Piece> pcs = new Vector<Piece>();
+
+        for (Piece pc : _boardPieces) {
+            switch (type) {
+                case WALL:
+
+                    if (pc instanceof Wall)
+                        pcs.add(pc);
+
+                    break;
+
+                case HERO:
+
+                    if (pc instanceof Hero)
+                        pcs.add(pc);
+
+                    break;
+
+                case SWORD:
+
+                    if (pc instanceof Blank && ((Blank) pc).getHasItem())
+                        pcs.add(pc);
+
+                    break;
+
+                case DRAGON:
+
+                    if (pc instanceof Dragon)
+                        pcs.add(pc);
+
+                    break;
+
+                case EXIT:
+
+                    if (pc instanceof Blank && ((Blank) pc).getIsExit())
+                        pcs.add(pc);
+
+                    break;
+
+                default:
+
+                    throw new Exception("Undefined or Private type requested.");
+            }
+        }
+
+        return pcs;
     }
 
     public void setWidth(int w) {
