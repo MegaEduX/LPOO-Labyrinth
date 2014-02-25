@@ -6,6 +6,18 @@
 
 package pt.up.fe.lpoo.logic.piece.itemizable;
 
-public class Hero extends ItemizablePiece {
+import pt.up.fe.lpoo.logic.Coordinate;
 
+public class Hero extends ItemizablePiece {
+    public Hero() {
+        _position = new Coordinate(-1, -1);
+    }
+
+    public Hero(Coordinate crd) {
+        _position = crd;
+    }
+
+    public Hero(int x, int y) {
+        _position = new Coordinate(x, y);
+    }
 }

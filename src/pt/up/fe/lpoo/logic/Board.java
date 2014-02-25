@@ -118,12 +118,28 @@ public class Board {
         height = h;
     }
 
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
     public State getGameState() {
         return gameState;
     }
 
     public void setBoardRepresentation(Type newRep[][]) {
         boardRep = newRep;
+    }
+
+    public void setBoardPieces(Vector<Piece> board) {
+        _boardPieces = board;
+    }
+
+    public Vector<Piece> getBoardPieces() {
+        return _boardPieces;
     }
 
     private Direction[] _getMovePossibilities(Type piece) throws Exception {
@@ -165,7 +181,66 @@ public class Board {
         return pbRet;
     }
 
+    private Vector<Direction> _getMovePossibilities(Piece pc) throws Exception {
+        Vector<Direction> pb = new Vector<Direction>();
+
+        try {
+            getPiece(new Coordinate(pc.getCoordinate().x - 1, pc.getCoordinate().y));
+
+            pb.add(Direction.LEFT);
+        } catch (Exception e) {
+
+        }
+
+        try {
+            getPiece(new Coordinate(pc.getCoordinate().x + 1, pc.getCoordinate().y));
+
+            pb.add(Direction.RIGHT);
+        } catch (Exception e) {
+
+        }
+
+        try {
+            getPiece(new Coordinate(pc.getCoordinate().x, pc.getCoordinate().y - 1));
+
+            pb.add(Direction.UP);
+        } catch (Exception e) {
+
+        }
+
+        try {
+            getPiece(new Coordinate(pc.getCoordinate().x, pc.getCoordinate().y + 1));
+
+            pb.add(Direction.DOWN);
+        } catch (Exception e) {
+
+        }
+
+        return pb;
+    }
+
     private void _moveDragon() throws Exception {
+        Vector<Piece> dragons = getPiecesWithType(Type.DRAGON);
+
+        for (Piece drag : dragons) {
+            try {
+                Vector<Direction> dir = _getMovePossibilities(drag);
+
+                Random rand = new Random();
+
+                int randVal = rand.nextInt(dir.size() + 1);
+
+                if (dir.size() == randVal)
+                    continue;
+
+                drag.move(dir.get(randVal));
+            } catch (Exception exc) {
+
+            }
+        }
+    }
+
+    /*  private void _moveDragon() throws Exception {
         Type dragType = Type.DRAGON;
 
         try {
@@ -196,7 +271,7 @@ public class Board {
             return;
 
         movePieceTo(dragType, dir[randVal]);
-    }
+    }   */
 
     private DragonSearchResult _isNearDragon() throws Exception {
         Coordinate dragonLoc;
@@ -244,7 +319,7 @@ public class Board {
             throw exc;
         }
 
-        if (hero.armed) {
+        if (hero.getHasItem()) {
             Coordinate dragonLoc;
 
             try {
@@ -267,7 +342,7 @@ public class Board {
         return DragonFightResult.LOST;
     }
 
-    public Boolean movePieceTo(Type piece, Direction dir) {
+    /*  public Boolean movePieceTo(Type piece, Direction dir) {
         if (gameState != State.RUNNING)
             return false;
 
@@ -435,9 +510,9 @@ public class Board {
 
 
         return false;
-    }
+    }   */
 
-    public void printBoard() {
+    /*  public void printBoard() {
         for (int i = 0; i < height; i++) {
             String outStr = "";
 
@@ -488,5 +563,5 @@ public class Board {
 
             System.out.println(outStr);
         }
-    }
+    }   */
 }

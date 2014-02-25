@@ -6,8 +6,16 @@
 
 package pt.up.fe.lpoo.logic;
 
+import pt.up.fe.lpoo.logic.piece.Blank;
+import pt.up.fe.lpoo.logic.piece.Piece;
+import pt.up.fe.lpoo.logic.piece.Wall;
+import pt.up.fe.lpoo.logic.piece.itemizable.Dragon;
+import pt.up.fe.lpoo.logic.piece.itemizable.Hero;
+import sun.jvm.hotspot.debugger.cdbg.basic.BasicNamedFieldIdentifier;
+
 import java.util.Random;
 import java.util.Stack;
+import java.util.Vector;
 
 public class BoardGenerator {
     private int _width = 0;  //  x size
@@ -90,6 +98,71 @@ public class BoardGenerator {
         _fillWithCharacters();
 
         return boardRep;
+    }
+
+    public Vector<Piece> generateBoardObj() throws Exception {
+        Vector<Piece> retVec = new Vector<Piece>();
+
+        Board.Type[][] baseBoard = generateBoard();
+
+        for (int i = 0; i < _height; i++)
+            for (int j = 0; j < _width; j++) {
+                switch (baseBoard[i][j]) {
+                    case WALL:
+
+                        retVec.add(new Wall(j, i));
+
+                        break;
+
+                    case HERO:
+
+                        retVec.add(new Hero(j, i));
+
+                        break;
+
+                    case SWORD: {
+                        Blank bl = new Blank(j, i);
+
+                        bl.setHasItem(true);
+
+                        retVec.add(bl);
+
+                        break;
+                    }
+
+                    case DRAGON:
+
+                        retVec.add(new Dragon(j, i));
+
+                        break;
+
+                    case MIXED_SD:
+
+                        break;
+
+                    case EXIT: {
+                        Blank bl = new Blank(j, i);
+
+                        bl.setIsExit(true);
+
+                        retVec.add(bl);
+
+                        break;
+                    }
+
+                    case BLANK:
+
+                        retVec.add(new Blank(j, i));
+
+                        break;
+
+                    default:
+
+                        throw new Exception("Umm. Did you just invent a new piece, mate?");
+                }
+            }
+
+        return retVec;
     }
 
     private void _fillWithCharacters() {

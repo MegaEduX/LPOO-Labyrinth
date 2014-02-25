@@ -6,6 +6,8 @@
 
 package pt.up.fe.lpoo.logic.piece;
 
+import pt.up.fe.lpoo.logic.Coordinate;
+
 public class Blank extends Piece {
     private Boolean _isExit;
     private Boolean _hasItem;
@@ -24,5 +26,17 @@ public class Blank extends Piece {
 
     public void setHasItem(Boolean set) {
         _hasItem = set;
+    }
+
+    public Blank() {
+        _position = new Coordinate(-1, -1);
+    }
+
+    public Blank(Coordinate crd) {
+        _position = crd;
+    }
+
+    public Blank(int x, int y) {
+        _position = new Coordinate(x, y);
     }
 }

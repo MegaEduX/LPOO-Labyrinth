@@ -9,6 +9,10 @@ package pt.up.fe.lpoo.cli;
 import pt.up.fe.lpoo.logic.Board;
 import pt.up.fe.lpoo.logic.BoardGenerator;
 
+import pt.up.fe.lpoo.logic.piece.itemizable.Hero;
+
+import pt.up.fe.lpoo.cli.Printer;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -112,7 +116,19 @@ public class Controller {
                 System.out.println("Unable to generate a new board. Proceeding with default board...");
         }
 
-        brd.printBoard();
+        Printer prt = new Printer(brd);
+
+        prt.printBoard();
+
+        Hero heroPiece = null;
+
+        try {
+            heroPiece = (Hero) brd.getPiecesWithType(Board.Type.HERO).get(0);
+        } catch (Exception exc) {
+            System.out.println("A Hero wasn't found. This can not happen. Aborting...");
+
+            System.exit(1);
+        }
 
         try {
             System.out.println();
@@ -124,18 +140,22 @@ public class Controller {
             System.out.println();
 
             while (!readLine.equalsIgnoreCase("quit")) {
-                if (readLine.equalsIgnoreCase("up") || readLine.equalsIgnoreCase("u"))
-                    brd.movePieceTo(Board.Type.HERO, Board.Direction.UP);
-                else if (readLine.equalsIgnoreCase("down") || readLine.equalsIgnoreCase("d"))
-                    brd.movePieceTo(Board.Type.HERO, Board.Direction.DOWN);
-                else if (readLine.equalsIgnoreCase("right") || readLine.equalsIgnoreCase("r"))
-                    brd.movePieceTo(Board.Type.HERO, Board.Direction.RIGHT);
-                else if (readLine.equalsIgnoreCase("left") || readLine.equalsIgnoreCase("l"))
-                    brd.movePieceTo(Board.Type.HERO, Board.Direction.LEFT);
+                try {
+                    if (readLine.equalsIgnoreCase("up") || readLine.equalsIgnoreCase("u"))
+                        heroPiece.move(Board.Direction.UP);
+                    else if (readLine.equalsIgnoreCase("down") || readLine.equalsIgnoreCase("d"))
+                        heroPiece.move(Board.Direction.DOWN);
+                    else if (readLine.equalsIgnoreCase("right") || readLine.equalsIgnoreCase("r"))
+                        heroPiece.move(Board.Direction.RIGHT);
+                    else if (readLine.equalsIgnoreCase("left") || readLine.equalsIgnoreCase("l"))
+                        heroPiece.move(Board.Direction.LEFT);
+                } catch (Exception exc) {
+
+                }
 
                 System.out.println();
 
-                brd.printBoard();
+                prt.printBoard();
 
                 System.out.println();
 

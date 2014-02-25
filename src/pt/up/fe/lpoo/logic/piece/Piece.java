@@ -16,8 +16,32 @@ public class Piece {
     protected Coordinate _position;
     protected Board _board;
 
+    public Piece() {
+        _position = new Coordinate(-1, -1);
+    }
+
+    public Piece(Coordinate crd) {
+        _position = crd;
+    }
+
+    public Piece(int x, int y) {
+        _position = new Coordinate(x, y);
+    }
+
     public Coordinate getCoordinate() {
         return _position;
+    }
+
+    public Board getBoard() {
+        return _board;
+    }
+
+    public void setCoordinate(Coordinate crd) {
+        _position = crd;
+    }
+
+    public void setBoard(Board brd) {
+        _board = brd;
     }
 
     public Boolean move(Board.Direction dir) throws Exception {
@@ -81,13 +105,13 @@ public class Piece {
 
         if (nextObj instanceof Blank) {
             if (((Blank) nextObj).getIsExit()) {
-                if (!hero.armed || !(this instanceof Hero))
+                if (!hero.getHasItem() || !(this instanceof Hero))
                     return false;
 
                 //  The game has been won by now, honestly.
             } else if (((Blank) nextObj).getHasItem()) {
                 if (this instanceof Hero) {
-                    hero.armed = true;
+                    hero.setHasItem(true);
 
                     ((Blank) nextObj).setHasItem(false);
                 }
