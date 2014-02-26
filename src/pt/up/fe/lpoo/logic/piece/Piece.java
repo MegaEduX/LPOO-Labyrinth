@@ -110,6 +110,8 @@ public class Piece {
                 if (!hero.getHasItem() || !(this instanceof Hero))
                     return false;
 
+                ((Blank) nextObj).setIsExit(false);
+
                 //  The game has been won by now, honestly.
             } else if (((Blank) nextObj).getHasItem()) {
                 if (this instanceof Hero) {

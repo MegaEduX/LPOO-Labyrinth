@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BookmarkManager">
+    <bookmark url="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/Board.java" line="224" mnemonic="9" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="308771da-778d-4cb1-ae28-0ce3924c26db" name="Default" comment="Initial Commit" />
     <ignored path="LPOO-Labirinto.iws" />
@@ -56,7 +59,7 @@
     </breakpoint_any>
     <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true">
-      <breakpoint url="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/Board.java" line="304" class="pt.up.fe.lpoo.logic.Board" package="pt.up.fe.lpoo.logic">
+      <breakpoint url="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/BoardGenerator.java" line="43" class="pt.up.fe.lpoo.logic.BoardGenerator" package="pt.up.fe.lpoo.logic">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -71,7 +74,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/Board.java" line="306" class="pt.up.fe.lpoo.logic.Board" package="pt.up.fe.lpoo.logic">
+      <breakpoint url="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/BoardGenerator.java" line="45" class="pt.up.fe.lpoo.logic.BoardGenerator" package="pt.up.fe.lpoo.logic">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -86,7 +89,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/Board.java" line="308" class="pt.up.fe.lpoo.logic.Board" package="pt.up.fe.lpoo.logic">
+      <breakpoint url="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/BoardGenerator.java" line="48" class="pt.up.fe.lpoo.logic.BoardGenerator" package="pt.up.fe.lpoo.logic">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -101,7 +104,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/Board.java" line="292" class="pt.up.fe.lpoo.logic.Board" package="pt.up.fe.lpoo.logic">
+      <breakpoint url="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/BoardGenerator.java" line="50" class="pt.up.fe.lpoo.logic.BoardGenerator" package="pt.up.fe.lpoo.logic">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -116,7 +119,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/Board.java" line="278" class="pt.up.fe.lpoo.logic.Board" package="pt.up.fe.lpoo.logic">
+      <breakpoint url="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/BoardGenerator.java" line="94" class="pt.up.fe.lpoo.logic.BoardGenerator" package="pt.up.fe.lpoo.logic">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -131,7 +134,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/Board.java" line="280" class="pt.up.fe.lpoo.logic.Board" package="pt.up.fe.lpoo.logic">
+      <breakpoint url="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/BoardGenerator.java" line="82" class="pt.up.fe.lpoo.logic.BoardGenerator" package="pt.up.fe.lpoo.logic">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -146,7 +149,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/Board.java" line="283" class="pt.up.fe.lpoo.logic.Board" package="pt.up.fe.lpoo.logic">
+      <breakpoint url="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/BoardGenerator.java" line="55" class="pt.up.fe.lpoo.logic.BoardGenerator" package="pt.up.fe.lpoo.logic">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -161,7 +164,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/Board.java" line="287" class="pt.up.fe.lpoo.logic.Board" package="pt.up.fe.lpoo.logic">
+      <breakpoint url="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/BoardGenerator.java" line="57" class="pt.up.fe.lpoo.logic.BoardGenerator" package="pt.up.fe.lpoo.logic">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -176,7 +179,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/Board.java" line="312" class="pt.up.fe.lpoo.logic.Board" package="pt.up.fe.lpoo.logic">
+      <breakpoint url="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/BoardGenerator.java" line="68" class="pt.up.fe.lpoo.logic.BoardGenerator" package="pt.up.fe.lpoo.logic">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -191,7 +194,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/cli/Controller.java" line="156" class="pt.up.fe.lpoo.cli.Controller" package="pt.up.fe.lpoo.cli">
+      <breakpoint url="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/BoardGenerator.java" line="80" class="pt.up.fe.lpoo.logic.BoardGenerator" package="pt.up.fe.lpoo.logic">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -206,7 +209,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/cli/Controller.java" line="169" class="pt.up.fe.lpoo.cli.Controller" package="pt.up.fe.lpoo.cli">
+      <breakpoint url="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/BoardGenerator.java" line="213" class="pt.up.fe.lpoo.logic.BoardGenerator" package="pt.up.fe.lpoo.logic">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -221,7 +224,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/cli/Controller.java" line="175" class="pt.up.fe.lpoo.cli.Controller" package="pt.up.fe.lpoo.cli">
+      <breakpoint url="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/BoardGenerator.java" line="76" class="pt.up.fe.lpoo.logic.BoardGenerator" package="pt.up.fe.lpoo.logic">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -236,127 +239,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/cli/Controller.java" line="181" class="pt.up.fe.lpoo.cli.Controller" package="pt.up.fe.lpoo.cli">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/cli/Controller.java" line="193" class="pt.up.fe.lpoo.cli.Controller" package="pt.up.fe.lpoo.cli">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/Board.java" line="322" class="pt.up.fe.lpoo.logic.Board" package="pt.up.fe.lpoo.logic">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/Board.java" line="327" class="pt.up.fe.lpoo.logic.Board" package="pt.up.fe.lpoo.logic">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/Board.java" line="320" class="pt.up.fe.lpoo.logic.Board" package="pt.up.fe.lpoo.logic">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/Board.java" line="321" class="pt.up.fe.lpoo.logic.Board" package="pt.up.fe.lpoo.logic">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/Board.java" line="324" class="pt.up.fe.lpoo.logic.Board" package="pt.up.fe.lpoo.logic">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/Board.java" line="311" class="pt.up.fe.lpoo.logic.Board" package="pt.up.fe.lpoo.logic">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/cli/Controller.java" line="183" class="pt.up.fe.lpoo.cli.Controller" package="pt.up.fe.lpoo.cli">
+      <breakpoint url="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/BoardGenerator.java" line="74" class="pt.up.fe.lpoo.logic.BoardGenerator" package="pt.up.fe.lpoo.logic">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -381,33 +264,48 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Board.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/Board.java">
+      <file leaf-file-name="Hero.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/piece/Hero.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="316" column="0" selection-start="9603" selection-end="9603" vertical-scroll-proportion="0.48548812" vertical-offset="4346" max-vertical-offset="4830">
+            <state line="11" column="0" selection-start="179" selection-end="179" vertical-scroll-proportion="0.29100528" vertical-offset="0" max-vertical-offset="567">
               <folding>
                 <element signature="n#!!doc" expanded="true" />
-                <element signature="imports" expanded="true" />
-                <element signature="e#4206#4207#0" expanded="true" />
-                <element signature="e#4232#4233#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Blank.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/piece/itemizable/Blank.java">
+      <file leaf-file-name="Piece.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/piece/Piece.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="29" selection-start="470" selection-end="470" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="540">
+            <state line="0" column="0" selection-start="0" selection-end="71" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="285">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Coordinate.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/Coordinate.java">
+      <file leaf-file-name="Wall.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/piece/Wall.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="13" selection-start="116" selection-end="116" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="345">
+            <state line="9" column="0" selection-start="143" selection-end="143" vertical-scroll-proportion="0.0" vertical-offset="135" max-vertical-offset="255">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Dragon.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/piece/Dragon.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="11" column="0" selection-start="177" selection-end="177" vertical-scroll-proportion="0.0" vertical-offset="165" max-vertical-offset="255">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Board.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/Board.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="41" column="40" selection-start="2092" selection-end="2092" vertical-scroll-proportion="0.0" vertical-offset="615" max-vertical-offset="6525">
               <folding />
             </state>
           </provider>
@@ -416,7 +314,16 @@
       <file leaf-file-name="BoardGenerator.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/BoardGenerator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="162" column="0" selection-start="4006" selection-end="4006" vertical-scroll-proportion="0.0" vertical-offset="2430" max-vertical-offset="5145">
+            <state line="0" column="0" selection-start="0" selection-end="71" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4245">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Coordinate.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/Coordinate.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="8" column="13" selection-start="116" selection-end="116" vertical-scroll-proportion="0.0" vertical-offset="120" max-vertical-offset="345">
               <folding />
             </state>
           </provider>
@@ -425,57 +332,8 @@
       <file leaf-file-name="Controller.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/cli/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="183" column="0" selection-start="5675" selection-end="5675" vertical-scroll-proportion="0.0" vertical-offset="2342" max-vertical-offset="3195">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Printer.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/cli/Printer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="50" column="13" selection-start="1485" selection-end="1485" vertical-scroll-proportion="0.0" vertical-offset="392" max-vertical-offset="810">
+            <state line="28" column="93" selection-start="678" selection-end="678" vertical-scroll-proportion="0.0" vertical-offset="420" max-vertical-offset="2490">
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ItemizablePiece.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/piece/itemizable/ItemizablePiece.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="32" column="5" selection-start="665" selection-end="665" vertical-scroll-proportion="0.0" vertical-offset="480" max-vertical-offset="600">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Hero.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/piece/itemizable/Hero.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="5" selection-start="339" selection-end="339" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="375">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Dragon.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/piece/itemizable/Dragon.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="5" selection-start="428" selection-end="428" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="375">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Piece.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/piece/Piece.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="112" column="43" selection-start="2387" selection-end="2396" vertical-scroll-proportion="-5.0" vertical-offset="1295" max-vertical-offset="1830">
-              <folding>
-                <element signature="e#1000#1007#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -502,27 +360,22 @@
         <option value="$PROJECT_DIR$/src/Board.java" />
         <option value="$PROJECT_DIR$/src/pt/up/fe/lpoo/Coordinate.java" />
         <option value="$PROJECT_DIR$/src/pt/up/fe/lpoo/Hero.java" />
-        <option value="$PROJECT_DIR$/src/pt/up/fe/lpoo/BoardGenerator.java" />
         <option value="$PROJECT_DIR$/src/pt/up/fe/lpoo/Board.java" />
         <option value="$PROJECT_DIR$/src/pt/up/fe/lpoo/Controller.java" />
-        <option value="$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/Coordinate.java" />
-        <option value="$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/piece/Wall.java" />
-        <option value="$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/piece/Blank.java" />
-        <option value="$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/piece/itemizable/Hero.java" />
-        <option value="$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/BoardGenerator.java" />
-        <option value="$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/piece/itemizable/ItemizablePiece.java" />
-        <option value="$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/piece/itemizable/Dragon.java" />
-        <option value="$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/piece/itemizable/Blank.java" />
-        <option value="$PROJECT_DIR$/src/pt/up/fe/lpoo/cli/Printer.java" />
-        <option value="$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/piece/Piece.java" />
-        <option value="$PROJECT_DIR$/src/pt/up/fe/lpoo/cli/Controller.java" />
+        <option value="$PROJECT_DIR$/src/pt/up/fe/lpoo/BoardGenerator.java" />
         <option value="$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/Board.java" />
+        <option value="$PROJECT_DIR$/src/pt/up/fe/lpoo/cli/Controller.java" />
+        <option value="$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/piece/Piece.java" />
+        <option value="$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/piece/Wall.java" />
+        <option value="$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/piece/Dragon.java" />
+        <option value="$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/piece/Hero.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
+    <option name="y" value="22" />
     <option name="width" value="1366" />
-    <option name="height" value="768" />
+    <option name="height" value="685" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -699,36 +552,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="logic" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="piece" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="itemizable" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="LPOO-Labirinto" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="LPOO-Labirinto" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lpoo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="cli" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -748,43 +571,19 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
-    <property name="FullScreen" value="true" />
+    <property name="FullScreen" value="false" />
     <property name="recentsLimit" value="5" />
     <property name="dynamic.classpath" value="false" />
-    <property name="SearchEverywhereHistory" value="ge" />
+    <property name="SearchEverywhereHistory" value="" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="ChangesBrowser.SHOW_FLATTEN" value="true" />
     <property name="options.lastSelected" value="Errors" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
-    <property name="OverrideImplement.combined" value="true" />
-    <property name="OverrideImplement.overriding.sorted" value="false" />
   </component>
-  <component name="RunManager" selected="Application.Controller (1)">
+  <component name="RunManager" selected="Application.Controller">
     <configuration default="false" name="Controller" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="pt.up.fe.lpoo.Controller" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="LPOO-Labirinto" />
-      <envs />
-      <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="" />
-        <option name="TRANSPORT" value="0" />
-        <option name="LOCAL" value="true" />
-      </RunnerSettings>
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Debug" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method />
-    </configuration>
-    <configuration default="false" name="Controller (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="pt.up.fe.lpoo.cli.Controller" />
       <option name="VM_PARAMETERS" />
       <option name="PROGRAM_PARAMETERS" />
@@ -840,19 +639,6 @@
       <option name="PORT" value="5005" />
       <method />
     </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <method />
-    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <module name="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -878,6 +664,19 @@
       <envs />
       <properties />
       <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -933,14 +732,12 @@
       <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
       <method />
     </configuration>
-    <list size="2">
+    <list size="1">
       <item index="0" class="java.lang.String" itemvalue="Application.Controller" />
-      <item index="1" class="java.lang.String" itemvalue="Application.Controller (1)" />
     </list>
     <recent_temporary>
-      <list size="2">
-        <item index="0" class="java.lang.String" itemvalue="Application.Controller (1)" />
-        <item index="1" class="java.lang.String" itemvalue="Application.Controller" />
+      <list size="1">
+        <item index="0" class="java.lang.String" itemvalue="Application.Controller" />
       </list>
     </recent_temporary>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
@@ -995,7 +792,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1366" height="768" extended-state="0" />
+    <frame x="0" y="22" width="1366" height="685" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1004,21 +801,21 @@
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32871014" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3982808" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39922178" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32714286" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32378224" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295129" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24848942" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32808024" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="21" y="269" width="1324" height="229" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24848942" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32715008" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="21" y="269" width="1324" height="229" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32840466" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32871014" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32546374" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout>
@@ -1039,13 +836,13 @@
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32732317" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24963397" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32871014" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -1073,322 +870,365 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/Board.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="292" column="33" selection-start="8887" selection-end="8887" vertical-scroll-proportion="0.0" vertical-offset="4380" max-vertical-offset="4560">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <element signature="imports" expanded="true" />
-            <element signature="e#4206#4207#0" expanded="true" />
-            <element signature="e#4232#4233#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/piece/itemizable/Blank.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="29" selection-start="470" selection-end="470" vertical-scroll-proportion="0.0" vertical-offset="345" max-vertical-offset="735">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/Coordinate.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="13" selection-start="116" selection-end="116" vertical-scroll-proportion="0.0" vertical-offset="120" max-vertical-offset="405">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/BoardGenerator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="162" column="0" selection-start="4006" selection-end="4006" vertical-scroll-proportion="0.0" vertical-offset="2430" max-vertical-offset="5325">
+        <state line="8" column="13" selection-start="116" selection-end="116" vertical-scroll-proportion="0.0" vertical-offset="120" max-vertical-offset="345">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/cli/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="154" column="0" selection-start="4539" selection-end="4539" vertical-scroll-proportion="0.0" vertical-offset="2062" max-vertical-offset="2940">
+        <state line="28" column="93" selection-start="678" selection-end="678" vertical-scroll-proportion="0.0" vertical-offset="420" max-vertical-offset="2490">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/piece/Hero.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="0" selection-start="153" selection-end="153" vertical-scroll-proportion="0.0" vertical-offset="165" max-vertical-offset="255">
           <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/cli/Printer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="50" column="13" selection-start="1485" selection-end="1485" vertical-scroll-proportion="0.0" vertical-offset="750" max-vertical-offset="930">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/piece/itemizable/ItemizablePiece.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="5" selection-start="665" selection-end="665" vertical-scroll-proportion="0.0" vertical-offset="480" max-vertical-offset="600">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/piece/itemizable/Hero.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="5" selection-start="339" selection-end="339" vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="435">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/piece/itemizable/Dragon.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="5" selection-start="428" selection-end="428" vertical-scroll-proportion="0.0" vertical-offset="315" max-vertical-offset="435">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/piece/Piece.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="63" column="21" selection-start="1555" selection-end="1555" vertical-scroll-proportion="0.0" vertical-offset="945" max-vertical-offset="2055">
-          <folding>
-            <element signature="e#1000#1007#0" expanded="true" />
+            <element signature="n#!!doc" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/Board.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="292" column="33" selection-start="8887" selection-end="8887" vertical-scroll-proportion="0.0" vertical-offset="4380" max-vertical-offset="4560">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <element signature="imports" expanded="true" />
-            <element signature="e#4206#4207#0" expanded="true" />
-            <element signature="e#4232#4233#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/piece/itemizable/Blank.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="29" selection-start="470" selection-end="470" vertical-scroll-proportion="0.0" vertical-offset="345" max-vertical-offset="735">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/Coordinate.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="13" selection-start="116" selection-end="116" vertical-scroll-proportion="0.0" vertical-offset="120" max-vertical-offset="405">
+        <state line="39" column="40" selection-start="2046" selection-end="2046" vertical-scroll-proportion="0.0" vertical-offset="585" max-vertical-offset="6495">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/BoardGenerator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="162" column="0" selection-start="4006" selection-end="4006" vertical-scroll-proportion="0.0" vertical-offset="2430" max-vertical-offset="5325">
+        <state line="148" column="20" selection-start="5833" selection-end="5833" vertical-scroll-proportion="0.0" vertical-offset="2220" max-vertical-offset="3825">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/Coordinate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="13" selection-start="110" selection-end="110" vertical-scroll-proportion="0.0" vertical-offset="120" max-vertical-offset="345">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/cli/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="154" column="0" selection-start="4539" selection-end="4539" vertical-scroll-proportion="0.0" vertical-offset="2062" max-vertical-offset="2940">
+        <state line="23" column="13" selection-start="468" selection-end="468" vertical-scroll-proportion="0.0" vertical-offset="345" max-vertical-offset="1410">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/piece/Hero.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="0" selection-start="153" selection-end="153" vertical-scroll-proportion="0.0" vertical-offset="165" max-vertical-offset="255">
           <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/cli/Printer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="50" column="13" selection-start="1485" selection-end="1485" vertical-scroll-proportion="0.0" vertical-offset="750" max-vertical-offset="930">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/piece/itemizable/ItemizablePiece.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="5" selection-start="665" selection-end="665" vertical-scroll-proportion="0.0" vertical-offset="480" max-vertical-offset="600">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/piece/itemizable/Hero.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="5" selection-start="339" selection-end="339" vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="435">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/piece/itemizable/Dragon.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="5" selection-start="428" selection-end="428" vertical-scroll-proportion="0.0" vertical-offset="315" max-vertical-offset="435">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/piece/Piece.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="63" column="21" selection-start="1555" selection-end="1555" vertical-scroll-proportion="0.0" vertical-offset="945" max-vertical-offset="2055">
-          <folding>
-            <element signature="e#1000#1007#0" expanded="true" />
+            <element signature="n#!!doc" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/Board.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="0" selection-start="0" selection-end="14999" vertical-scroll-proportion="0.0" vertical-offset="180" max-vertical-offset="7350">
+        <state line="39" column="40" selection-start="2046" selection-end="2046" vertical-scroll-proportion="0.0" vertical-offset="585" max-vertical-offset="6495">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/BoardGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="42" column="13" selection-start="1056" selection-end="1056" vertical-scroll-proportion="0.0" vertical-offset="630" max-vertical-offset="3615">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/Coordinate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="13" selection-start="110" selection-end="110" vertical-scroll-proportion="0.0" vertical-offset="120" max-vertical-offset="345">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/cli/Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="0" selection-start="549" selection-end="549" vertical-scroll-proportion="0.0" vertical-offset="390" max-vertical-offset="1320">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/piece/Hero.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="0" selection-start="153" selection-end="153" vertical-scroll-proportion="0.0" vertical-offset="165" max-vertical-offset="255">
           <folding>
             <element signature="n#!!doc" expanded="true" />
-            <element signature="imports" expanded="true" />
-            <element signature="e#4206#4207#0" expanded="true" />
-            <element signature="e#4232#4233#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/Board.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="35" selection-start="1013" selection-end="1013" vertical-scroll-proportion="0.0" vertical-offset="390" max-vertical-offset="6330">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/BoardGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="0" selection-start="146" selection-end="146" vertical-scroll-proportion="0.0" vertical-offset="150" max-vertical-offset="3000">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/Coordinate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="13" selection-start="110" selection-end="110" vertical-scroll-proportion="0.0" vertical-offset="120" max-vertical-offset="345">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/cli/Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="63" selection-start="572" selection-end="573" vertical-scroll-proportion="0.0" vertical-offset="345" max-vertical-offset="1245">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/piece/Hero.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="22" selection-start="139" selection-end="139" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="195">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/Board.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="41" column="48" selection-start="2156" selection-end="2156" vertical-scroll-proportion="0.0" vertical-offset="615" max-vertical-offset="6330">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/BoardGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="29" column="27" selection-start="2246" selection-end="2246" vertical-scroll-proportion="0.0" vertical-offset="435" max-vertical-offset="855">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/Coordinate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="13" selection-start="110" selection-end="110" vertical-scroll-proportion="0.0" vertical-offset="120" max-vertical-offset="345">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/cli/Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="102" selection-start="583" selection-end="583" vertical-scroll-proportion="0.0" vertical-offset="375" max-vertical-offset="1080">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/piece/Hero.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="22" selection-start="139" selection-end="139" vertical-scroll-proportion="0.0" vertical-offset="135" max-vertical-offset="255">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/Board.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="119" column="19" selection-start="4290" selection-end="4426" vertical-scroll-proportion="0.0" vertical-offset="1785" max-vertical-offset="6330">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/BoardGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="32" column="5" selection-start="2278" selection-end="2278" vertical-scroll-proportion="0.0" vertical-offset="480" max-vertical-offset="855">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/Coordinate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="13" selection-start="110" selection-end="110" vertical-scroll-proportion="0.0" vertical-offset="120" max-vertical-offset="345">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/cli/Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="102" selection-start="583" selection-end="583" vertical-scroll-proportion="0.0" vertical-offset="375" max-vertical-offset="1080">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LPOO-Labirinto.iml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="270" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/Board.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="48" column="0" selection-start="2297" selection-end="2297" vertical-scroll-proportion="0.0" vertical-offset="720" max-vertical-offset="4170">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/piece/Hero.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="33" selection-start="121" selection-end="121" vertical-scroll-proportion="0.0" vertical-offset="90" max-vertical-offset="210">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/Coordinate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="17" selection-start="192" selection-end="192" vertical-scroll-proportion="0.0" vertical-offset="150" max-vertical-offset="300">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/cli/Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="52" column="26" selection-start="1640" selection-end="1640" vertical-scroll-proportion="0.0" vertical-offset="780" max-vertical-offset="1020">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LPOO-Labirinto.iml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="270" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/Board.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="44" selection-start="977" selection-end="981" vertical-scroll-proportion="0.0" vertical-offset="360" max-vertical-offset="4200">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/piece/Hero.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="33" selection-start="121" selection-end="121" vertical-scroll-proportion="0.0" vertical-offset="90" max-vertical-offset="210">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/Coordinate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="17" selection-start="192" selection-end="192" vertical-scroll-proportion="0.0" vertical-offset="150" max-vertical-offset="300">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/cli/Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="52" column="26" selection-start="1640" selection-end="1640" vertical-scroll-proportion="0.0" vertical-offset="186" max-vertical-offset="1020">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LPOO-Labirinto.iml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="270" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/Board.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="47" selection-start="137" selection-end="137" vertical-scroll-proportion="0.0" vertical-offset="105" max-vertical-offset="945">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/cli/Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="7" selection-start="75" selection-end="75" vertical-scroll-proportion="0.0" vertical-offset="60" max-vertical-offset="285">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LPOO-Labirinto.iml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="270" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/Board.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="0" selection-start="114" selection-end="114" vertical-scroll-proportion="0.0" vertical-offset="90" max-vertical-offset="210">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LPOO-Labirinto.iml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="270" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/Coordinate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="13" selection-start="116" selection-end="116" vertical-scroll-proportion="0.0" vertical-offset="120" max-vertical-offset="345">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/cli/Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="93" selection-start="678" selection-end="678" vertical-scroll-proportion="0.0" vertical-offset="105" max-vertical-offset="2430">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/BoardGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="71" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4230">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/Board.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="41" column="40" selection-start="2092" selection-end="2092" vertical-scroll-proportion="0.0" vertical-offset="30" max-vertical-offset="6345">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/piece/Piece.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="71" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="285">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/piece/Wall.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="13" selection-start="122" selection-end="122" vertical-scroll-proportion="0.0" vertical-offset="120" max-vertical-offset="255">
+        <state line="9" column="0" selection-start="143" selection-end="143" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="255">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/Coordinate.java">
+    <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/piece/Dragon.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="0" selection-start="342" selection-end="342" vertical-scroll-proportion="0.0" vertical-offset="315" max-vertical-offset="405">
+        <state line="11" column="0" selection-start="177" selection-end="177" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="255">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/cli/Controller.java">
+    <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/piece/Hero.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="71" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2490">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/piece/itemizable/Dragon.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="0" selection-start="166" selection-end="166" vertical-scroll-proportion="0.0" vertical-offset="135" max-vertical-offset="255">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/piece/Piece.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="38" selection-start="181" selection-end="181" vertical-scroll-proportion="0.0" vertical-offset="135" max-vertical-offset="1605">
-          <folding>
-            <element signature="e#1000#1007#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/LPOO-Labirinto.iml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="270" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/LPOO-Labirinto.iml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="270" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/LPOO-Labirinto.iml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="270" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/LPOO-Labirinto.iml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="270" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/LPOO-Labirinto.iml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="270" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/piece/itemizable/ItemizablePiece.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="5" selection-start="665" selection-end="665" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="540">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/piece/Wall.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="13" selection-start="162" selection-end="162" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="375">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/piece/itemizable/Dragon.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="5" selection-start="428" selection-end="428" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="375">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/piece/itemizable/Hero.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="5" selection-start="339" selection-end="339" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="375">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/piece/Piece.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="112" column="43" selection-start="2387" selection-end="2396" vertical-scroll-proportion="-5.0" vertical-offset="1295" max-vertical-offset="1830">
-          <folding>
-            <element signature="e#1000#1007#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/Coordinate.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="13" selection-start="116" selection-end="116" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="345">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/BoardGenerator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="162" column="0" selection-start="4006" selection-end="4006" vertical-scroll-proportion="0.0" vertical-offset="3240" max-vertical-offset="5145">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/cli/Printer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="50" column="13" selection-start="1485" selection-end="1485" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="930">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/piece/itemizable/Blank.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="29" selection-start="470" selection-end="470" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="540">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/cli/Controller.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="183" column="0" selection-start="5675" selection-end="5675" vertical-scroll-proportion="0.0" vertical-offset="2567" max-vertical-offset="3195">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pt/up/fe/lpoo/logic/Board.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="316" column="0" selection-start="9603" selection-end="9603" vertical-scroll-proportion="0.48548812" vertical-offset="4346" max-vertical-offset="4830">
+        <state line="11" column="0" selection-start="179" selection-end="179" vertical-scroll-proportion="0.29100528" vertical-offset="0" max-vertical-offset="567">
           <folding>
             <element signature="n#!!doc" expanded="true" />
-            <element signature="imports" expanded="true" />
-            <element signature="e#4206#4207#0" expanded="true" />
-            <element signature="e#4232#4233#0" expanded="true" />
           </folding>
         </state>
       </provider>

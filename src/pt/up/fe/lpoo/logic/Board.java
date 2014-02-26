@@ -102,6 +102,13 @@ public class Board {
 
                     break;
 
+                case BLANK:
+
+                    if (pc instanceof Blank)
+                        pcs.add(pc);
+
+                    break;
+
                 default:
 
                     throw new Exception("Undefined or Private type requested.");
@@ -109,6 +116,10 @@ public class Board {
         }
 
         return pcs;
+    }
+
+    public void removePiece(Piece piece) throws Exception {
+        _boardPieces.remove(piece);
     }
 
     public void setWidth(int w) {
@@ -220,7 +231,7 @@ public class Board {
         return pb;
     }
 
-    private void _moveDragon() throws Exception {
+    public void moveDragon() throws Exception {
         Vector<Piece> dragons = getPiecesWithType(Type.DRAGON);
 
         for (Piece drag : dragons) {
@@ -242,38 +253,28 @@ public class Board {
     }
 
     private DragonSearchResult _isNearDragon() throws Exception {
-        Coordinate dragonLoc;
+        Dragon drag;
 
         try {
-            dragonLoc = getLocation(Type.DRAGON);
+            drag = (Dragon) getPiecesWithType(Type.DRAGON).get(0);
         } catch (Exception exc) {
-            try {
-                dragonLoc = getLocation(Type.MIXED_SD);
-            } catch (Exception secondExc) {
-                return DragonSearchResult.ALREADY_DEFEATED;
-            }
+            return DragonSearchResult.ALREADY_DEFEATED;
         }
 
-        Coordinate heroLoc;
+        Hero hero = (Hero) getPiecesWithType(Type.HERO).get(0);
 
-        try {
-            heroLoc = getLocation(Type.HERO);
-        } catch (Exception exc) {
-            throw new Exception("Hero Not Found?!");
-        }
-
-        if (dragonLoc.x == heroLoc.x)
-            if (dragonLoc.y == heroLoc.y || dragonLoc.y - 1 == heroLoc.y || dragonLoc.y + 1 == heroLoc.y)
+        if (hero.getCoordinate().x == drag.getCoordinate().x)
+            if (hero.getCoordinate().y == drag.getCoordinate().y || hero.getCoordinate().y - 1 == drag.getCoordinate().y || hero.getCoordinate().y + 1 == drag.getCoordinate().y)
                 return DragonSearchResult.FOUND;
 
-        if (dragonLoc.y == heroLoc.y)
-            if (dragonLoc.x == heroLoc.x || dragonLoc.x - 1 == heroLoc.x || dragonLoc.x + 1 == heroLoc.x)
+        if (hero.getCoordinate().y == drag.getCoordinate().y)
+            if (hero.getCoordinate().x == drag.getCoordinate().x || hero.getCoordinate().x - 1 == drag.getCoordinate().x || hero.getCoordinate().x + 1 == drag.getCoordinate().x)
                 return DragonSearchResult.FOUND;
 
         return DragonSearchResult.NOT_FOUND;
     }
 
-    private DragonFightResult _checkDragon() throws Exception {
+    public DragonFightResult checkDragon() throws Exception {
         try {
             DragonSearchResult res = _isNearDragon();
 
@@ -290,25 +291,40 @@ public class Board {
         Hero hero = (Hero) getPiecesWithType(Type.HERO).get(0);
 
         if (hero.getHasItem()) {
-            Coordinate dragonLoc;
+            Dragon drag = (Dragon) getPiecesWithType(Type.DRAGON).get(0);
 
-            try {
-                dragonLoc = getLocation(Type.DRAGON);
-            } catch (Exception exc) {
-                try {
-                    dragonLoc = getLocation(Type.MIXED_SD);
-                } catch (Exception secondExc) {
-                    throw secondExc;
-                }
-            }
+            Blank bl = new Blank(drag.getCoordinate());
 
-            boardRep[dragonLoc.y][dragonLoc.x] = Type.BLANK;
+            _boardPieces.add(bl);
+
+            removePiece(drag);
 
             return DragonFightResult.WON;
         }
 
+        removePiece(hero);
+
         gameState = State.LOST;
 
         return DragonFightResult.LOST;
+    }
+
+    public void recheckGameState() throws Exception {
+        Vector<Piece> blanks = getPiecesWithType(Type.BLANK);
+
+        if (getPiecesWithType(Type.HERO).size() == 0) {
+            gameState = State.LOST;
+
+            return;
+        }
+
+        for (Piece bl : blanks)
+            if (((Blank) bl).getIsExit()) {
+                gameState = State.RUNNING;
+
+                return;
+            }
+
+        gameState = State.WON;
     }
 }

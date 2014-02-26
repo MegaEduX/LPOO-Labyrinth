@@ -12,6 +12,7 @@ import pt.up.fe.lpoo.logic.BoardGenerator;
 import pt.up.fe.lpoo.logic.piece.Piece;
 
 import pt.up.fe.lpoo.logic.piece.itemizable.Hero;
+import pt.up.fe.lpoo.logic.piece.itemizable.Dragon;
 
 import pt.up.fe.lpoo.cli.Printer;
 
@@ -131,9 +132,11 @@ public class Controller {
         prt.printBoard();
 
         Hero heroPiece = null;
+        //  Dragon dragonPiece = null;
 
         try {
             heroPiece = (Hero) brd.getPiecesWithType(Board.Type.HERO).get(0);
+            //  dragonPiece = (Dragon) brd.getPiecesWithType(Board.Type.DRAGON).get(0);
         } catch (Exception exc) {
             System.out.println("A Hero wasn't found. This can not happen. Aborting...");
 
@@ -161,6 +164,24 @@ public class Controller {
                         heroPiece.move(Board.Direction.LEFT);
                 } catch (Exception exc) {
 
+                }
+
+                try {
+                    brd.moveDragon();
+                } catch (Exception exc) {
+
+                }
+
+                try {
+                    brd.checkDragon();
+                } catch (Exception exc) {
+
+                }
+
+                try {
+                    brd.recheckGameState();
+                } catch (Exception exc) {
+                    System.out.println(exc.getMessage());
                 }
 
                 System.out.println();
