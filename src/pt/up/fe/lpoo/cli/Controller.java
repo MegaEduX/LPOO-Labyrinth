@@ -40,19 +40,22 @@ public class Controller {
 
             if (readLine.equalsIgnoreCase("d")) {
                 skipBoardGeneration = true;
+
+                width = 10;
+                height = 10;
             } else {
-                System.out.print("Board Width? (Must be bigger than 3): ");
+                System.out.print("Board Width? (Must be bigger or equal than 5): ");
 
                 readLine = br.readLine();
 
-                if (Integer.parseInt(readLine) > 3)
+                if (Integer.parseInt(readLine) > 4)
                     width = Integer.parseInt(readLine);
                 else {
                     while (true) {
-                        System.out.print("Invalid Width. Please try again. (Must be bigger than 3): ");
+                        System.out.print("Invalid Width. Please try again. (Must be bigger than 5): ");
                         readLine = br.readLine();
 
-                        if (Integer.parseInt(readLine) > 3) {
+                        if (Integer.parseInt(readLine) > 4) {
                             width = Integer.parseInt(readLine);
 
                             break;
@@ -62,18 +65,18 @@ public class Controller {
 
                 System.out.println();
 
-                System.out.print("Board Height? (Must be bigger or equal than 3): ");
+                System.out.print("Board Height? (Must be bigger or equal than 5): ");
 
                 readLine = br.readLine();
 
-                if (Integer.parseInt(readLine) > 3)
+                if (Integer.parseInt(readLine) > 4)
                     height = Integer.parseInt(readLine);
                 else {
                     while (true) {
-                        System.out.print("Invalid Height. Please try again. (Must be bigger than 3): ");
+                        System.out.print("Invalid Height. Please try again. (Must be bigger than 5): ");
                         readLine = br.readLine();
 
-                        if (Integer.parseInt(readLine) > 3) {
+                        if (Integer.parseInt(readLine) > 4) {
                             height = Integer.parseInt(readLine);
 
                             break;
@@ -94,49 +97,43 @@ public class Controller {
             System.out.println("An error has occurred while attempting to ask for board size values. Continuing with default values (10w * 10h)...");
         }
 
-        if (!skipBoardGeneration) {
-            Boolean boardGenSuccess = false;
+        Boolean boardGenSuccess = false;
 
-            for (int i = 0; i < 10; i++) {
-                try {
-                    BoardGenerator brdGen = new BoardGenerator(width, height);
+        for (int i = 0; i < 10; i++) {
+            try {
+                BoardGenerator brdGen = new BoardGenerator(width, height);
 
-                    //  Board.Type[][] gdBoard = brdGen.generateBoard();
-                    Vector<Piece> ooBoard = brdGen.generateBoardObj();
+                Vector<Piece> ooBoard;
 
-                    for (Piece pc : ooBoard) {
-                        pc.setBoard(brd);
-                    }
+                ooBoard = (skipBoardGeneration ? brdGen.getDefaultBoard() : brdGen.generateBoard());
 
-                    //  brd.setBoardRepresentation(gdBoard);
+                for (Piece pc : ooBoard)
+                    pc.setBoard(brd);
 
-                    brd.setBoardPieces(ooBoard);
+                brd.setBoardPieces(ooBoard);
 
-                    brd.setWidth(width);
-                    brd.setHeight(height);
+                brd.setWidth(width);
+                brd.setHeight(height);
 
-                    boardGenSuccess = true;
+                boardGenSuccess = true;
 
-                    break;
-                } catch (Exception exc) {
+                break;
+            } catch (Exception exc) {
 
-                }
             }
-
-            if (!boardGenSuccess)
-                System.out.println("Unable to generate a new board. Proceeding with default board...");
         }
+
+        if (!boardGenSuccess)
+            System.out.println("Unable to get a board.");
 
         Printer prt = new Printer(brd);
 
         prt.printBoard();
 
         Hero heroPiece = null;
-        //  Dragon dragonPiece = null;
 
         try {
             heroPiece = (Hero) brd.getPiecesWithType(Board.Type.HERO).get(0);
-            //  dragonPiece = (Dragon) brd.getPiecesWithType(Board.Type.DRAGON).get(0);
         } catch (Exception exc) {
             System.out.println("A Hero wasn't found. This can not happen. Aborting...");
 

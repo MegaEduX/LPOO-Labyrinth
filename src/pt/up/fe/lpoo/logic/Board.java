@@ -25,34 +25,10 @@ public class Board {
 
     private State gameState = State.RUNNING;
 
-    //  private Hero hero = new Hero();
-
-    private Type boardRep[][] = {
-            {Type.WALL, Type.WALL, Type.WALL, Type.WALL, Type.WALL, Type.WALL, Type.WALL, Type.WALL, Type.WALL, Type.WALL},
-            {Type.WALL, Type.HERO, Type.BLANK, Type.BLANK, Type.BLANK, Type.BLANK, Type.BLANK, Type.BLANK, Type.BLANK, Type.WALL},
-            {Type.WALL, Type.BLANK, Type.WALL, Type.WALL, Type.BLANK, Type.WALL, Type.BLANK, Type.WALL, Type.BLANK, Type.WALL},
-            {Type.WALL, Type.DRAGON, Type.WALL, Type.WALL, Type.BLANK, Type.WALL, Type.BLANK, Type.WALL, Type.BLANK, Type.WALL},
-            {Type.WALL, Type.BLANK, Type.WALL, Type.WALL, Type.BLANK, Type.WALL, Type.BLANK, Type.WALL, Type.BLANK, Type.WALL},
-            {Type.WALL, Type.BLANK, Type.BLANK, Type.BLANK, Type.BLANK, Type.BLANK, Type.BLANK, Type.WALL, Type.BLANK, Type.EXIT},
-            {Type.WALL, Type.BLANK, Type.WALL, Type.WALL, Type.BLANK, Type.WALL, Type.BLANK, Type.WALL, Type.BLANK, Type.WALL},
-            {Type.WALL, Type.BLANK, Type.WALL, Type.WALL, Type.BLANK, Type.WALL, Type.BLANK, Type.WALL, Type.BLANK, Type.WALL},
-            {Type.WALL, Type.SWORD, Type.WALL, Type.WALL, Type.BLANK, Type.BLANK, Type.BLANK, Type.BLANK, Type.BLANK, Type.WALL},
-            {Type.WALL, Type.WALL, Type.WALL, Type.WALL, Type.WALL, Type.WALL, Type.WALL, Type.WALL, Type.WALL, Type.WALL}
-    };
-
     private Vector<Piece> _boardPieces = new Vector<Piece>();
 
     private int width = 10;
     private int height = 10;
-
-    public Coordinate getLocation(Type piece) throws Exception {
-        for (int i = 0; i < height; i++)
-            for (int j = 0; j < width; j++)
-                if (boardRep[i][j] == piece)
-                    return new Coordinate(j, i);
-
-        throw new Exception("Piece Not Found.");
-    }
 
     public Piece getPiece(Coordinate crd) throws Exception {
         for (Piece pc : _boardPieces)
@@ -142,55 +118,12 @@ public class Board {
         return gameState;
     }
 
-    public void setBoardRepresentation(Type newRep[][]) {
-        boardRep = newRep;
-    }
-
     public void setBoardPieces(Vector<Piece> board) {
         _boardPieces = board;
     }
 
     public Vector<Piece> getBoardPieces() {
         return _boardPieces;
-    }
-
-    private Direction[] _getMovePossibilities(Type piece) throws Exception {
-        Coordinate pieceLoc;
-
-        Direction[] pb = new Direction[4];
-
-        try {
-            pieceLoc = getLocation(piece);
-        } catch (Exception exc) {
-            throw exc;
-        }
-
-        /*
-         *  As far as I noticed, .length returns the length of the array, not the number of objects that currently
-         *  reside in it (which was what I needed), so I had to do a small workaround involving an extra int and then
-         *  creating another array with the correct length. Ugh!
-         */
-
-        int currIndex = 0;
-
-        if (boardRep[pieceLoc.y][pieceLoc.x - 1] == Type.BLANK || boardRep[pieceLoc.y][pieceLoc.x - 1] == Type.SWORD)
-            pb[currIndex++] = Direction.LEFT;
-
-        if (boardRep[pieceLoc.y][pieceLoc.x + 1] == Type.BLANK || boardRep[pieceLoc.y][pieceLoc.x + 1] == Type.SWORD)
-            pb[currIndex++] = Direction.RIGHT;
-
-        if (boardRep[pieceLoc.y - 1][pieceLoc.x] == Type.BLANK || boardRep[pieceLoc.y - 1][pieceLoc.x] == Type.SWORD)
-            pb[currIndex++] = Direction.UP;
-
-        if (boardRep[pieceLoc.y + 1][pieceLoc.x] == Type.BLANK || boardRep[pieceLoc.y + 1][pieceLoc.x] == Type.SWORD)
-            pb[currIndex++] = Direction.DOWN;
-
-        Direction[] pbRet = new Direction[currIndex];
-
-        for (int i = 0; i < currIndex; i++)
-            pbRet[i] = pb[i];
-
-        return pbRet;
     }
 
     private Vector<Direction> _getMovePossibilities(Piece pc) throws Exception {

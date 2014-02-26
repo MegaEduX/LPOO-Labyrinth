@@ -22,13 +22,26 @@ public class BoardGenerator {
 
     private Board.Type boardRep[][];
 
+    private Board.Type defaultBoardRep[][] = {
+            {Board.Type.WALL, Board.Type.WALL, Board.Type.WALL, Board.Type.WALL, Board.Type.WALL, Board.Type.WALL, Board.Type.WALL, Board.Type.WALL, Board.Type.WALL, Board.Type.WALL},
+            {Board.Type.WALL, Board.Type.HERO, Board.Type.BLANK, Board.Type.BLANK, Board.Type.BLANK, Board.Type.BLANK, Board.Type.BLANK, Board.Type.BLANK, Board.Type.BLANK, Board.Type.WALL},
+            {Board.Type.WALL, Board.Type.BLANK, Board.Type.WALL, Board.Type.WALL, Board.Type.BLANK, Board.Type.WALL, Board.Type.BLANK, Board.Type.WALL, Board.Type.BLANK, Board.Type.WALL},
+            {Board.Type.WALL, Board.Type.DRAGON, Board.Type.WALL, Board.Type.WALL, Board.Type.BLANK, Board.Type.WALL, Board.Type.BLANK, Board.Type.WALL, Board.Type.BLANK, Board.Type.WALL},
+            {Board.Type.WALL, Board.Type.BLANK, Board.Type.WALL, Board.Type.WALL, Board.Type.BLANK, Board.Type.WALL, Board.Type.BLANK, Board.Type.WALL, Board.Type.BLANK, Board.Type.WALL},
+            {Board.Type.WALL, Board.Type.BLANK, Board.Type.BLANK, Board.Type.BLANK, Board.Type.BLANK, Board.Type.BLANK, Board.Type.BLANK, Board.Type.WALL, Board.Type.BLANK, Board.Type.EXIT},
+            {Board.Type.WALL, Board.Type.BLANK, Board.Type.WALL, Board.Type.WALL, Board.Type.BLANK, Board.Type.WALL, Board.Type.BLANK, Board.Type.WALL, Board.Type.BLANK, Board.Type.WALL},
+            {Board.Type.WALL, Board.Type.BLANK, Board.Type.WALL, Board.Type.WALL, Board.Type.BLANK, Board.Type.WALL, Board.Type.BLANK, Board.Type.WALL, Board.Type.BLANK, Board.Type.WALL},
+            {Board.Type.WALL, Board.Type.SWORD, Board.Type.WALL, Board.Type.WALL, Board.Type.BLANK, Board.Type.BLANK, Board.Type.BLANK, Board.Type.BLANK, Board.Type.BLANK, Board.Type.WALL},
+            {Board.Type.WALL, Board.Type.WALL, Board.Type.WALL, Board.Type.WALL, Board.Type.WALL, Board.Type.WALL, Board.Type.WALL, Board.Type.WALL, Board.Type.WALL, Board.Type.WALL}
+    };
+
     private BoardGenerator() {
         //  Calling this method directly is unsupported.
     }
 
     public BoardGenerator(int w, int h) throws Exception {
-        if (w < 3 || h < 3)
-            throw new Exception("Both dimensions need to be >= 3.");
+        if (w < 5 || h < 5)
+            throw new Exception("Both dimensions need to be >= 5.");
 
         boardRep = new Board.Type[h][w];
 
@@ -44,7 +57,7 @@ public class BoardGenerator {
         _height = h;
     }
 
-    public Board.Type[][] generateBoard() throws Exception {
+    public void _generateBoardWithInternalFormat() throws Exception {
         Coordinate stp;
 
         try {
@@ -92,21 +105,20 @@ public class BoardGenerator {
                     boardRep[i][j] = Board.Type.WALL;
 
         if (!_validateBoard())
-            generateBoard();
+            _generateBoardWithInternalFormat();
 
         _fillWithCharacters();
-
-        return boardRep;
     }
 
-    public Vector<Piece> generateBoardObj() throws Exception {
+    public Vector<Piece> generateBoard() throws Exception {
         Vector<Piece> retVec = new Vector<Piece>();
 
-        Board.Type[][] baseBoard = generateBoard();
+        if (boardRep != defaultBoardRep)
+            _generateBoardWithInternalFormat();
 
         for (int i = 0; i < _height; i++)
             for (int j = 0; j < _width; j++) {
-                switch (baseBoard[i][j]) {
+                switch (boardRep[i][j]) {
                     case WALL:
 
                         retVec.add(new Wall(j, i));
@@ -162,6 +174,12 @@ public class BoardGenerator {
             }
 
         return retVec;
+    }
+
+    public Vector<Piece> getDefaultBoard() throws Exception {
+        boardRep = defaultBoardRep;
+
+        return generateBoard();
     }
 
     private void _fillWithCharacters() {
