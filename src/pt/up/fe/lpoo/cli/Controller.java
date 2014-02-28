@@ -9,13 +9,17 @@ package pt.up.fe.lpoo.cli;
 import pt.up.fe.lpoo.logic.Board;
 import pt.up.fe.lpoo.logic.BoardGenerator;
 
+import pt.up.fe.lpoo.logic.piece.Piece;
+
 import pt.up.fe.lpoo.logic.piece.itemizable.Hero;
+import pt.up.fe.lpoo.logic.piece.itemizable.Dragon;
 
 import pt.up.fe.lpoo.cli.Printer;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Vector;
 
 public class Controller {
     public static void main(String args[]) {
@@ -36,19 +40,22 @@ public class Controller {
 
             if (readLine.equalsIgnoreCase("d")) {
                 skipBoardGeneration = true;
+
+                width = 10;
+                height = 10;
             } else {
-                System.out.print("Board Width? (Must be bigger than 3): ");
+                System.out.print("Board Width? (Must be bigger or equal than 5): ");
 
                 readLine = br.readLine();
 
-                if (Integer.parseInt(readLine) > 3)
+                if (Integer.parseInt(readLine) > 4)
                     width = Integer.parseInt(readLine);
                 else {
                     while (true) {
-                        System.out.print("Invalid Width. Please try again. (Must be bigger than 3): ");
+                        System.out.print("Invalid Width. Please try again. (Must be bigger than 5): ");
                         readLine = br.readLine();
 
-                        if (Integer.parseInt(readLine) > 3) {
+                        if (Integer.parseInt(readLine) > 4) {
                             width = Integer.parseInt(readLine);
 
                             break;
@@ -58,18 +65,18 @@ public class Controller {
 
                 System.out.println();
 
-                System.out.print("Board Height? (Must be bigger or equal than 3): ");
+                System.out.print("Board Height? (Must be bigger or equal than 5): ");
 
                 readLine = br.readLine();
 
-                if (Integer.parseInt(readLine) > 3)
+                if (Integer.parseInt(readLine) > 4)
                     height = Integer.parseInt(readLine);
                 else {
                     while (true) {
-                        System.out.print("Invalid Height. Please try again. (Must be bigger than 3): ");
+                        System.out.print("Invalid Height. Please try again. (Must be bigger than 5): ");
                         readLine = br.readLine();
 
-                        if (Integer.parseInt(readLine) > 3) {
+                        if (Integer.parseInt(readLine) > 4) {
                             height = Integer.parseInt(readLine);
 
                             break;
@@ -90,31 +97,34 @@ public class Controller {
             System.out.println("An error has occurred while attempting to ask for board size values. Continuing with default values (10w * 10h)...");
         }
 
-        if (!skipBoardGeneration) {
-            Boolean boardGenSuccess = false;
+        Boolean boardGenSuccess = false;
 
-            for (int i = 0; i < 10; i++) {
-                try {
-                    BoardGenerator brdGen = new BoardGenerator(width, height);
+        for (int i = 0; i < 10; i++) {
+            try {
+                BoardGenerator brdGen = new BoardGenerator(width, height);
 
-                    Board.Type[][] gdBoard = brdGen.generateBoard();
+                Vector<Piece> ooBoard;
 
-                    brd.setBoardRepresentation(gdBoard);
+                ooBoard = (skipBoardGeneration ? brdGen.getDefaultBoard() : brdGen.generateBoard());
 
-                    brd.setWidth(width);
-                    brd.setHeight(height);
+                for (Piece pc : ooBoard)
+                    pc.setBoard(brd);
 
-                    boardGenSuccess = true;
+                brd.setBoardPieces(ooBoard);
 
-                    break;
-                } catch (Exception exc) {
+                brd.setWidth(width);
+                brd.setHeight(height);
 
-                }
+                boardGenSuccess = true;
+
+                break;
+            } catch (Exception exc) {
+
             }
-
-            if (!boardGenSuccess)
-                System.out.println("Unable to generate a new board. Proceeding with default board...");
         }
+
+        if (!boardGenSuccess)
+            System.out.println("Unable to get a board.");
 
         Printer prt = new Printer(brd);
 
@@ -151,6 +161,24 @@ public class Controller {
                         heroPiece.move(Board.Direction.LEFT);
                 } catch (Exception exc) {
 
+                }
+
+                try {
+                    brd.moveDragon();
+                } catch (Exception exc) {
+
+                }
+
+                try {
+                    brd.checkDragon();
+                } catch (Exception exc) {
+
+                }
+
+                try {
+                    brd.recheckGameState();
+                } catch (Exception exc) {
+                    System.out.println(exc.getMessage());
                 }
 
                 System.out.println();

@@ -4,28 +4,20 @@
  * Created by Eduardo Almeida and João Almeida.
  */
 
-package pt.up.fe.lpoo.logic.piece;
+package pt.up.fe.lpoo.logic.piece.itemizable;
 
 import pt.up.fe.lpoo.logic.Coordinate;
+import pt.up.fe.lpoo.logic.piece.Piece;
 
-public class Blank extends Piece {
-    private Boolean _isExit;
-    private Boolean _hasItem;
+public class Blank extends ItemizablePiece {
+    private Boolean _isExit = false;
 
     public Boolean getIsExit() {
         return _isExit;
     }
 
-    public Boolean getHasItem() {
-        return _hasItem;
-    }
-
     public void setIsExit(Boolean set) {
         _isExit = set;
-    }
-
-    public void setHasItem(Boolean set) {
-        _hasItem = set;
     }
 
     public Blank() {

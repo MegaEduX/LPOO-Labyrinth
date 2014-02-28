@@ -8,7 +8,10 @@ package pt.up.fe.lpoo.logic.piece;
 
 import pt.up.fe.lpoo.logic.Board;
 import pt.up.fe.lpoo.logic.Coordinate;
+import pt.up.fe.lpoo.logic.piece.itemizable.Blank;
+import pt.up.fe.lpoo.logic.piece.itemizable.Dragon;
 import pt.up.fe.lpoo.logic.piece.itemizable.Hero;
+import pt.up.fe.lpoo.logic.piece.itemizable.ItemizablePiece;
 
 import java.util.Vector;
 
@@ -47,20 +50,17 @@ public class Piece {
     public Boolean move(Board.Direction dir) throws Exception {
         Vector<Piece> near = new Vector<Piece>();
 
-        Hero hero;
-
         try {
             near.add(_board.getPiece(new Coordinate(_position.x, _position.y - 1)));
             near.add(_board.getPiece(new Coordinate(_position.x - 1, _position.y)));
             near.add(_board.getPiece(new Coordinate(_position.x, _position.y + 1)));
             near.add(_board.getPiece(new Coordinate(_position.x + 1, _position.y)));
-
-            hero = (Hero) _board.getPiecesWithType(Board.Type.HERO).get(0);
         } catch (Exception exc) {
             return false;
         }
 
         Piece nextObj;
+
         int x = 0, y = 0;
 
         switch (dir) {
@@ -105,17 +105,27 @@ public class Piece {
 
         if (nextObj instanceof Blank) {
             if (((Blank) nextObj).getIsExit()) {
-                if (!hero.getHasItem() || !(this instanceof Hero))
+                if ((this instanceof Hero && !((Hero) this).getHasItem()) || !(this instanceof Hero))
                     return false;
 
+                ((Blank) nextObj).setIsExit(false);
+
                 //  The game has been won by now, honestly.
-            } else if (((Blank) nextObj).getHasItem()) {
-                if (this instanceof Hero) {
-                    hero.setHasItem(true);
+            } else if (this instanceof ItemizablePiece) {
+                if (((ItemizablePiece) nextObj).getHasItem()) {
+                    ((Hero) this).setHasItem(true);
 
                     ((Blank) nextObj).setHasItem(false);
+                } else if (this instanceof Dragon && ((ItemizablePiece) this).getHasItem()) {
+                    ((Dragon) this).setHasItem(false);
+
+                    ((Blank) nextObj).setHasItem(true);
                 }
             }
+
+            nextObj.setCoordinate(_position);
+
+            _position = new Coordinate(_position.x + x, _position.y + y);
 
             return true;
         }
