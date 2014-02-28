@@ -8,13 +8,8 @@ package pt.up.fe.lpoo.cli;
 
 import pt.up.fe.lpoo.logic.Board;
 import pt.up.fe.lpoo.logic.BoardGenerator;
-
 import pt.up.fe.lpoo.logic.piece.Piece;
-
 import pt.up.fe.lpoo.logic.piece.itemizable.Hero;
-import pt.up.fe.lpoo.logic.piece.itemizable.Dragon;
-
-import pt.up.fe.lpoo.cli.Printer;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -25,7 +20,7 @@ public class Controller {
     public static void main(String args[]) {
         Board brd = new Board();
 
-        int width = 10, height = 10;
+        int width = 10, height = 10, dragons = 1;
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
@@ -43,6 +38,7 @@ public class Controller {
 
                 width = 10;
                 height = 10;
+                dragons = 1;
             } else {
                 System.out.print("Board Width? (Must be bigger or equal than 5): ");
 
@@ -86,13 +82,35 @@ public class Controller {
 
                 System.out.println();
 
+                System.out.print("Number of Dragons? (Must be bigger or equal than 1): ");
+
+                readLine = br.readLine();
+
+                if (Integer.parseInt(readLine) > 0)
+                    dragons = Integer.parseInt(readLine);
+                else {
+                    while (true) {
+                        System.out.print("Invalid Number of Dragons Please try again. (Must be bigger than 1): ");
+                        readLine = br.readLine();
+
+                        if (Integer.parseInt(readLine) > 0) {
+                            dragons = Integer.parseInt(readLine);
+
+                            break;
+                        }
+                    }
+
+                }
+
                 System.out.println("Board Size is " + width + "w * " + height + "h.");
+                System.out.println("Number of Dragons: " + dragons + " .");
             }
 
             System.out.println();
         } catch (IOException exception) {
             width = 10;
             height = 10;
+            dragons = 1;
 
             System.out.println("An error has occurred while attempting to ask for board size values. Continuing with default values (10w * 10h)...");
         }
@@ -101,7 +119,7 @@ public class Controller {
 
         for (int i = 0; i < 10; i++) {
             try {
-                BoardGenerator brdGen = new BoardGenerator(width, height);
+                BoardGenerator brdGen = new BoardGenerator(width, height, dragons);
 
                 Vector<Piece> ooBoard;
 

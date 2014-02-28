@@ -8,9 +8,9 @@ package pt.up.fe.lpoo.cli;
 
 import pt.up.fe.lpoo.logic.Board;
 import pt.up.fe.lpoo.logic.Coordinate;
-import pt.up.fe.lpoo.logic.piece.Blank;
 import pt.up.fe.lpoo.logic.piece.Piece;
 import pt.up.fe.lpoo.logic.piece.Wall;
+import pt.up.fe.lpoo.logic.piece.itemizable.Blank;
 import pt.up.fe.lpoo.logic.piece.itemizable.Dragon;
 import pt.up.fe.lpoo.logic.piece.itemizable.Hero;
 
@@ -45,8 +45,11 @@ public class Printer {
                 else if (pc instanceof Blank && ((Blank) pc).getHasItem())
                     System.out.print("E");
                 else if (pc instanceof Dragon) {
-                    System.out.print(((Dragon) pc).getHasItem() ? "F" : "D");
-                    System.out.print(((Dragon) pc).getIsSleeping() && ((Dragon) pc).getHasItem() ? "F" : "d");
+                    if (((Dragon) pc).getIsSleeping())
+                        System.out.print(((Dragon) pc).getHasItem() ? "F" : "d");
+                    else {
+                        System.out.print(((Dragon) pc).getHasItem() ? "F" : "D");
+                    }
                 } else if (pc instanceof Blank && ((Blank) pc).getIsExit())
                     System.out.print("S");
                 else

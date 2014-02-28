@@ -6,9 +6,9 @@
 
 package pt.up.fe.lpoo.logic;
 
-import pt.up.fe.lpoo.logic.piece.itemizable.Blank;
 import pt.up.fe.lpoo.logic.piece.Piece;
 import pt.up.fe.lpoo.logic.piece.Wall;
+import pt.up.fe.lpoo.logic.piece.itemizable.Blank;
 import pt.up.fe.lpoo.logic.piece.itemizable.Dragon;
 import pt.up.fe.lpoo.logic.piece.itemizable.Hero;
 
@@ -19,6 +19,7 @@ import java.util.Vector;
 public class BoardGenerator {
     private int _width = 0;  //  x size
     private int _height = 0; //  y size
+    private int _dragons = 0;// nº of dragons
 
     private Board.Type boardRep[][];
 
@@ -39,9 +40,9 @@ public class BoardGenerator {
         //  Calling this method directly is unsupported.
     }
 
-    public BoardGenerator(int w, int h) throws Exception {
-        if (w < 5 || h < 5)
-            throw new Exception("Both dimensions need to be >= 5.");
+    public BoardGenerator(int w, int h, int d) throws Exception {
+        if (w < 3 || h < 3)
+            throw new Exception("Both dimensions need to be >= 3.");
 
         boardRep = new Board.Type[h][w];
 
@@ -55,7 +56,9 @@ public class BoardGenerator {
 
         _width = w;
         _height = h;
+        _dragons = d;
     }
+
 
     public void _generateBoardWithInternalFormat() throws Exception {
         Coordinate stp;
@@ -199,9 +202,26 @@ public class BoardGenerator {
         while (val == val3 || val2 == val3)
             val3 = rand.nextInt(whiteSpaces.length);
 
-        boardRep[whiteSpaces[val].y][whiteSpaces[val].x] = Board.Type.DRAGON;
+        //boardRep[whiteSpaces[val].y][whiteSpaces[val].x] = Board.Type.DRAGON;
+        int[] DrakeCoordinates = new int[_dragons];
         boardRep[whiteSpaces[val2].y][whiteSpaces[val2].x] = Board.Type.HERO;
         boardRep[whiteSpaces[val3].y][whiteSpaces[val3].x] = Board.Type.SWORD;
+        for (int i = 0; i < DrakeCoordinates.length; i++) {
+            DrakeCoordinates[i] = rand.nextInt(whiteSpaces.length);
+        }
+        int[] CheckCoordinates = new int[DrakeCoordinates.length];
+        while (true) {
+            for (int j = 0; j < DrakeCoordinates.length; j++) {
+                boardRep[whiteSpaces[DrakeCoordinates[j]].y][whiteSpaces[DrakeCoordinates[j]].x] = Board.Type.DRAGON;
+            }
+            for (int i = 0; i < CheckCoordinates.length; i++) {
+                for (int j = 0; j < DrakeCoordinates.length; j++) {
+                    if (CheckCoordinates[i] == DrakeCoordinates[j])
+                        break;
+                }
+            }
+
+        }
     }
 
     private Boolean _validateBoard() {

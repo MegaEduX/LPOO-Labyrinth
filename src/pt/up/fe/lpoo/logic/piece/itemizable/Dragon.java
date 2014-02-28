@@ -21,11 +21,12 @@ public class Dragon extends ItemizablePiece {
         int num = rand.nextInt(19);
 
         try {
-            if (num < 14)
+            if (num < 14) {
+                sleeping = false;
                 return super.move(dir);
+            }
 
             sleeping = true;
-
             return false;
         } catch (Exception exc) {
             return false;
