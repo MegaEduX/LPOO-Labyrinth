@@ -6,8 +6,8 @@
 
 package pt.up.fe.lpoo.logic.piece.itemizable;
 
-import pt.up.fe.lpoo.logic.Coordinate;
-import pt.up.fe.lpoo.logic.piece.Piece;
+        import pt.up.fe.lpoo.logic.Coordinate;
+        import pt.up.fe.lpoo.logic.piece.Piece;
 
 public class ItemizablePiece extends Piece {
     protected Boolean _item = false;
@@ -29,6 +29,6 @@ public class ItemizablePiece extends Piece {
     }
 
     public void setHasItem(Boolean hi) {
-        _item = true;
+        _item = false;
     }
 }

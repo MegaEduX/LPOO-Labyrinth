@@ -35,10 +35,6 @@ public class Controller {
 
             if (readLine.equalsIgnoreCase("d")) {
                 skipBoardGeneration = true;
-
-                width = 10;
-                height = 10;
-                dragons = 1;
             } else {
                 System.out.print("Board Width? (Must be bigger or equal than 5): ");
 

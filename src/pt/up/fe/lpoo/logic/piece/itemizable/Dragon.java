@@ -12,7 +12,7 @@ import pt.up.fe.lpoo.logic.Coordinate;
 import java.util.Random;
 
 public class Dragon extends ItemizablePiece {
-    protected boolean sleeping = false;
+    protected boolean _sleeping = false;
 
 
     @Override
@@ -22,11 +22,11 @@ public class Dragon extends ItemizablePiece {
 
         try {
             if (num < 14) {
-                sleeping = false;
+                _sleeping = false;
                 return super.move(dir);
             }
 
-            sleeping = true;
+            _sleeping = true;
             return false;
         } catch (Exception exc) {
             return false;
@@ -47,10 +47,10 @@ public class Dragon extends ItemizablePiece {
     }
 
     public void setIsSleeping() {
-        sleeping = true;
+        _sleeping = true;
     }
 
     public boolean getIsSleeping() {
-        return sleeping;
+        return _sleeping;
     }
 }

@@ -190,43 +190,50 @@ public class BoardGenerator {
 
         Random rand = new Random();
 
-        /*  Seems dirty, but it's optimized. So, profit! ^^ */
+        int toGenerate = 2 + _dragons;
 
-        int val = rand.nextInt(whiteSpaces.length);
-        int val2 = rand.nextInt(whiteSpaces.length);
-        int val3 = rand.nextInt(whiteSpaces.length);
+        Vector<Coordinate> usedCoordinates = new Vector<Coordinate>();
 
-        while (val == val2)
-            val2 = rand.nextInt(whiteSpaces.length);
+        Board.Type insertions[] = {Board.Type.HERO, Board.Type.SWORD};
 
-        while (val == val3 || val2 == val3)
-            val3 = rand.nextInt(whiteSpaces.length);
+        for (int i = 0; i < toGenerate; i++) {
+            if (i == 0) {
+                Coordinate crd = whiteSpaces[rand.nextInt(whiteSpaces.length)];
 
-        //boardRep[whiteSpaces[val].y][whiteSpaces[val].x] = Board.Type.DRAGON;
-        int[] DrakeCoordinates = new int[_dragons];
-        boardRep[whiteSpaces[val2].y][whiteSpaces[val2].x] = Board.Type.HERO;
-        boardRep[whiteSpaces[val3].y][whiteSpaces[val3].x] = Board.Type.SWORD;
-        for (int i = 0; i < DrakeCoordinates.length; i++) {
-            DrakeCoordinates[i] = rand.nextInt(whiteSpaces.length);
-        }
-        int[] CheckCoordinates = new int[DrakeCoordinates.length];
-        while (true) {
-            for (int j = 0; j < DrakeCoordinates.length; j++) {
-                boardRep[whiteSpaces[DrakeCoordinates[j]].y][whiteSpaces[DrakeCoordinates[j]].x] = Board.Type.DRAGON;
+                usedCoordinates.add(crd);
+
+                boardRep[crd.y][crd.x] = insertions[i];
+
+                continue;
+            } else if (i == 1) {
+                Coordinate crd = whiteSpaces[rand.nextInt(whiteSpaces.length)];
+
+                while (crd.y == usedCoordinates.get(0).y && crd.x == usedCoordinates.get(0).x)
+                    crd = whiteSpaces[rand.nextInt(whiteSpaces.length)];
+
+                usedCoordinates.add(crd);
+
+                boardRep[crd.y][crd.x] = insertions[i];
+            } else {
+                Coordinate crd = whiteSpaces[rand.nextInt(whiteSpaces.length)];
+
+                for (int j = 0; j < i; j++)
+                    if (crd.y == usedCoordinates.get(j).y && crd.x == usedCoordinates.get(j).x) {
+                        crd = whiteSpaces[rand.nextInt(whiteSpaces.length)];
+
+                        j = 0;
+                    }
+
+                usedCoordinates.add(crd);
+
+                boardRep[crd.y][crd.x] = Board.Type.DRAGON;
             }
-            for (int i = 0; i < CheckCoordinates.length; i++) {
-                for (int j = 0; j < DrakeCoordinates.length; j++) {
-                    if (CheckCoordinates[i] == DrakeCoordinates[j])
-                        break;
-                }
-            }
-
         }
     }
 
     private Boolean _validateBoard() {
         for (int i = 0; i < _height; i++)
-            for (int j = 0; j < _width; j++) {
+            for (int j = 0; j < _width; j++)
                 try {
                     if (boardRep[i][j] == Board.Type.BLANK &&
                             boardRep[i + 1][j] == Board.Type.BLANK &&
@@ -236,25 +243,6 @@ public class BoardGenerator {
                 } catch (Exception exc) {
 
                 }
-            }
-
-        /*  for (int i = 0; i < _height; i++)
-            for (int j = 0; j < _width; j++) {
-                try {
-                    if (boardRep[i][j] == Board.Type.WALL &&
-                            boardRep[i + 1][j] == Board.Type.WALL &&
-                            boardRep[i + 2][j] == Board.Type.WALL &&
-                            boardRep[i][j + 1] == Board.Type.WALL &&
-                            boardRep[i + 1][j + 1] == Board.Type.WALL &&
-                            boardRep[i + 2][j + 1] == Board.Type.WALL &&
-                            boardRep[i][j + 2] == Board.Type.WALL &&
-                            boardRep[i + 1][j + 2] == Board.Type.WALL &&
-                            boardRep[i + 2][j + 2] == Board.Type.WALL)
-                        return false;
-                } catch (Exception exc) {
-
-                }
-            }   */
 
         return true;
     }

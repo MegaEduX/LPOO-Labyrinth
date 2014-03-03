@@ -103,6 +103,8 @@ public class Piece {
 
         }
 
+        //  TODO: Stop using instanceof and place the class-specific things on their own places!
+
         if (nextObj instanceof Blank) {
             if (((Blank) nextObj).getIsExit()) {
                 if ((this instanceof Hero && !((Hero) this).getHasItem()) || !(this instanceof Hero))
