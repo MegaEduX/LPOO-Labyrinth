@@ -194,15 +194,13 @@ public class BoardGenerator {
 
         Vector<Coordinate> usedCoordinates = new Vector<Coordinate>();
 
-        Board.Type insertions[] = {Board.Type.HERO, Board.Type.SWORD};
-
         for (int i = 0; i < toGenerate; i++) {
             if (i == 0) {
                 Coordinate crd = whiteSpaces[rand.nextInt(whiteSpaces.length)];
 
                 usedCoordinates.add(crd);
 
-                boardRep[crd.y][crd.x] = insertions[i];
+                boardRep[crd.y][crd.x] = Board.Type.HERO;
 
                 continue;
             } else if (i == 1) {
@@ -213,7 +211,7 @@ public class BoardGenerator {
 
                 usedCoordinates.add(crd);
 
-                boardRep[crd.y][crd.x] = insertions[i];
+                boardRep[crd.y][crd.x] = Board.Type.SWORD;
             } else {
                 Coordinate crd = whiteSpaces[rand.nextInt(whiteSpaces.length)];
 

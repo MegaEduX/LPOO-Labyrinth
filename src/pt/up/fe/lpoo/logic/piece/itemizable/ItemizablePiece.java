@@ -29,6 +29,6 @@ public class ItemizablePiece extends Piece {
     }
 
     public void setHasItem(Boolean hi) {
-        _item = false;
+        _item = hi;
     }
 }
