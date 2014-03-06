@@ -58,7 +58,7 @@ public class Dragon extends ItemizablePiece {
         _sleeping = true;
     }
 
-    public boolean getIsSleeping() {
+    public Boolean getIsSleeping() {
         return _sleeping;
     }
 
