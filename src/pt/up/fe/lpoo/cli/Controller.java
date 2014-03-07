@@ -9,6 +9,7 @@ package pt.up.fe.lpoo.cli;
 import pt.up.fe.lpoo.logic.Board;
 import pt.up.fe.lpoo.logic.BoardGenerator;
 import pt.up.fe.lpoo.logic.piece.Piece;
+import pt.up.fe.lpoo.logic.piece.itemizable.Dragon;
 import pt.up.fe.lpoo.logic.piece.itemizable.Hero;
 
 import java.io.BufferedReader;
@@ -21,6 +22,8 @@ public class Controller {
         Board brd = new Board();
 
         int width = 10, height = 10, dragons = 1;
+
+        Dragon.Behavior bhv = Dragon.Behavior.STOP;
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
@@ -96,6 +99,18 @@ public class Controller {
                         }
                     }
 
+                }
+
+                System.out.println("");
+
+                System.out.print("Dragons Behavior? Always (S)leeping, Always (M)oving, (R)andomly Sleeping: ");
+
+                readLine = br.readLine();
+
+                while (readLine.equalsIgnoreCase("s") || readLine.equalsIgnoreCase("m") || readLine.equalsIgnoreCase("r")) {
+                    System.out.print("Invalid Choice. Dragons Behavior? Always (S)leeping, Always (M)oving, (R)andomly Sleeping: ");
+
+                    readLine = br.readLine();
                 }
 
                 System.out.println("Board Size is " + width + "w * " + height + "h.");

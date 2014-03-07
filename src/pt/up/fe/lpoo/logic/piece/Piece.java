@@ -47,7 +47,7 @@ public class Piece {
         _board = brd;
     }
 
-    public Boolean move(Board.Direction dir) throws Exception {
+    protected Piece _moveSharedCode(Board.Direction dir, Coordinate crdDiff) throws Exception {
         Vector<Piece> near = new Vector<Piece>();
 
         try {
@@ -56,12 +56,12 @@ public class Piece {
             near.add(_board.getPiece(new Coordinate(_position.x, _position.y + 1)));
             near.add(_board.getPiece(new Coordinate(_position.x + 1, _position.y)));
         } catch (Exception exc) {
-            return false;
+            throw exc;
         }
 
-        Piece nextObj;
-
         int x = 0, y = 0;
+
+        Piece nextObj;
 
         switch (dir) {
 
@@ -103,27 +103,27 @@ public class Piece {
 
         }
 
-        //  TODO: Stop using instanceof and place the class-specific things on their own places!
+        crdDiff.x = x;
+        crdDiff.y = y;
+
+        return nextObj;
+    }
+
+    public Boolean move(Board.Direction dir) throws Exception {
+        Piece nextObj;
+        Coordinate crdDiff = new Coordinate(0, 0);
+
+        try {
+            nextObj = _moveSharedCode(dir, crdDiff);
+        } catch (Exception exc) {
+            throw exc;
+        }
+
+        Integer x = crdDiff.x, y = crdDiff.y;
 
         if (nextObj instanceof Blank) {
-            if (((Blank) nextObj).getIsExit()) {
-                if ((this instanceof Hero && !((Hero) this).getHasItem()) || !(this instanceof Hero))
-                    return false;
-
-                ((Blank) nextObj).setIsExit(false);
-
-                //  The game has been won by now, honestly.
-            } else if (this instanceof ItemizablePiece) {
-                if (((ItemizablePiece) nextObj).getHasItem()) {
-                    ((Hero) this).setHasItem(true);
-
-                    ((Blank) nextObj).setHasItem(false);
-                } else if (this instanceof Dragon && ((ItemizablePiece) this).getHasItem()) {
-                    ((Dragon) this).setHasItem(false);
-
-                    ((Blank) nextObj).setHasItem(true);
-                }
-            }
+            if (((Blank) nextObj).getIsExit())
+                return false;
 
             nextObj.setCoordinate(_position);
 

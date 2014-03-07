@@ -21,6 +21,8 @@ public class BoardGenerator {
     private int _height = 0; //  y size
     private int _dragons = 0;// nº of dragons
 
+    private Dragon.Behavior _behavior = Dragon.Behavior.STOP;
+
     private Board.Type boardRep[][];
 
     private Board.Type defaultBoardRep[][] = {
@@ -59,6 +61,9 @@ public class BoardGenerator {
         _dragons = d;
     }
 
+    public void setDragonBehavior(Dragon.Behavior bhv) {
+        _behavior = bhv;
+    }
 
     public void _generateBoardWithInternalFormat() throws Exception {
         Coordinate stp;
@@ -146,7 +151,11 @@ public class BoardGenerator {
 
                     case DRAGON:
 
-                        retVec.add(new Dragon(j, i));
+                        Dragon drag = new Dragon(j, i);
+
+                        drag.setBehavior(_behavior);
+
+                        retVec.add(drag);
 
                         break;
 
@@ -194,15 +203,13 @@ public class BoardGenerator {
 
         Vector<Coordinate> usedCoordinates = new Vector<Coordinate>();
 
-        Board.Type insertions[] = {Board.Type.HERO, Board.Type.SWORD};
-
         for (int i = 0; i < toGenerate; i++) {
             if (i == 0) {
                 Coordinate crd = whiteSpaces[rand.nextInt(whiteSpaces.length)];
 
                 usedCoordinates.add(crd);
 
-                boardRep[crd.y][crd.x] = insertions[i];
+                boardRep[crd.y][crd.x] = Board.Type.HERO;
 
                 continue;
             } else if (i == 1) {
@@ -213,7 +220,7 @@ public class BoardGenerator {
 
                 usedCoordinates.add(crd);
 
-                boardRep[crd.y][crd.x] = insertions[i];
+                boardRep[crd.y][crd.x] = Board.Type.SWORD;
             } else {
                 Coordinate crd = whiteSpaces[rand.nextInt(whiteSpaces.length)];
 
