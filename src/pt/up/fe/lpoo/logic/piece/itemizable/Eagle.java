@@ -26,7 +26,12 @@ public class Eagle extends ItemizablePiece {
     }
 
 
-    public Boolean moveEagle(Coordinate c1) throws Exception {
+    @Override
+    public Boolean move(Board.Direction Dir) throws Exception {
+        throw new Exception("This can't be called, bro!");
+    }
+
+    public Boolean move(Coordinate c1) throws Exception {
         // Sword on the same line
         try {
 
