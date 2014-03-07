@@ -107,7 +107,7 @@ public class Controller {
 
                 readLine = br.readLine();
 
-                while (readLine.equalsIgnoreCase("s") || readLine.equalsIgnoreCase("m") || readLine.equalsIgnoreCase("r")) {
+                while (!readLine.equalsIgnoreCase("s") || !readLine.equalsIgnoreCase("m") || !readLine.equalsIgnoreCase("r")) {
                     System.out.print("Invalid Choice. Dragons Behavior? Always (S)leeping, Always (M)oving, (R)andomly Sleeping: ");
 
                     readLine = br.readLine();
