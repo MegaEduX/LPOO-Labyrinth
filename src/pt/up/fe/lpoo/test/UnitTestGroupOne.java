@@ -24,29 +24,25 @@ public class UnitTestGroupOne {
             pc.move(mv);
     }
 
-    @Before public void setUp() {
-        try {
-            brd = new Board();
+    @Before public void setUp() throws Exception {
+        brd = new Board();
 
-            BoardGenerator gen = new BoardGenerator(10, 10, 1);
+        BoardGenerator gen = new BoardGenerator(10, 10, 1);
 
-            Vector<Piece> ooBoard = gen.getDefaultBoard();
+        Vector<Piece> ooBoard = gen.getDefaultBoard();
 
-            for (Piece pc : ooBoard)
-                pc.setBoard(brd);
+        for (Piece pc : ooBoard)
+            pc.setBoard(brd);
 
-            brd.setBoardPieces(ooBoard);
-            brd.setWidth(10);
-            brd.setHeight(10);
+        brd.setBoardPieces(ooBoard);
+        brd.setWidth(10);
+        brd.setHeight(10);
 
-            Dragon drag = (Dragon) brd.getPiecesWithType(Board.Type.DRAGON).get(0);
+        Dragon drag = (Dragon) brd.getPiecesWithType(Board.Type.DRAGON).get(0);
 
-            drag.setBehavior(Dragon.Behavior.STOP);
+        drag.setBehavior(Dragon.Behavior.STOP);
 
-            assertNotNull("Couldn't generate board.", brd);
-        } catch (Exception exc) {
-            fail(exc.getMessage());
-        }
+        assertNotNull("Couldn't generate board.", brd);
     }
 
     @Test public void testHeroMove() {

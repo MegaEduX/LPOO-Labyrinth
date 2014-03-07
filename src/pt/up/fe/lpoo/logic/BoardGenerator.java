@@ -38,6 +38,19 @@ public class BoardGenerator {
             {Board.Type.WALL, Board.Type.WALL, Board.Type.WALL, Board.Type.WALL, Board.Type.WALL, Board.Type.WALL, Board.Type.WALL, Board.Type.WALL, Board.Type.WALL, Board.Type.WALL}
     };
 
+    private Board.Type defaultTestThreeDragonsRep[][] = {
+            {Board.Type.WALL, Board.Type.WALL, Board.Type.WALL, Board.Type.WALL, Board.Type.WALL, Board.Type.WALL, Board.Type.WALL, Board.Type.WALL, Board.Type.WALL, Board.Type.WALL},
+            {Board.Type.WALL, Board.Type.HERO, Board.Type.BLANK, Board.Type.BLANK, Board.Type.BLANK, Board.Type.BLANK, Board.Type.BLANK, Board.Type.BLANK, Board.Type.BLANK, Board.Type.WALL},
+            {Board.Type.WALL, Board.Type.BLANK, Board.Type.WALL, Board.Type.WALL, Board.Type.BLANK, Board.Type.WALL, Board.Type.BLANK, Board.Type.WALL, Board.Type.BLANK, Board.Type.WALL},
+            {Board.Type.WALL, Board.Type.DRAGON, Board.Type.WALL, Board.Type.WALL, Board.Type.BLANK, Board.Type.WALL, Board.Type.DRAGON, Board.Type.WALL, Board.Type.BLANK, Board.Type.WALL},
+            {Board.Type.WALL, Board.Type.BLANK, Board.Type.WALL, Board.Type.WALL, Board.Type.BLANK, Board.Type.WALL, Board.Type.BLANK, Board.Type.WALL, Board.Type.BLANK, Board.Type.WALL},
+            {Board.Type.WALL, Board.Type.BLANK, Board.Type.BLANK, Board.Type.DRAGON, Board.Type.BLANK, Board.Type.BLANK, Board.Type.BLANK, Board.Type.WALL, Board.Type.BLANK, Board.Type.EXIT},
+            {Board.Type.WALL, Board.Type.BLANK, Board.Type.WALL, Board.Type.WALL, Board.Type.BLANK, Board.Type.WALL, Board.Type.BLANK, Board.Type.WALL, Board.Type.BLANK, Board.Type.WALL},
+            {Board.Type.WALL, Board.Type.BLANK, Board.Type.WALL, Board.Type.WALL, Board.Type.BLANK, Board.Type.WALL, Board.Type.BLANK, Board.Type.WALL, Board.Type.BLANK, Board.Type.WALL},
+            {Board.Type.WALL, Board.Type.SWORD, Board.Type.WALL, Board.Type.WALL, Board.Type.BLANK, Board.Type.BLANK, Board.Type.BLANK, Board.Type.BLANK, Board.Type.BLANK, Board.Type.WALL},
+            {Board.Type.WALL, Board.Type.WALL, Board.Type.WALL, Board.Type.WALL, Board.Type.WALL, Board.Type.WALL, Board.Type.WALL, Board.Type.WALL, Board.Type.WALL, Board.Type.WALL}
+    };
+
     private BoardGenerator() {
         //  Calling this method directly is unsupported.
     }
@@ -121,7 +134,7 @@ public class BoardGenerator {
     public Vector<Piece> generateBoard() throws Exception {
         Vector<Piece> retVec = new Vector<Piece>();
 
-        if (boardRep != defaultBoardRep)
+        if (boardRep != defaultBoardRep && boardRep != defaultTestThreeDragonsRep)
             _generateBoardWithInternalFormat();
 
         for (int i = 0; i < _height; i++)
@@ -190,6 +203,12 @@ public class BoardGenerator {
 
     public Vector<Piece> getDefaultBoard() throws Exception {
         boardRep = defaultBoardRep;
+
+        return generateBoard();
+    }
+
+    public Vector<Piece> getDragonTestBoard() throws Exception {
+        boardRep = defaultTestThreeDragonsRep;
 
         return generateBoard();
     }
