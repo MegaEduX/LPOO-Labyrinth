@@ -12,6 +12,7 @@ import pt.up.fe.lpoo.logic.piece.Piece;
 import pt.up.fe.lpoo.logic.piece.Wall;
 import pt.up.fe.lpoo.logic.piece.itemizable.Blank;
 import pt.up.fe.lpoo.logic.piece.itemizable.Dragon;
+import pt.up.fe.lpoo.logic.piece.itemizable.Eagle;
 import pt.up.fe.lpoo.logic.piece.itemizable.Hero;
 
 public class Printer {
@@ -44,6 +45,8 @@ public class Printer {
                     System.out.print(((Hero) pc).getHasItem() ? "A" : "H");
                 else if (pc instanceof Blank && ((Blank) pc).getHasItem())
                     System.out.print("E");
+                else if (pc instanceof Eagle)
+                    System.out.print(((Eagle) pc).isFlying() ? "X" : "E");
                 else if (pc instanceof Dragon) {
                     if (((Dragon) pc).getIsSleeping())
                         System.out.print(((Dragon) pc).getHasItem() ? "F" : "d");

@@ -9,7 +9,9 @@ package pt.up.fe.lpoo.cli;
 import pt.up.fe.lpoo.logic.Board;
 import pt.up.fe.lpoo.logic.BoardGenerator;
 import pt.up.fe.lpoo.logic.piece.Piece;
+import pt.up.fe.lpoo.logic.piece.itemizable.Blank;
 import pt.up.fe.lpoo.logic.piece.itemizable.Dragon;
+import pt.up.fe.lpoo.logic.piece.itemizable.Eagle;
 import pt.up.fe.lpoo.logic.piece.itemizable.Hero;
 
 import java.io.BufferedReader;
@@ -172,11 +174,12 @@ public class Controller {
         try {
             System.out.println();
 
-            System.out.println("Please type (U)p/(L)eft/(D)own/(R)ight to play, followed by Return.");
+            System.out.println("Please type (U)p/(L)eft/(D)own/(R)ight/Launch (E)agle to play, followed by Return.");
 
             readLine = br.readLine();
 
             System.out.println();
+            Eagle egl = null;
 
             while (!readLine.equalsIgnoreCase("quit")) {
                 try {
@@ -188,12 +191,34 @@ public class Controller {
                         heroPiece.move(Board.Direction.RIGHT);
                     else if (readLine.equalsIgnoreCase("left") || readLine.equalsIgnoreCase("l"))
                         heroPiece.move(Board.Direction.LEFT);
+                    else if (readLine.equalsIgnoreCase("E") || readLine.equalsIgnoreCase("e")) {
+                        if (egl == null) {
+                            egl = new Eagle(true, heroPiece.getCoordinate());
+                        }
+                    }
+
                 } catch (Exception exc) {
 
                 }
 
                 try {
                     brd.moveDragon();
+
+                    Vector<Piece> blankPieces = brd.getPiecesWithType(Board.Type.BLANK);
+
+                    Blank p1 = null;
+
+                    for (Piece pc : blankPieces)
+                        if (((Blank) pc).getHasItem())
+                            p1 = (Blank) pc;
+
+                    if (p1.getCoordinate().x == egl.getCoordinate().x && p1.getCoordinate().y == egl.getCoordinate().y) {
+                        egl.setOnGround();
+                        egl.setHasItem(true);
+
+                        egl.move(heroPiece.getCoordinate());
+                    } else
+                        egl.move(p1.getCoordinate());
                 } catch (Exception exc) {
 
                 }

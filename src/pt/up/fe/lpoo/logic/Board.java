@@ -6,17 +6,21 @@
 
 package pt.up.fe.lpoo.logic;
 
+import pt.up.fe.lpoo.logic.piece.Piece;
+import pt.up.fe.lpoo.logic.piece.Wall;
 import pt.up.fe.lpoo.logic.piece.itemizable.Blank;
 import pt.up.fe.lpoo.logic.piece.itemizable.Dragon;
+import pt.up.fe.lpoo.logic.piece.itemizable.Eagle;
 import pt.up.fe.lpoo.logic.piece.itemizable.Hero;
-
-import pt.up.fe.lpoo.logic.piece.*;
 
 import java.util.Random;
 import java.util.Vector;
 
 public class Board {
-    public enum Type {WALL, HERO, SWORD, DRAGON, MIXED_SD, EXIT, BLANK, LOCKED_WALL};
+    public enum Type {WALL, HERO, SWORD, DRAGON, MIXED_SD, EXIT, BLANK, LOCKED_WALL, EAGLE}
+
+    ;
+
     public enum Direction {UP, LEFT, DOWN, RIGHT};
     public enum State {RUNNING, LOST, WON};
 
@@ -29,6 +33,15 @@ public class Board {
 
     private int width = 10;
     private int height = 10;
+    private Eagle egl = null;
+
+    public void setEagle(Eagle E1) {
+        egl = E1;
+    }
+
+    public Eagle getEagle() {
+        return egl;
+    }
 
     public Piece getPiece(Coordinate crd) throws Exception {
         for (Piece pc : _boardPieces)
