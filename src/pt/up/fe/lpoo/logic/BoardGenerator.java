@@ -21,6 +21,8 @@ public class BoardGenerator {
     private int _height = 0; //  y size
     private int _dragons = 0;// nº of dragons
 
+    private Dragon.Behavior _behavior = Dragon.Behavior.STOP;
+
     private Board.Type boardRep[][];
 
     private Board.Type defaultBoardRep[][] = {
@@ -59,6 +61,9 @@ public class BoardGenerator {
         _dragons = d;
     }
 
+    public void setDragonBehavior(Dragon.Behavior bhv) {
+        _behavior = bhv;
+    }
 
     public void _generateBoardWithInternalFormat() throws Exception {
         Coordinate stp;
@@ -146,7 +151,11 @@ public class BoardGenerator {
 
                     case DRAGON:
 
-                        retVec.add(new Dragon(j, i));
+                        Dragon drag = new Dragon(j, i);
+
+                        drag.setBehavior(_behavior);
+
+                        retVec.add(drag);
 
                         break;
 

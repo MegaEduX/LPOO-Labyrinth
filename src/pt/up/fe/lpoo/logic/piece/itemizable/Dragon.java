@@ -33,13 +33,15 @@ public class Dragon extends ItemizablePiece {
                 _sleeping = false;
 
                 Piece nextObj;
-                Integer x = 0, y = 0;
+                Coordinate crdDiff = new Coordinate(0, 0);
 
                 try {
-                    nextObj = _moveSharedCode(dir, x, y);
+                    nextObj = _moveSharedCode(dir, crdDiff);
                 } catch (Exception exc) {
                     throw exc;
                 }
+
+                Integer x = crdDiff.x, y = crdDiff.y;
 
                 if (nextObj instanceof Blank) {
                     if (((Blank) nextObj).getIsExit()) {

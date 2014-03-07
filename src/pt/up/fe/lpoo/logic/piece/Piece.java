@@ -47,7 +47,7 @@ public class Piece {
         _board = brd;
     }
 
-    protected Piece _moveSharedCode(Board.Direction dir, Integer x, Integer y) throws Exception {
+    protected Piece _moveSharedCode(Board.Direction dir, Coordinate crdDiff) throws Exception {
         Vector<Piece> near = new Vector<Piece>();
 
         try {
@@ -58,6 +58,8 @@ public class Piece {
         } catch (Exception exc) {
             throw exc;
         }
+
+        int x = 0, y = 0;
 
         Piece nextObj;
 
@@ -101,18 +103,23 @@ public class Piece {
 
         }
 
+        crdDiff.x = x;
+        crdDiff.y = y;
+
         return nextObj;
     }
 
     public Boolean move(Board.Direction dir) throws Exception {
         Piece nextObj;
-        Integer x = 0, y = 0;
+        Coordinate crdDiff = new Coordinate(0, 0);
 
         try {
-            nextObj = _moveSharedCode(dir, x, y);
+            nextObj = _moveSharedCode(dir, crdDiff);
         } catch (Exception exc) {
             throw exc;
         }
+
+        Integer x = crdDiff.x, y = crdDiff.y;
 
         if (nextObj instanceof Blank) {
             if (((Blank) nextObj).getIsExit())
