@@ -17,9 +17,7 @@ import java.util.Random;
 import java.util.Vector;
 
 public class Board {
-    public enum Type {WALL, HERO, SWORD, DRAGON, MIXED_SD, EXIT, BLANK, LOCKED_WALL, EAGLE}
-
-    ;
+    public enum Type {WALL, HERO, SWORD, DRAGON, MIXED_SD, EXIT, BLANK, LOCKED_WALL, EAGLE};
 
     public enum Direction {UP, LEFT, DOWN, RIGHT};
     public enum State {RUNNING, LOST, WON};

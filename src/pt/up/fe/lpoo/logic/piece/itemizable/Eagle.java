@@ -13,6 +13,14 @@ public class Eagle extends ItemizablePiece {
     public Boolean _onGround = false;
     protected Coordinate FirstPos;
 
+    public Eagle(Boolean onGround, Coordinate pos) {
+        super();
+
+        _onGround = onGround;
+        FirstPos = pos;
+
+    }
+
     public void setOnGround() {
         _onGround = true;
     }
