@@ -19,6 +19,16 @@ import java.util.Vector;
 import javax.swing.*;
 
 public class GameView {
+    private class RestartListener implements ActionListener {
+        RestartListener() {
+
+        }
+
+        public void actionPerformed(ActionEvent arg0) {
+
+        }
+    }
+
     static private JFrame frame;
 
     public static void main(String[] args) {
@@ -46,6 +56,10 @@ public class GameView {
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.setPreferredSize(new Dimension(500, 522));
             frame.getContentPane().add(new GamePanel(brd, new Coordinate(500, 500)));
+
+            JButton restartGameButton = new JButton("Restart Game");
+            //RestartListener rl = new RestartListener();
+            //restartGameButton.addActionListener();
 
             //
 

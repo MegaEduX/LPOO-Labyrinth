@@ -30,16 +30,16 @@ public class GamePanel extends JPanel implements KeyListener {
 
     private Board _board;
 
-    public GamePanel() {
-        addKeyListener(this);
-    }
-
     public GamePanel(/*Coordinate boardSize, */Board board, Coordinate windowSize) {
         //  _board = boardSize;
 
         _board = board;
 
         _window = windowSize;
+
+        addKeyListener(this);
+
+        setFocusable(true);
     }
 
     public void paintComponent(Graphics g) {
@@ -106,9 +106,17 @@ public class GamePanel extends JPanel implements KeyListener {
                         } catch (Exception e) {
 
                         }
-                    } else if (pc instanceof Blank && ((Blank) pc).getHasItem())
-                        System.out.print("E");
-                    else if (pc instanceof Eagle)
+                    } else if (pc instanceof Blank && ((Blank) pc).getHasItem()) {
+                        File sw = new File("sword.png");
+
+                        try {
+                            BufferedImage esp = ImageIO.read(sw);
+
+                            g.drawImage(esp, 0 + sepX * j, 0 + sepY * i, sepX, sepY, null);
+                        } catch (Exception e) {
+
+                        }
+                    } else if (pc instanceof Eagle)
                         System.out.print(((Eagle) pc).isFlying() ? "X" : "E");
                     else if (pc instanceof Dragon) {
                         File dragon = new File(((Dragon) pc).getIsSleeping() ? "gyarados_zzz.png" : "gyarados.png");
@@ -144,11 +152,37 @@ public class GamePanel extends JPanel implements KeyListener {
     //
 
     public void keyTyped(KeyEvent e) {
-
+        System.out.println(e);
     }
 
     public void keyPressed(KeyEvent e) {
+        String keyText = java.awt.event.KeyEvent.getKeyText(e.getKeyCode());
 
+        try {
+            Hero hero = (Hero) _board.getPiecesWithType(Board.Type.HERO).get(0);
+            if (keyText.equalsIgnoreCase("up")) {
+                hero.move(Board.Direction.UP);
+            } else if (keyText.equalsIgnoreCase("left")) {
+                hero.move(Board.Direction.LEFT);
+            } else if (keyText.equalsIgnoreCase("down")) {
+                hero.move(Board.Direction.DOWN);
+            } else if (keyText.equalsIgnoreCase("right")) {
+                hero.move(Board.Direction.RIGHT);
+            }
+        } catch (Exception exc) {
+
+        }
+
+        try {
+            _board.moveDragon();
+            _board.checkDragon();
+            _board.recheckGameState();
+        } catch (Exception exc) {
+
+        }
+
+        repaint();
+        revalidate();
     }
 
     public void keyReleased(KeyEvent e) {
