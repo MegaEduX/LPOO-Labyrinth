@@ -42,6 +42,13 @@ public class GamePanel extends JPanel implements KeyListener {
         setFocusable(true);
     }
 
+    public void restartGame(Board board) {
+        _board = board;
+
+        repaint();
+        revalidate();
+    }
+
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
 
