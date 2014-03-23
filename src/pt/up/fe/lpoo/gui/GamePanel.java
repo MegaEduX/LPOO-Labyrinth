@@ -30,6 +30,11 @@ public class GamePanel extends JPanel implements KeyListener {
 
     private Board _board;
 
+    private String _upBinding = "up";
+    private String _leftBinding = "left";
+    private String _downBinding = "down";
+    private String _rightBinding = "right";
+
     public GamePanel(/*Coordinate boardSize, */Board board, Coordinate windowSize) {
         //  _board = boardSize;
 
@@ -40,6 +45,13 @@ public class GamePanel extends JPanel implements KeyListener {
         addKeyListener(this);
 
         setFocusable(true);
+    }
+
+    public void setKeyBindings(String up, String left, String down, String right) {
+        _upBinding = up;
+        _leftBinding = left;
+        _downBinding = down;
+        _rightBinding = right;
     }
 
     public void restartGame(Board board) {
@@ -159,7 +171,7 @@ public class GamePanel extends JPanel implements KeyListener {
     //
 
     public void keyTyped(KeyEvent e) {
-        System.out.println(e);
+        //  Do nothing.
     }
 
     public void keyPressed(KeyEvent e) {
@@ -167,13 +179,13 @@ public class GamePanel extends JPanel implements KeyListener {
 
         try {
             Hero hero = (Hero) _board.getPiecesWithType(Board.Type.HERO).get(0);
-            if (keyText.equalsIgnoreCase("up")) {
+            if (keyText.equalsIgnoreCase(_upBinding)) {
                 hero.move(Board.Direction.UP);
-            } else if (keyText.equalsIgnoreCase("left")) {
+            } else if (keyText.equalsIgnoreCase(_leftBinding)) {
                 hero.move(Board.Direction.LEFT);
-            } else if (keyText.equalsIgnoreCase("down")) {
+            } else if (keyText.equalsIgnoreCase(_downBinding)) {
                 hero.move(Board.Direction.DOWN);
-            } else if (keyText.equalsIgnoreCase("right")) {
+            } else if (keyText.equalsIgnoreCase(_rightBinding)) {
                 hero.move(Board.Direction.RIGHT);
             }
         } catch (Exception exc) {

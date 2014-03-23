@@ -197,46 +197,72 @@ public class Board {
     }
 
     private DragonSearchResult _isNearDragon() throws Exception {
-        Dragon drag;
-
         try {
-            drag = (Dragon) getPiecesWithType(Type.DRAGON).get(0);
+            getPiecesWithType(Type.DRAGON).get(0);
         } catch (Exception exc) {
             return DragonSearchResult.ALREADY_DEFEATED;
         }
 
+        Vector<Piece> dragons = getPiecesWithType(Type.DRAGON);
+
         Hero hero = (Hero) getPiecesWithType(Type.HERO).get(0);
 
-        if (hero.getCoordinate().x == drag.getCoordinate().x)
-            if (hero.getCoordinate().y == drag.getCoordinate().y || hero.getCoordinate().y - 1 == drag.getCoordinate().y || hero.getCoordinate().y + 1 == drag.getCoordinate().y)
-                return DragonSearchResult.FOUND;
+        for (Piece d : dragons) {
+            Dragon drag = (Dragon) d;
 
-        if (hero.getCoordinate().y == drag.getCoordinate().y)
-            if (hero.getCoordinate().x == drag.getCoordinate().x || hero.getCoordinate().x - 1 == drag.getCoordinate().x || hero.getCoordinate().x + 1 == drag.getCoordinate().x)
-                return DragonSearchResult.FOUND;
+            if (hero.getCoordinate().x == drag.getCoordinate().x)
+                if (hero.getCoordinate().y == drag.getCoordinate().y || hero.getCoordinate().y - 1 == drag.getCoordinate().y || hero.getCoordinate().y + 1 == drag.getCoordinate().y)
+                    return DragonSearchResult.FOUND;
+
+            if (hero.getCoordinate().y == drag.getCoordinate().y)
+                if (hero.getCoordinate().x == drag.getCoordinate().x || hero.getCoordinate().x - 1 == drag.getCoordinate().x || hero.getCoordinate().x + 1 == drag.getCoordinate().x)
+                    return DragonSearchResult.FOUND;
+        }
 
         return DragonSearchResult.NOT_FOUND;
     }
 
-    public DragonFightResult checkDragon() throws Exception {
+    private Dragon _dragonNearHero() throws Exception {
         try {
-            DragonSearchResult res = _isNearDragon();
-
-            if (res == DragonSearchResult.ALREADY_DEFEATED)
-                return DragonFightResult.ALREADY_DEFEATED;
-
-            if (res == DragonSearchResult.NOT_FOUND)
-                return DragonFightResult.NOT_FOUND;
-
+            getPiecesWithType(Type.DRAGON).get(0);
         } catch (Exception exc) {
             throw exc;
+        }
+
+        Vector<Piece> dragons = getPiecesWithType(Type.DRAGON);
+
+        Hero hero = (Hero) getPiecesWithType(Type.HERO).get(0);
+
+        for (Piece d : dragons) {
+            Dragon drag = (Dragon) d;
+
+            if (hero.getCoordinate().x == drag.getCoordinate().x)
+                if (hero.getCoordinate().y == drag.getCoordinate().y || hero.getCoordinate().y - 1 == drag.getCoordinate().y || hero.getCoordinate().y + 1 == drag.getCoordinate().y)
+                    return drag;
+
+            if (hero.getCoordinate().y == drag.getCoordinate().y)
+                if (hero.getCoordinate().x == drag.getCoordinate().x || hero.getCoordinate().x - 1 == drag.getCoordinate().x || hero.getCoordinate().x + 1 == drag.getCoordinate().x)
+                    return drag;
+        }
+
+        return null;
+    }
+
+    public DragonFightResult checkDragon() throws Exception {
+        Dragon drag;
+
+        try {
+            drag = _dragonNearHero();
+
+            if (drag == null)
+                return DragonFightResult.NOT_FOUND;
+        } catch (Exception exc) {
+            return DragonFightResult.ALREADY_DEFEATED;
         }
 
         Hero hero = (Hero) getPiecesWithType(Type.HERO).get(0);
 
         if (hero.getHasItem()) {
-            Dragon drag = (Dragon) getPiecesWithType(Type.DRAGON).get(0);
-
             Blank bl = new Blank(drag.getCoordinate());
 
             _boardPieces.add(bl);
@@ -245,6 +271,8 @@ public class Board {
 
             return DragonFightResult.WON;
         }
+
+        _boardPieces.add(new Blank(hero.getCoordinate()));
 
         removePiece(hero);
 
