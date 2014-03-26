@@ -371,25 +371,22 @@ public class BoardGenerator {
 
         Random rand = new Random();
 
-        int val = rand.nextInt(4);
-        int index = rand.nextInt(8) + 1;
-
-        switch (val) {
+        switch (rand.nextInt(4)) {
             case 0:  // Top-Most Line
 
-                return new Coordinate(val, 0);
+                return new Coordinate(rand.nextInt(_width - 2) + 1, 0);
 
             case 1: //  Right-Most Line
 
-                return new Coordinate(9, val);
+                return new Coordinate(9, rand.nextInt(_height - 2) + 1);
 
             case 2: //  Bottom-Most Line
 
-                return new Coordinate(val, 9);
+                return new Coordinate(rand.nextInt(_width - 2) + 1, 9);
 
             case 3: //  Left-Most Line
 
-                return new Coordinate(0, val);
+                return new Coordinate(0, rand.nextInt(_height - 2) + 1);
 
             default:    //  ...
 

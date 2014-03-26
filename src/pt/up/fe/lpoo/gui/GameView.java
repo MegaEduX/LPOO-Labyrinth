@@ -12,8 +12,11 @@ import pt.up.fe.lpoo.logic.Coordinate;
 import pt.up.fe.lpoo.logic.piece.Piece;
 import pt.up.fe.lpoo.logic.piece.itemizable.Dragon;
 
+import pt.up.fe.lpoo.logic.GameDataManager;
+
 import java.awt.*;
 import java.awt.event.*;
+import java.io.IOException;
 import java.util.Vector;
 
 import javax.swing.*;
@@ -22,6 +25,8 @@ public class GameView {
     static private JFrame frame;
 
     static private GamePanel gp;
+
+    static private Board brd;
 
     static private int boardX = 10;
     static private int boardY = 10;
@@ -32,10 +37,9 @@ public class GameView {
     static private String leftBinding = "left";
     static private String downBinding = "down";
     static private String rightBinding = "right";
+    static private String eagleBinding = "e";
 
     public static void main(String[] args) {
-        Board brd;
-
         try {
             brd = new Board();
 
@@ -63,7 +67,11 @@ public class GameView {
 
             frame.getContentPane().add(gp, BorderLayout.CENTER);
 
+            frame.setFocusable(false);
+
             JPanel newPanel = new JPanel(new FlowLayout());
+
+            newPanel.setFocusable(false);
 
             JButton restartGameButton = new JButton("Restart Game");
             restartGameButton.setPreferredSize(new Dimension(150, 35));
@@ -90,6 +98,25 @@ public class GameView {
             settingsButton.setFocusable(false);
 
             newPanel.add(settingsButton);
+
+            JButton saveButton = new JButton("Load Game");
+            saveButton.setPreferredSize(new Dimension(150, 35));
+            saveButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    //  GameDataManager.saveGameState(brd, "/tmp/gameState.dat");
+
+                    try {
+                        Board brd = GameDataManager.loadGameState("/tmp/gameState.dat");
+                    } catch (Exception exc) {
+
+                    }
+                }
+            });
+
+            saveButton.setFocusable(false);
+
+            newPanel.add(saveButton);
 
             JButton finishButton = new JButton("Exit Game");
             finishButton.setPreferredSize(new Dimension(150, 35));
@@ -162,10 +189,11 @@ public class GameView {
         JTextField downKeyBinding = new JTextField(downBinding);
         JTextField leftKeyBinding = new JTextField(leftBinding);
         JTextField rightKeyBinding = new JTextField(rightBinding);
+        JTextField eagleKeyBinding = new JTextField(eagleBinding);
 
         JPanel myPanel = new JPanel();
 
-        myPanel.setLayout(new GridLayout(13, 2));
+        myPanel.setLayout(new GridLayout(14, 2));
 
         myPanel.add(new JLabel("Board Settings"));
         myPanel.add(Box.createHorizontalStrut(1));
@@ -206,6 +234,9 @@ public class GameView {
         myPanel.add(new JLabel("Right:"));
         myPanel.add(rightKeyBinding);
 
+        myPanel.add(new JLabel("Eagle:"));
+        myPanel.add(eagleKeyBinding);
+
         int result = JOptionPane.showConfirmDialog(null, myPanel, "Labyrinth Configuration", JOptionPane.OK_CANCEL_OPTION);
 
         if (result == JOptionPane.OK_OPTION) {
@@ -218,8 +249,9 @@ public class GameView {
             leftBinding = leftKeyBinding.getText();
             downBinding = downKeyBinding.getText();
             rightBinding = rightKeyBinding.getText();
+            eagleBinding = eagleKeyBinding.getText();
 
-            gp.setKeyBindings(upBinding, leftBinding, downBinding, rightBinding);
+            gp.setKeyBindings(upBinding, leftBinding, downBinding, rightBinding, eagleBinding);
         }
     }
 }

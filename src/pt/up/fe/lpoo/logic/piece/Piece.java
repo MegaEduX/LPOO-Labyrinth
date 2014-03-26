@@ -9,14 +9,14 @@ package pt.up.fe.lpoo.logic.piece;
 import pt.up.fe.lpoo.logic.Board;
 import pt.up.fe.lpoo.logic.Coordinate;
 import pt.up.fe.lpoo.logic.piece.itemizable.Blank;
-import pt.up.fe.lpoo.logic.piece.itemizable.Dragon;
-import pt.up.fe.lpoo.logic.piece.itemizable.Hero;
-import pt.up.fe.lpoo.logic.piece.itemizable.ItemizablePiece;
+
+import java.io.Serializable;
 
 import java.util.Vector;
 
-public class Piece {
+public class Piece implements Serializable {
     protected Coordinate _position;
+
     protected Board _board;
 
     public Piece() {

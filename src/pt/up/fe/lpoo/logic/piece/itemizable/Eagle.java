@@ -18,7 +18,6 @@ public class Eagle extends ItemizablePiece {
 
         _onGround = onGround;
         FirstPos = pos;
-
     }
 
     public void setOnGround() {
@@ -50,6 +49,7 @@ public class Eagle extends ItemizablePiece {
                 if (c1.x > _position.x)
                     return super.move(Board.Direction.RIGHT);
             }
+
             // Sword on the same Column
             if (_position.x == c1.x) {
                 if (c1.y < _position.y)
@@ -57,14 +57,17 @@ public class Eagle extends ItemizablePiece {
                 if (c1.y > _position.y)
                     return super.move(Board.Direction.DOWN);
             }
+
             // Nor the same line or column
             if (_position.x < c1.x) {
                 if (_position.y < c1.y) {
 
                 }
             }
+
             // Found the Sword
             _item = true;
+
             // If nothing
 
             return false;

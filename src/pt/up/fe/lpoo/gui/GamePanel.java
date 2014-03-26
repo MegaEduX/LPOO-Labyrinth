@@ -35,7 +35,9 @@ public class GamePanel extends JPanel implements KeyListener {
     private String _downBinding = "down";
     private String _rightBinding = "right";
 
-    public GamePanel(/*Coordinate boardSize, */Board board, Coordinate windowSize) {
+    private String _eagleBinding = "e";
+
+    public GamePanel(Board board, Coordinate windowSize) {
         //  _board = boardSize;
 
         _board = board;
@@ -47,18 +49,12 @@ public class GamePanel extends JPanel implements KeyListener {
         setFocusable(true);
     }
 
-    public void setKeyBindings(String up, String left, String down, String right) {
+    public void setKeyBindings(String up, String left, String down, String right, String eagle) {
         _upBinding = up;
         _leftBinding = left;
         _downBinding = down;
         _rightBinding = right;
-    }
-
-    public void restartGame(Board board) {
-        _board = board;
-
-        repaint();
-        revalidate();
+        _eagleBinding = eagle;
     }
 
     public void paintComponent(Graphics g) {
@@ -179,6 +175,7 @@ public class GamePanel extends JPanel implements KeyListener {
 
         try {
             Hero hero = (Hero) _board.getPiecesWithType(Board.Type.HERO).get(0);
+
             if (keyText.equalsIgnoreCase(_upBinding)) {
                 hero.move(Board.Direction.UP);
             } else if (keyText.equalsIgnoreCase(_leftBinding)) {
@@ -187,6 +184,8 @@ public class GamePanel extends JPanel implements KeyListener {
                 hero.move(Board.Direction.DOWN);
             } else if (keyText.equalsIgnoreCase(_rightBinding)) {
                 hero.move(Board.Direction.RIGHT);
+            } else if (keyText.equalsIgnoreCase(_eagleBinding)) {
+                //  Launch Eagle here.
             }
         } catch (Exception exc) {
 

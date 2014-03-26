@@ -13,10 +13,12 @@ import pt.up.fe.lpoo.logic.piece.itemizable.Dragon;
 import pt.up.fe.lpoo.logic.piece.itemizable.Eagle;
 import pt.up.fe.lpoo.logic.piece.itemizable.Hero;
 
+import java.io.Serializable;
+
 import java.util.Random;
 import java.util.Vector;
 
-public class Board {
+public class Board implements Serializable {
     public enum Type {WALL, HERO, SWORD, DRAGON, MIXED_SD, EXIT, BLANK, LOCKED_WALL, EAGLE};
 
     public enum Direction {UP, LEFT, DOWN, RIGHT};
@@ -31,14 +33,15 @@ public class Board {
 
     private int width = 10;
     private int height = 10;
-    private Eagle egl = null;
+    
+    private Eagle _eagle = null;
 
     public void setEagle(Eagle E1) {
-        egl = E1;
+        _eagle = E1;
     }
 
     public Eagle getEagle() {
-        return egl;
+        return _eagle;
     }
 
     public Piece getPiece(Coordinate crd) throws Exception {
