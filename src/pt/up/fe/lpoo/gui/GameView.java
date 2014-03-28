@@ -16,10 +16,11 @@ import pt.up.fe.lpoo.logic.GameDataManager;
 
 import java.awt.*;
 import java.awt.event.*;
-import java.io.IOException;
+import java.io.File;
 import java.util.Vector;
 
 import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class GameView {
     static private JFrame frame;
@@ -73,8 +74,8 @@ public class GameView {
 
             newPanel.setFocusable(false);
 
-            JButton restartGameButton = new JButton("Restart Game");
-            restartGameButton.setPreferredSize(new Dimension(150, 35));
+            JButton restartGameButton = new JButton("Restart");
+            restartGameButton.setPreferredSize(new Dimension(100, 35));
             restartGameButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
@@ -86,8 +87,8 @@ public class GameView {
 
             newPanel.add(restartGameButton);
 
-            JButton settingsButton = new JButton("Game Settings");
-            settingsButton.setPreferredSize(new Dimension(150, 35));
+            JButton settingsButton = new JButton("Settings");
+            settingsButton.setPreferredSize(new Dimension(100, 35));
             settingsButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
@@ -99,17 +100,69 @@ public class GameView {
 
             newPanel.add(settingsButton);
 
-            JButton saveButton = new JButton("Load Game");
-            saveButton.setPreferredSize(new Dimension(150, 35));
+            final FileNameExtensionFilter extension = new FileNameExtensionFilter("Labyrinth Game State (*.lpoo)", "lpoo");
+
+            JButton loadButton = new JButton("Load");
+            loadButton.setPreferredSize(new Dimension(75, 35));
+            loadButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    final JFileChooser loadChooser = new JFileChooser();
+
+                    loadChooser.setAcceptAllFileFilterUsed(false);
+                    loadChooser.setMultiSelectionEnabled(false);
+
+                    loadChooser.setFileFilter(extension);
+
+                    int returnVal = loadChooser.showOpenDialog(frame);
+
+                    if (returnVal == JFileChooser.APPROVE_OPTION) {
+                        File file = loadChooser.getSelectedFile();
+                        //This is where a real application would open the file.
+                        System.out.println("Opening: " + file.getName() + ".");
+
+                        try {
+                            loadGame(GameDataManager.loadGameState(file.getAbsolutePath()));
+                        } catch (Exception exc) {
+
+                        }
+                    } else {
+                        System.out.println("Open command cancelled by user.");
+                    }
+                }
+            });
+
+            loadButton.setFocusable(false);
+
+            newPanel.add(loadButton);
+
+            JButton saveButton = new JButton("Save");
+            saveButton.setPreferredSize(new Dimension(75, 35));
             saveButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    //  GameDataManager.saveGameState(brd, "/tmp/gameState.dat");
+                    final JFileChooser saveChooser = new JFileChooser();
 
-                    try {
-                        Board brd = GameDataManager.loadGameState("/tmp/gameState.dat");
-                    } catch (Exception exc) {
+                    saveChooser.setAcceptAllFileFilterUsed(false);
+                    saveChooser.setMultiSelectionEnabled(false);
 
+                    saveChooser.setFileFilter(extension);
+
+                    int returnVal = saveChooser.showSaveDialog(frame);
+
+                    if (returnVal == JFileChooser.APPROVE_OPTION) {
+                        try {
+                            String path = saveChooser.getSelectedFile().getAbsolutePath();
+
+                            if (!path.contains(".lpoo"))
+                                path += ".lpoo";
+
+                            GameDataManager.saveGameState(brd, path);
+                        } catch (Exception exc) {
+                            System.out.println("Err!");
+                        }
+                    } else {
+                        System.out.println("Open command cancelled by user.");
                     }
                 }
             });
@@ -118,8 +171,8 @@ public class GameView {
 
             newPanel.add(saveButton);
 
-            JButton finishButton = new JButton("Exit Game");
-            finishButton.setPreferredSize(new Dimension(150, 35));
+            JButton finishButton = new JButton("Exit");
+            finishButton.setPreferredSize(new Dimension(100, 35));
             finishButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
@@ -172,6 +225,27 @@ public class GameView {
             gp.setFocusable(true);
 
             frame.resize(50 * boardX, 50 * boardY + 100);
+        } catch (Exception exc) {
+
+        }
+    }
+
+    public static void loadGame(Board theBoard) {
+        try {
+            brd = theBoard;
+
+            frame.getContentPane().remove(gp);
+
+            gp = new GamePanel(theBoard, new Coordinate(50 * theBoard.getWidth(), 50 * theBoard.getHeight()));
+
+            frame.getContentPane().add(gp, BorderLayout.CENTER);
+
+            frame.repaint();
+            frame.revalidate();
+
+            gp.setFocusable(true);
+
+            frame.resize(50 * theBoard.getWidth(), 50 * theBoard.getHeight() + 100);
         } catch (Exception exc) {
 
         }

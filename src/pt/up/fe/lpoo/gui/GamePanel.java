@@ -14,6 +14,7 @@ import pt.up.fe.lpoo.logic.piece.itemizable.Blank;
 import pt.up.fe.lpoo.logic.piece.itemizable.Dragon;
 import pt.up.fe.lpoo.logic.piece.itemizable.Eagle;
 import pt.up.fe.lpoo.logic.piece.itemizable.Hero;
+import sun.audio.AudioPlayer;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -22,10 +23,11 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 
 import javax.imageio.ImageIO;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
 import javax.swing.*;
 
 public class GamePanel extends JPanel implements KeyListener {
-    //  public Coordinate _board = new Coordinate(5, 5);
     public Coordinate _window = new Coordinate(500, 500);
 
     private Board _board;
@@ -159,7 +161,6 @@ public class GamePanel extends JPanel implements KeyListener {
                 }
             }
         }
-
     }
 
     //
@@ -199,11 +200,33 @@ public class GamePanel extends JPanel implements KeyListener {
 
         }
 
+        playVictorySound();
+
         repaint();
         revalidate();
     }
 
     public void keyReleased(KeyEvent e) {
 
+    }
+
+    //
+    //  Sound Implementation
+    //
+
+    public void playVictorySound() {
+        //
+        //  Fix this!
+        //
+
+        try {
+            File soundFile = new File("Victory_Fanfare.wav");
+            AudioInputStream ais = AudioSystem.getAudioInputStream(soundFile);
+            AudioPlayer.player.start(ais);
+        } catch (Exception exc) {
+            System.out.println(exc.getMessage());
+        }
+
+        System.out.println("...");
     }
 }
