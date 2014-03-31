@@ -40,13 +40,13 @@ public class Printer {
                 }
 
                 if (pc instanceof Wall)
-                    System.out.print("█");
+                    System.out.print("+");
                 else if (pc instanceof Hero)
                     System.out.print(((Hero) pc).getHasItem() ? "A" : "H");
                 else if (pc instanceof Blank && ((Blank) pc).getHasItem())
                     System.out.print("E");
                 else if (pc instanceof Eagle)
-                    System.out.print(((Eagle) pc).isFlying() ? "X" : "E");
+                    System.out.print(((Eagle) pc).isFlying() ? "X" : "^");
                 else if (pc instanceof Dragon) {
                     if (((Dragon) pc).getIsSleeping())
                         System.out.print(((Dragon) pc).getHasItem() ? "F" : "d");
