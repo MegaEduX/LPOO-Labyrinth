@@ -8,6 +8,7 @@ package pt.up.fe.lpoo.cli;
 
 import pt.up.fe.lpoo.logic.Board;
 import pt.up.fe.lpoo.logic.BoardGenerator;
+import pt.up.fe.lpoo.logic.Coordinate;
 import pt.up.fe.lpoo.logic.piece.Piece;
 import pt.up.fe.lpoo.logic.piece.itemizable.Blank;
 import pt.up.fe.lpoo.logic.piece.itemizable.Dragon;
@@ -20,6 +21,8 @@ import java.io.InputStreamReader;
 import java.util.Vector;
 
 public class Controller {
+    static Boolean isit = false;
+
     public static void main(String args[]) {
         Board brd = new Board();
 
@@ -109,7 +112,7 @@ public class Controller {
 
                 readLine = br.readLine();
 
-                while (!readLine.equalsIgnoreCase("s") || !readLine.equalsIgnoreCase("m") || !readLine.equalsIgnoreCase("r")) {
+                while (!readLine.equalsIgnoreCase("s") && !readLine.equalsIgnoreCase("m") && !readLine.equalsIgnoreCase("r")) {
                     System.out.print("Invalid Choice. Dragons Behavior? Always (S)leeping, Always (M)oving, (R)andomly Sleeping: ");
 
                     readLine = br.readLine();
@@ -193,7 +196,9 @@ public class Controller {
                         heroPiece.move(Board.Direction.LEFT);
                     else if (readLine.equalsIgnoreCase("E") || readLine.equalsIgnoreCase("e")) {
                         if (egl == null) {
-                            egl = new Eagle(true, heroPiece.getCoordinate());
+                            Coordinate crd = heroPiece.getCoordinate();
+                            egl = new Eagle(false, new Coordinate(crd.x, crd.y));
+                            brd.setEagle(egl);
                         }
                     }
 
@@ -212,13 +217,15 @@ public class Controller {
                         if (((Blank) pc).getHasItem())
                             p1 = (Blank) pc;
 
-                    if (p1.getCoordinate().x == egl.getCoordinate().x && p1.getCoordinate().y == egl.getCoordinate().y) {
-                        egl.setOnGround();
+                    if (egl != null) {
+                        if (p1.getCoordinate().x == egl.getCoordinate().x && p1.getCoordinate().y == egl.getCoordinate().y) {
+                            egl.setOnGround();
                         egl.setHasItem(true);
 
                         egl.move(heroPiece.getCoordinate());
                     } else
                         egl.move(p1.getCoordinate());
+                    }
                 } catch (Exception exc) {
 
                 }
@@ -251,7 +258,10 @@ public class Controller {
                     break;
                 }
 
-                System.out.println("Please type (U)p/(L)eft/(D)own/(R)ight to play, followed by Return.");
+                if (egl == null)
+                    System.out.println("(U)p/(L)eft/(D)own/(R)ight/Launch/(E)agle to play, followed by Return.");
+                else
+                    System.out.println("(U)p/(L)eft/(D)own/(R)ight, followed by Return.");
 
                 readLine = br.readLine();
             }
