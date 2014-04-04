@@ -117,7 +117,6 @@ public class GameView {
 
                     if (returnVal == JFileChooser.APPROVE_OPTION) {
                         File file = loadChooser.getSelectedFile();
-                        //This is where a real application would open the file.
                         System.out.println("Opening: " + file.getName() + ".");
 
                         try {
@@ -161,7 +160,7 @@ public class GameView {
                             System.out.println("Err!");
                         }
                     } else {
-                        System.out.println("Open command cancelled by user.");
+                        System.out.println("Save command cancelled by user.");
                     }
                 }
             });
@@ -170,20 +169,18 @@ public class GameView {
 
             newPanel.add(saveButton);
 
-            JButton finishButton = new JButton("Exit");
-            finishButton.setPreferredSize(new Dimension(100, 35));
-            finishButton.addActionListener(new ActionListener() {
+            JButton lbButton = new JButton("Level Builder");
+            lbButton.setPreferredSize(new Dimension(100, 35));
+            lbButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    //System.exit(0);
-                    LabyrinthBuilderWindow lb = new LabyrinthBuilderWindow();
-                    lb.spawnNewBuilder();
+                    levelBuilderDialog();
                 }
             });
 
-            finishButton.setFocusable(false);
+            lbButton.setFocusable(false);
 
-            newPanel.add(finishButton);
+            newPanel.add(lbButton);
 
             frame.getContentPane().add(newPanel, BorderLayout.SOUTH);
 
@@ -252,6 +249,41 @@ public class GameView {
         }
     }
 
+    public static void levelBuilderDialog() {
+        JTextField xField = new JTextField(Integer.toString(boardX));
+        JTextField yField = new JTextField(Integer.toString(boardY));
+
+        JPanel myPanel = new JPanel();
+
+        myPanel.setLayout(new GridLayout(4, 2));
+
+        myPanel.add(new JLabel("New Board Settings"));
+        myPanel.add(Box.createHorizontalStrut(1));
+
+        myPanel.add(Box.createHorizontalStrut(1));
+        myPanel.add(Box.createHorizontalStrut(1));
+
+        myPanel.add(new JLabel("Board X:"));
+        myPanel.add(xField);
+
+        myPanel.add(new JLabel("Board Y:"));
+        myPanel.add(yField);
+
+        int result = JOptionPane.showConfirmDialog(null, myPanel, "Labyrinth Configuration", JOptionPane.OK_CANCEL_OPTION);
+
+        if (result == JOptionPane.OK_OPTION) {
+            if (Integer.parseInt(xField.getText()) < 5 || Integer.parseInt(yField.getText()) < 5) {
+                JOptionPane.showMessageDialog(null, "Validation Error: Both the X and Y axis sizes of the board need to be equal to or bigger than 5.", "Board Error", JOptionPane.INFORMATION_MESSAGE);
+
+                return;
+            }
+
+            LabyrinthBuilderWindow lb = new LabyrinthBuilderWindow();
+
+            lb.spawnNewBuilder(Integer.parseInt(xField.getText()), Integer.parseInt(yField.getText()));
+        }
+    }
+
     public static void labyrinthConfigurationDialog() {
         JTextField xField = new JTextField(Integer.toString(boardX));
         JTextField yField = new JTextField(Integer.toString(boardY));
@@ -315,6 +347,12 @@ public class GameView {
         int result = JOptionPane.showConfirmDialog(null, myPanel, "Labyrinth Configuration", JOptionPane.OK_CANCEL_OPTION);
 
         if (result == JOptionPane.OK_OPTION) {
+            if (Integer.parseInt(xField.getText()) < 5 || Integer.parseInt(yField.getText()) < 5) {
+                JOptionPane.showMessageDialog(null, "Validation Error: Both the X and Y axis sizes of the board need to be equal to or bigger than 5.", "Board Error", JOptionPane.INFORMATION_MESSAGE);
+
+                return;
+            }
+
             boardX = Integer.parseInt(xField.getText());
             boardY = Integer.parseInt(yField.getText());
             dragonsNr = Integer.parseInt(dragField.getText());

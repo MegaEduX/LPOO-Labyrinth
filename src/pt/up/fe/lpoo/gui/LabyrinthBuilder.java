@@ -28,11 +28,13 @@ import java.util.Vector;
 public class LabyrinthBuilder extends JPanel implements MouseListener {
     private Board _board = new Board();
 
-    public Coordinate _window = new Coordinate(500, 500);
+    public Coordinate _window = null;
 
-    public LabyrinthBuilder() {
+    public LabyrinthBuilder(int x, int y) {
         try {
-            BoardGenerator bg = new BoardGenerator(10, 10, 0);
+            BoardGenerator bg = new BoardGenerator(x, y, 1);
+
+            _window = new Coordinate(x * 50, y * 50);
 
             Vector<Piece> ooBoard = bg.generateBoard();
 
@@ -40,14 +42,17 @@ public class LabyrinthBuilder extends JPanel implements MouseListener {
                 pc.setBoard(_board);
 
             _board.setBoardPieces(ooBoard);
-            _board.setWidth(10);
-            _board.setHeight(10);
+            _board.setWidth(x);
+            _board.setHeight(y);
 
             addMouseListener(this);
         } catch (Exception exc) {
 
         }
+    }
 
+    public Board getBoard() {
+        return _board;
     }
 
     public void paintComponent(Graphics g) {
@@ -203,6 +208,11 @@ public class LabyrinthBuilder extends JPanel implements MouseListener {
             Vector<Piece> exitPcs = _board.getPiecesWithType(Board.Type.EXIT);
 
             if (exitPcs.size() != 1)
+                return false;
+
+            Vector<Piece> dragonPcs = _board.getPiecesWithType(Board.Type.DRAGON);
+
+            if (dragonPcs.size() == 0)
                 return false;
 
         } catch (Exception e) {
