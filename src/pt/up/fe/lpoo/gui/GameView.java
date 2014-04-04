@@ -9,18 +9,17 @@ package pt.up.fe.lpoo.gui;
 import pt.up.fe.lpoo.logic.Board;
 import pt.up.fe.lpoo.logic.BoardGenerator;
 import pt.up.fe.lpoo.logic.Coordinate;
+import pt.up.fe.lpoo.logic.GameDataManager;
 import pt.up.fe.lpoo.logic.piece.Piece;
 import pt.up.fe.lpoo.logic.piece.itemizable.Dragon;
 
-import pt.up.fe.lpoo.logic.GameDataManager;
-
-import java.awt.*;
-import java.awt.event.*;
-import java.io.File;
-import java.util.Vector;
-
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
+import java.util.Vector;
 
 public class GameView {
     static private JFrame frame;
@@ -176,7 +175,9 @@ public class GameView {
             finishButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    System.exit(0);
+                    //System.exit(0);
+                    LabyrinthBuilderWindow lb = new LabyrinthBuilderWindow();
+                    lb.spawnNewBuilder();
                 }
             });
 

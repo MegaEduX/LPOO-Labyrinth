@@ -16,17 +16,17 @@ import pt.up.fe.lpoo.logic.piece.itemizable.Dragon;
 import pt.up.fe.lpoo.logic.piece.itemizable.Eagle;
 import pt.up.fe.lpoo.logic.piece.itemizable.Hero;
 
+import javax.imageio.ImageIO;
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.Vector;
-import javax.imageio.ImageIO;
-import javax.swing.*;
 
 public class LabyrinthBuilder extends JPanel implements MouseListener {
-    private Board _board;
+    private Board _board = new Board();
 
     public Coordinate _window = new Coordinate(500, 500);
 
@@ -42,6 +42,8 @@ public class LabyrinthBuilder extends JPanel implements MouseListener {
             _board.setBoardPieces(ooBoard);
             _board.setWidth(10);
             _board.setHeight(10);
+
+            addMouseListener(this);
         } catch (Exception exc) {
 
         }
@@ -152,6 +154,64 @@ public class LabyrinthBuilder extends JPanel implements MouseListener {
         }
     }
 
+    public void changePieceAtCoordinate(Coordinate crd) throws Exception {
+        Piece pc = _board.getPiece(crd);
+        Piece newPiece;
+
+        if (crd.x == 0 || crd.y == 0 || crd.x == _board.getWidth() - 1 || crd.y == _board.getHeight() - 1) {
+            if (pc instanceof Wall) {
+                newPiece = new Blank(crd);
+                ((Blank) newPiece).setIsExit(true);
+            } else
+                newPiece = new Wall(crd);
+        } else {
+            if (pc instanceof Wall) {
+                newPiece = new Hero(crd);
+            } else if (pc instanceof Hero) {
+                newPiece = new Blank(crd);
+                ((Blank) newPiece).setHasItem(true);
+            } else if (pc instanceof Blank && ((Blank) pc).getHasItem()) {
+                newPiece = new Dragon(crd);
+            } else if (pc instanceof Dragon) {
+                newPiece = new Blank(crd);
+            } else if (pc instanceof Blank) {
+                newPiece = new Wall(crd);
+            } else {
+                throw new Exception("No suitable piece found.");
+            }
+        }
+
+        _board.removePiece(pc);
+        _board.addPiece(newPiece);
+
+        repaint();
+        revalidate();
+    }
+
+    public boolean validateBoard() {
+        try {
+            Vector<Piece> heroPcs = _board.getPiecesWithType(Board.Type.HERO);
+
+            if (heroPcs.size() != 1)
+                return false;
+
+            Vector<Piece> swordPcs = _board.getPiecesWithType(Board.Type.SWORD);
+
+            if (swordPcs.size() != 1)
+                return false;
+
+            Vector<Piece> exitPcs = _board.getPiecesWithType(Board.Type.EXIT);
+
+            if (exitPcs.size() != 1)
+                return false;
+
+        } catch (Exception e) {
+            return false;
+        }
+
+        return true;
+    }
+
     //
     //  Mouse Implementation
     //
@@ -159,12 +219,34 @@ public class LabyrinthBuilder extends JPanel implements MouseListener {
     public void mousePressed(MouseEvent e) {
         Point clickPoint = e.getPoint();
 
-        int xUnit = _board.getWidth() / _window.x;
-        int yUnit = _board.getHeight() / _window.y;
+        int xUnit = _window.x / _board.getWidth();
+        int yUnit = _window.y / _board.getHeight();
 
         int xPoint = (int) Math.floor(clickPoint.x / xUnit);
         int yPoint = (int) Math.floor(clickPoint.y / yUnit);
 
         System.out.println("Pressed (" + xPoint + ", " + yPoint + ").");
+
+        try {
+            changePieceAtCoordinate(new Coordinate(xPoint, yPoint));
+        } catch (Exception exc) {
+            System.out.println("Unable to change piece.");
+        }
+    }
+
+    public void mouseReleased(MouseEvent e) {
+
+    }
+
+    public void mouseEntered(MouseEvent e) {
+
+    }
+
+    public void mouseExited(MouseEvent e) {
+
+    }
+
+    public void mouseClicked(MouseEvent e) {
+
     }
 }

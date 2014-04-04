@@ -14,7 +14,6 @@ import pt.up.fe.lpoo.logic.piece.itemizable.Eagle;
 import pt.up.fe.lpoo.logic.piece.itemizable.Hero;
 
 import java.io.Serializable;
-
 import java.util.Random;
 import java.util.Vector;
 
@@ -106,6 +105,18 @@ public class Board implements Serializable {
         }
 
         return pcs;
+    }
+
+    public void addPiece(Piece piece) throws Exception {
+        try {
+            getPiece(piece.getCoordinate());
+        } catch (Exception exc) {
+            _boardPieces.add(piece);
+
+            return;
+        }
+
+        throw new Exception("Piece already exists at coordinate.");
     }
 
     public void removePiece(Piece piece) throws Exception {
