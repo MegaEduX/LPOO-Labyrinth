@@ -44,10 +44,6 @@ public class Board {
     }
 
     public Piece getPiece(Coordinate crd) throws Exception {
-        if (egl != null)
-            if (egl.getCoordinate().x == crd.x && egl.getCoordinate().y == crd.y)
-                return egl;
-
         for (Piece pc : _boardPieces)
             if (pc.getCoordinate().equals(crd))
                 return pc;
@@ -212,15 +208,6 @@ public class Board {
         }
 
         Hero hero = (Hero) getPiecesWithType(Type.HERO).get(0);
-
-
-        if (egl.getCoordinate().x == drag.getCoordinate().x && !egl.isFlying())
-            if (egl.getCoordinate().y == drag.getCoordinate().y || egl.getCoordinate().y - 1 == drag.getCoordinate().y || egl.getCoordinate().y + 1 == egl.getCoordinate().y)
-                return DragonSearchResult.FOUND;
-
-        if (egl.getCoordinate().y == drag.getCoordinate().y && !egl.isFlying())
-            if (egl.getCoordinate().x == drag.getCoordinate().x || egl.getCoordinate().x - 1 == drag.getCoordinate().x || egl.getCoordinate().x + 1 == drag.getCoordinate().x)
-                return DragonSearchResult.FOUND;
 
         if (hero.getCoordinate().x == drag.getCoordinate().x)
             if (hero.getCoordinate().y == drag.getCoordinate().y || hero.getCoordinate().y - 1 == drag.getCoordinate().y || hero.getCoordinate().y + 1 == drag.getCoordinate().y)
