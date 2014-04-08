@@ -1,7 +1,7 @@
 /**
  * Labyrinth
  *
- * Created by Eduardo Almeida and João Almeida.
+ * Created by Eduardo Almeida and Joao Almeida.
  */
 
 package pt.up.fe.lpoo.cli;
@@ -21,14 +21,16 @@ import java.io.InputStreamReader;
 import java.util.Vector;
 
 public class Controller {
-    static Boolean isit = false;
+    /**
+     * The entry point for the CLI part of the application.
+     *
+     * @param  args  The arguments passed to the application by the OS.
+     */
 
     public static void main(String args[]) {
         Board brd = new Board();
 
         int width = 10, height = 10, dragons = 1;
-
-        Dragon.Behavior bhv = Dragon.Behavior.STOP;
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 

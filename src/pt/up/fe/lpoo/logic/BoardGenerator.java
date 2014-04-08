@@ -1,7 +1,7 @@
 /**
  * Labyrinth
  *
- * Created by Eduardo Almeida and João Almeida.
+ * Created by Eduardo Almeida and Joao Almeida.
  */
 
 package pt.up.fe.lpoo.logic;
@@ -17,9 +17,9 @@ import java.util.Stack;
 import java.util.Vector;
 
 public class BoardGenerator {
-    private int _width = 0;  //  x size
-    private int _height = 0; //  y size
-    private int _dragons = 0;// nº of dragons
+    private int _width = 0;     //  x size
+    private int _height = 0;    //  y size
+    private int _dragons = 0;   // nr of dragons
 
     private Dragon.Behavior _behavior = Dragon.Behavior.STOP;
 

@@ -1,7 +1,7 @@
 /**
  * Labyrinth
  *
- * Created by Eduardo Almeida and João Almeida.
+ * Created by Eduardo Almeida and Joao Almeida.
  */
 
 package pt.up.fe.lpoo.gui;
@@ -38,6 +38,12 @@ public class GameView {
     static private String downBinding = "down";
     static private String rightBinding = "right";
     static private String eagleBinding = "e";
+
+    /**
+     * The entry point for the GUI part of the application.
+     *
+     * @param  args  The arguments passed to the application by the OS.
+     */
 
     public static void main(String[] args) {
         try {
@@ -191,6 +197,10 @@ public class GameView {
         }
     }
 
+    /**
+     * Spawns a new game.
+     */
+
     public static void newGame() {
         try {
             Board newBoard = new Board();
@@ -228,6 +238,12 @@ public class GameView {
         }
     }
 
+    /**
+     * Loads a previously saved game.
+     *
+     * @param theBoard  The board to load.
+     */
+
     public static void loadGame(Board theBoard) {
         try {
             brd = theBoard;
@@ -248,6 +264,10 @@ public class GameView {
 
         }
     }
+
+    /**
+     * Spawns a level builder dialog box.
+     */
 
     public static void levelBuilderDialog() {
         JTextField xField = new JTextField(Integer.toString(boardX));
@@ -283,6 +303,10 @@ public class GameView {
             lb.spawnNewBuilder(Integer.parseInt(xField.getText()), Integer.parseInt(yField.getText()));
         }
     }
+
+    /**
+     * Spawns a labyrinth configuration dialog box.
+     */
 
     public static void labyrinthConfigurationDialog() {
         JTextField xField = new JTextField(Integer.toString(boardX));
