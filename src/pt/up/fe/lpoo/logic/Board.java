@@ -15,33 +15,75 @@ import pt.up.fe.lpoo.logic.piece.itemizable.Hero;
 
 import java.io.Serializable;
 import java.util.Random;
-import java.util.Vector;
+import java.util.ArrayList;
 
 public class Board implements Serializable {
+    /**
+     * Available Piece types.
+     */
     public enum Type {WALL, HERO, SWORD, DRAGON, MIXED_SD, EXIT, BLANK, LOCKED_WALL, EAGLE};
 
+    /**
+     * Directions.
+     */
+
     public enum Direction {UP, LEFT, DOWN, RIGHT};
+
+    /**
+     * Game States.
+     */
+
     public enum State {RUNNING, LOST, WON};
 
-    private enum DragonFightResult {NOT_FOUND, ALREADY_DEFEATED, LOST, WON};
-    private enum DragonSearchResult {NOT_FOUND, FOUND, ALREADY_DEFEATED};
+    /**
+     * Outcomes of a dragon fight.
+     */
+
+    public enum DragonFightResult {NOT_FOUND, ALREADY_DEFEATED, LOST, WON};
+
+    /**
+     * Outcomes of a dragon search.
+     */
+
+    public enum DragonSearchResult {NOT_FOUND, FOUND, ALREADY_DEFEATED};
 
     private State gameState = State.RUNNING;
 
-    private Vector<Piece> _boardPieces = new Vector<Piece>();
+    private ArrayList<Piece> _boardPieces = new ArrayList<Piece>();
 
     private int width = 10;
     private int height = 10;
     
     private Eagle _eagle = null;
 
-    public void setEagle(Eagle E1) {
-        _eagle = E1;
+    /**
+     * Associates an eagle with the board.
+     *
+     * @param eagle The eagle to associate with the board.
+     */
+
+    public void setEagle(Eagle eagle) {
+        _eagle = eagle;
     }
+
+    /**
+     * Getter for the eagle associated with the board.
+     *
+     * @return The eagle associated with the board.
+     */
 
     public Eagle getEagle() {
         return _eagle;
     }
+
+    /**
+     * Gets the piece at a specified coordinate.
+     *
+     * @param crd The coordinate where the desired piece is at.
+     * @return The requested piece.
+     *
+     * @throws Exception Throws an error if the piece can't be found.
+     */
 
     public Piece getPiece(Coordinate crd) throws Exception {
         for (Piece pc : _boardPieces)
@@ -51,8 +93,17 @@ public class Board implements Serializable {
         throw new Exception("404: Piece Not Found");
     }
 
-    public Vector<Piece> getPiecesWithType(Type type) throws Exception {
-        Vector<Piece> pcs = new Vector<Piece>();
+    /**
+     * Gets all the pieces with the following type.
+     *
+     * @param type The piece's type.
+     * @return The desired piece.
+     *
+     * @throws Exception Throws an exception when pieces of an unknown type are requested.
+     */
+
+    public ArrayList<Piece> getPiecesWithType(Type type) throws Exception {
+        ArrayList<Piece> pcs = new ArrayList<Piece>();
 
         for (Piece pc : _boardPieces) {
             switch (type) {
@@ -107,6 +158,14 @@ public class Board implements Serializable {
         return pcs;
     }
 
+    /**
+     * Adds a piece to the board.
+     *
+     * @param piece The piece to add to the board.
+     *
+     * @throws Exception Throws an exception if a piece already exists at the same coordinate as the piece to add.
+     */
+
     public void addPiece(Piece piece) throws Exception {
         try {
             getPiece(piece.getCoordinate());
@@ -119,40 +178,99 @@ public class Board implements Serializable {
         throw new Exception("Piece already exists at coordinate.");
     }
 
+    /**
+     * Removes a piece from the board.
+     *
+     * @param piece The piece to remove.
+     *
+     * @throws Exception Throws an exception if the piece can't be removed.
+     */
+
     public void removePiece(Piece piece) throws Exception {
         _boardPieces.remove(piece);
     }
+
+    /**
+     * Setter for the width of the board.
+     *
+     * @param w The new width of the board.
+     */
 
     public void setWidth(int w) {
         width = w;
     }
 
+    /**
+     * Setter for the height of the board.
+     *
+     * @param h The new height of the board.
+     */
+
     public void setHeight(int h) {
         height = h;
     }
+
+    /**
+     * Getter for the width of the board.
+     *
+     * @return The width of the board.
+     */
 
     public int getWidth() {
         return width;
     }
 
+    /**
+     * Getter for the height of the board.
+     *
+     * @return The height of the board.
+     */
+
     public int getHeight() {
         return height;
     }
+
+    /**
+     * Getter for the game state.
+     * @return Returns the game state.
+     */
 
     public State getGameState() {
         return gameState;
     }
 
-    public void setBoardPieces(Vector<Piece> board) {
+    /**
+     * Sets the board pieces.
+     * This will replace the board's internal array.
+     *
+     * @param board The new board pieces.
+     */
+
+    public void setBoardPieces(ArrayList<Piece> board) {
         _boardPieces = board;
     }
 
-    public Vector<Piece> getBoardPieces() {
+    /**
+     * Gets the board pieces.
+     *
+     * @return The board's internal array of pieces.
+     */
+
+    public ArrayList<Piece> getBoardPieces() {
         return _boardPieces;
     }
 
-    private Vector<Direction> _getMovePossibilities(Piece pc) throws Exception {
-        Vector<Direction> pb = new Vector<Direction>();
+    /**
+     * Queries for all the possible moves a piece can perform.
+     *
+     * @param pc The piece to test against.
+     * @return An array with the answer to the query.
+     *
+     * @throws Exception Throws an exception if something went wrong.
+     */
+
+    private ArrayList<Direction> _getMovePossibilities(Piece pc) throws Exception {
+        ArrayList<Direction> pb = new ArrayList<Direction>();
 
         try {
             getPiece(new Coordinate(pc.getCoordinate().x - 1, pc.getCoordinate().y));
@@ -189,12 +307,18 @@ public class Board implements Serializable {
         return pb;
     }
 
+    /**
+     * Moves the dragon(s).
+     *
+     * @throws Exception Throws an exception when a dragon can't be found.
+     */
+
     public void moveDragon() throws Exception {
-        Vector<Piece> dragons = getPiecesWithType(Type.DRAGON);
+        ArrayList<Piece> dragons = getPiecesWithType(Type.DRAGON);
 
         for (Piece drag : dragons) {
             try {
-                Vector<Direction> dir = _getMovePossibilities(drag);
+                ArrayList<Direction> dir = _getMovePossibilities(drag);
 
                 Random rand = new Random();
 
@@ -210,40 +334,16 @@ public class Board implements Serializable {
         }
     }
 
-    private DragonSearchResult _isNearDragon() throws Exception {
-        try {
-            getPiecesWithType(Type.DRAGON).get(0);
-        } catch (Exception exc) {
-            return DragonSearchResult.ALREADY_DEFEATED;
-        }
-
-        Vector<Piece> dragons = getPiecesWithType(Type.DRAGON);
-
-        Hero hero = (Hero) getPiecesWithType(Type.HERO).get(0);
-
-        for (Piece d : dragons) {
-            Dragon drag = (Dragon) d;
-
-            if (hero.getCoordinate().x == drag.getCoordinate().x)
-                if (hero.getCoordinate().y == drag.getCoordinate().y || hero.getCoordinate().y - 1 == drag.getCoordinate().y || hero.getCoordinate().y + 1 == drag.getCoordinate().y)
-                    return DragonSearchResult.FOUND;
-
-            if (hero.getCoordinate().y == drag.getCoordinate().y)
-                if (hero.getCoordinate().x == drag.getCoordinate().x || hero.getCoordinate().x - 1 == drag.getCoordinate().x || hero.getCoordinate().x + 1 == drag.getCoordinate().x)
-                    return DragonSearchResult.FOUND;
-        }
-
-        return DragonSearchResult.NOT_FOUND;
-    }
+    /**
+     * Checks if a dragon is (dangerously) near the hero.
+     *
+     * @return true if yes, false if not.
+     *
+     * @throws Exception Throws an exception if neither a dragon or a hero can be found.
+     */
 
     private Dragon _dragonNearHero() throws Exception {
-        try {
-            getPiecesWithType(Type.DRAGON).get(0);
-        } catch (Exception exc) {
-            throw exc;
-        }
-
-        Vector<Piece> dragons = getPiecesWithType(Type.DRAGON);
+        ArrayList<Piece> dragons = getPiecesWithType(Type.DRAGON);
 
         Hero hero = (Hero) getPiecesWithType(Type.HERO).get(0);
 
@@ -261,6 +361,14 @@ public class Board implements Serializable {
 
         return null;
     }
+
+    /**
+     * Performs a dragon fight.
+     *
+     * @return The dragon fight result.
+     *
+     * @throws Exception Throws an exception if a hero can't be found.
+     */
 
     public DragonFightResult checkDragon() throws Exception {
         Dragon drag;
@@ -295,8 +403,14 @@ public class Board implements Serializable {
         return DragonFightResult.LOST;
     }
 
+    /**
+     * Checks the state of the game.
+     *
+     * @throws Exception Thrown when something goes wrong.
+     */
+
     public void recheckGameState() throws Exception {
-        Vector<Piece> blanks = getPiecesWithType(Type.BLANK);
+        ArrayList<Piece> blanks = getPiecesWithType(Type.BLANK);
 
         if (getPiecesWithType(Type.HERO).size() == 0) {
             gameState = State.LOST;

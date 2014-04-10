@@ -14,24 +14,39 @@ import pt.up.fe.lpoo.logic.Coordinate;
 import pt.up.fe.lpoo.logic.piece.Piece;
 import pt.up.fe.lpoo.logic.piece.itemizable.Dragon;
 
-import java.util.Vector;
+import java.util.ArrayList;
 
 import static org.junit.Assert.*;
 
 public class UnitTestGroupTwo {
     private Board brd;
 
+    /**
+     * Performs an array of movements on a given piece.
+     *
+     * @param moves The movements to perform.
+     * @param pc The piece to perform the movements on.
+     *
+     * @throws Exception Thrown when something goes wrong.
+     */
+
     private void _performMultipleMovement(Board.Direction[] moves, Piece pc) throws Exception {
         for (Board.Direction mv : moves)
             pc.move(mv);
     }
+
+    /**
+     * Sets up the testing scenario.
+     *
+     * @throws Exception Something went wrong!
+     */
 
     @Before public void setUp() throws Exception {
         brd = new Board();
 
         BoardGenerator gen = new BoardGenerator(10, 10, 1);
 
-        Vector<Piece> ooBoard = gen.getDefaultBoard();
+        ArrayList<Piece> ooBoard = gen.getDefaultBoard();
 
         for (Piece pc : ooBoard)
             pc.setBoard(brd);
@@ -42,6 +57,12 @@ public class UnitTestGroupTwo {
 
         assertNotNull("Couldn't generate board.", brd);
     }
+
+    /**
+     * Moves one of the dragons.
+     *
+     * @throws Exception Something went wrong!
+     */
 
     @Test public void moveOneDragon() throws Exception {
         Dragon drag = (Dragon) brd.getPiecesWithType(Board.Type.DRAGON).get(0);
@@ -57,6 +78,12 @@ public class UnitTestGroupTwo {
         assertTrue(drag.getCoordinate().x == initialCrd.x && drag.getCoordinate().y - 2 == initialCrd.y);
     }
 
+    /**
+     * Tries to move one of the stopped dragons.
+     *
+     * @throws Exception Something went wrong!
+     */
+
     @Test public void moveOneStoppedDragon() throws Exception {
         Dragon drag = (Dragon) brd.getPiecesWithType(Board.Type.DRAGON).get(0);
 
@@ -70,6 +97,12 @@ public class UnitTestGroupTwo {
 
         assertTrue(drag.getCoordinate().x == initialCrd.x && drag.getCoordinate().y == initialCrd.y);
     }
+
+    /**
+     * Tests whether the dragon can sleep.
+     *
+     * @throws Exception Something went wrong!
+     */
 
     @Test public void testDragonCanSleep() throws Exception {
         Dragon drag = (Dragon) brd.getPiecesWithType(Board.Type.DRAGON).get(0);
@@ -92,7 +125,11 @@ public class UnitTestGroupTwo {
         assertFalse(i == 10000);
     }
 
-    @After public void tearDown() throws Exception {
+    /**
+     * Clean up after the tests.
+     */
 
+    @After public void tearDown() {
+        //  Nothing so far, AFAIK at least.
     }
 }

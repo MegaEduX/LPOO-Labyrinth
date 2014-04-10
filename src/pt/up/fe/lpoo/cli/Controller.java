@@ -11,16 +11,16 @@ import pt.up.fe.lpoo.logic.BoardGenerator;
 import pt.up.fe.lpoo.logic.Coordinate;
 import pt.up.fe.lpoo.logic.piece.Piece;
 import pt.up.fe.lpoo.logic.piece.itemizable.Blank;
-import pt.up.fe.lpoo.logic.piece.itemizable.Dragon;
 import pt.up.fe.lpoo.logic.piece.itemizable.Eagle;
 import pt.up.fe.lpoo.logic.piece.itemizable.Hero;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Vector;
+import java.util.ArrayList;
 
 public class Controller {
+
     /**
      * The entry point for the CLI part of the application.
      *
@@ -139,7 +139,7 @@ public class Controller {
             try {
                 BoardGenerator brdGen = new BoardGenerator(width, height, dragons);
 
-                Vector<Piece> ooBoard;
+                ArrayList<Piece> ooBoard;
 
                 ooBoard = (skipBoardGeneration ? brdGen.getDefaultBoard() : brdGen.generateBoard());
 
@@ -211,7 +211,7 @@ public class Controller {
                 try {
                     brd.moveDragon();
 
-                    Vector<Piece> blankPieces = brd.getPiecesWithType(Board.Type.BLANK);
+                    ArrayList<Piece> blankPieces = brd.getPiecesWithType(Board.Type.BLANK);
 
                     Blank p1 = null;
 
@@ -221,7 +221,7 @@ public class Controller {
 
                     if (egl != null) {
                         if (p1.getCoordinate().x == egl.getCoordinate().x && p1.getCoordinate().y == egl.getCoordinate().y) {
-                            egl.setOnGround();
+                            egl.landEagle();
                         egl.setHasItem(true);
 
                         egl.move(heroPiece.getCoordinate());

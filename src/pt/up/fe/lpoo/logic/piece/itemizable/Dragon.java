@@ -76,17 +76,38 @@ public class Dragon extends ItemizablePiece {
         }
     }
 
+    /**
+     * Creates a new Dragon.
+     */
+
     public Dragon() {
         _position = new Coordinate(-1, -1);
     }
+
+    /**
+     * Creates a new Dragon.
+     *
+     * @param crd The piece coordinate.
+     */
 
     public Dragon(Coordinate crd) {
         _position = crd;
     }
 
+    /**
+     * Creates a new Dragon.
+     *
+     * @param x The piece x coordinate.
+     * @param y The piece y coordinate.
+     */
+
     public Dragon(int x, int y) {
         _position = new Coordinate(x, y);
     }
+
+    /**
+     * Marks a dragon as sleeping.
+     */
 
     public void setIsSleeping() {
         _sleeping = true;
@@ -96,9 +117,21 @@ public class Dragon extends ItemizablePiece {
         return _sleeping;
     }
 
+    /**
+     * Getter for the current dragon behavior.
+     *
+     * @return The dragon behavior.
+     */
+
     public Behavior getBehavior() {
         return _behavior;
     }
+
+    /**
+     * Setter for the current dragon behavior.
+     *
+     * @param bhv The new dragon behavior.
+     */
 
     public void setBehavior(Behavior bhv) {
         _behavior = bhv;

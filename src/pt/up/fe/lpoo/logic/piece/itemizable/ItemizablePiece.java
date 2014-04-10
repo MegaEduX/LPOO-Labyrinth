@@ -13,21 +13,50 @@ package pt.up.fe.lpoo.logic.piece.itemizable;
 public class ItemizablePiece extends Piece {
     protected Boolean _item = false;
 
+    /**
+     * Constructs a new Itemizable Piece.
+     */
+
     public ItemizablePiece() {
         _position = new Coordinate(-1, -1);
     }
+
+    /**
+     * Constructs a new Itemizable Piece.
+     *
+     * @param crd Piece's coordinate.
+     */
 
     public ItemizablePiece(Coordinate crd) {
         _position = crd;
     }
 
+    /**
+     * Constructs a new Itemizable Piece.
+     *
+     * @param x Piece's x coordinate.
+     * @param y Piece's y coordinate.
+     */
+
     public ItemizablePiece(int x, int y) {
         _position = new Coordinate(x, y);
     }
 
+    /**
+     * Getter for item status.
+     *
+     * @return true if the piece holds an item, false if not.
+     */
+
     public Boolean getHasItem() {
         return _item;
     }
+
+    /**
+     * Setter for item status.
+     *
+     * @param hi true if the piece should be holding an item, false if not.
+     */
 
     public void setHasItem(Boolean hi) {
         _item = hi;

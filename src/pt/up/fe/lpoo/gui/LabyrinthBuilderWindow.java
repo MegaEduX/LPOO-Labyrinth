@@ -20,6 +20,13 @@ public class LabyrinthBuilderWindow {
 
     private LabyrinthBuilder _lb;
 
+    /**
+     * Creates and spawns a new labyrinth builder window.
+     *
+     * @param x The new labyrinth width.
+     * @param y The new labyrinth height.
+     */
+
     public void spawnNewBuilder(int x, int y) {
         _frame = new JFrame("Labyrinth Game View");
         _frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

@@ -19,7 +19,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-import java.util.Vector;
+import java.util.ArrayList;
 
 public class GameView {
     static private JFrame frame;
@@ -51,7 +51,7 @@ public class GameView {
 
             BoardGenerator gen = new BoardGenerator(10, 10, 1);
 
-            Vector<Piece> ooBoard = gen.generateBoard();
+            ArrayList<Piece> ooBoard = gen.generateBoard();
 
             for (Piece pc : ooBoard)
                 pc.setBoard(brd);
@@ -207,7 +207,7 @@ public class GameView {
 
             BoardGenerator gen = new BoardGenerator(boardX, boardY, dragonsNr);
 
-            Vector<Piece> ooBoard = gen.generateBoard();
+            ArrayList<Piece> ooBoard = gen.generateBoard();
 
             for (Piece pc : ooBoard)
                 pc.setBoard(newBoard);
@@ -216,7 +216,7 @@ public class GameView {
             newBoard.setWidth(boardX);
             newBoard.setHeight(boardY);
 
-            Vector<Piece> drag = newBoard.getPiecesWithType(Board.Type.DRAGON);
+            ArrayList<Piece> drag = newBoard.getPiecesWithType(Board.Type.DRAGON);
 
             for (Piece d : drag)
                 ((Dragon) d).setBehavior(dragonsSleep ? Dragon.Behavior.SLEEP : Dragon.Behavior.NO_SLEEP);

@@ -14,24 +14,39 @@ import pt.up.fe.lpoo.logic.Coordinate;
 import pt.up.fe.lpoo.logic.piece.Piece;
 import pt.up.fe.lpoo.logic.piece.itemizable.Dragon;
 
-import java.util.Vector;
+import java.util.ArrayList;
 
 import static org.junit.Assert.*;
 
 public class UnitTestGroupTwoMD {
     private Board brd;
 
+    /**
+     * Performs an array of movements on a given piece.
+     *
+     * @param moves The movements to perform.
+     * @param pc The piece to perform the movements on.
+     *
+     * @throws Exception Thrown when something goes wrong.
+     */
+
     private void _performMultipleMovement(Board.Direction[] moves, Piece pc) throws Exception {
         for (Board.Direction mv : moves)
             pc.move(mv);
     }
+
+    /**
+     * Sets up the testing scenario.
+     *
+     * @throws Exception Something went wrong!
+     */
 
     @Before public void setUp() throws Exception {
         brd = new Board();
 
         BoardGenerator gen = new BoardGenerator(10, 10, 3);
 
-        Vector<Piece> ooBoard = gen.getDragonTestBoard();
+        ArrayList<Piece> ooBoard = gen.getDragonTestBoard();
 
         for (Piece pc : ooBoard)
             pc.setBoard(brd);
@@ -43,14 +58,26 @@ public class UnitTestGroupTwoMD {
         assertNotNull("Couldn't generate board.", brd);
     }
 
+    /**
+     * Tests if more than one dragon can exist.
+     *
+     * @throws Exception Something went wrong!
+     */
+
     @Test public void testDragonNumber() throws Exception {
-        Vector<Piece> pcs = brd.getPiecesWithType(Board.Type.DRAGON);
+        ArrayList<Piece> pcs = brd.getPiecesWithType(Board.Type.DRAGON);
 
         assertTrue(pcs.size() == 3);
     }
 
+    /**
+     * Tries to move more than one dragon.
+     *
+     * @throws Exception Something went wrong!
+     */
+
     @Test public void testMoveDragons() throws Exception {
-        Vector<Piece> pcs = brd.getPiecesWithType(Board.Type.DRAGON);
+        ArrayList<Piece> pcs = brd.getPiecesWithType(Board.Type.DRAGON);
 
         ((Dragon) pcs.get(0)).setBehavior(Dragon.Behavior.NO_SLEEP);
         ((Dragon) pcs.get(1)).setBehavior(Dragon.Behavior.NO_SLEEP);
@@ -76,7 +103,11 @@ public class UnitTestGroupTwoMD {
         assertFalse(pcs.get(2).getCoordinate().y - 3 == dc3.y);
     }
 
-    @After public void tearDown() throws Exception {
+    /**
+     * Clean up after the tests.
+     */
 
+    @After public void tearDown() {
+        //  Nothing so far, AFAIK at least.
     }
 }

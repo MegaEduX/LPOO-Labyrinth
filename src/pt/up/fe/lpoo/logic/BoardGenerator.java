@@ -14,7 +14,7 @@ import pt.up.fe.lpoo.logic.piece.itemizable.Hero;
 
 import java.util.Random;
 import java.util.Stack;
-import java.util.Vector;
+import java.util.ArrayList;
 
 public class BoardGenerator {
     private int _width = 0;     //  x size
@@ -131,8 +131,8 @@ public class BoardGenerator {
         _fillWithCharacters();
     }
 
-    public Vector<Piece> generateBoard() throws Exception {
-        Vector<Piece> retVec = new Vector<Piece>();
+    public ArrayList<Piece> generateBoard() throws Exception {
+        ArrayList<Piece> retVec = new ArrayList<Piece>();
 
         if (boardRep != defaultBoardRep && boardRep != defaultTestThreeDragonsRep)
             _generateBoardWithInternalFormat();
@@ -201,13 +201,13 @@ public class BoardGenerator {
         return retVec;
     }
 
-    public Vector<Piece> getDefaultBoard() throws Exception {
+    public ArrayList<Piece> getDefaultBoard() throws Exception {
         boardRep = defaultBoardRep;
 
         return generateBoard();
     }
 
-    public Vector<Piece> getDragonTestBoard() throws Exception {
+    public ArrayList<Piece> getDragonTestBoard() throws Exception {
         boardRep = defaultTestThreeDragonsRep;
 
         return generateBoard();
@@ -220,7 +220,7 @@ public class BoardGenerator {
 
         int toGenerate = 2 + _dragons;
 
-        Vector<Coordinate> usedCoordinates = new Vector<Coordinate>();
+        ArrayList<Coordinate> usedCoordinates = new ArrayList<Coordinate>();
 
         for (int i = 0; i < toGenerate; i++) {
             if (i == 0) {

@@ -23,12 +23,19 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.util.Vector;
+import java.util.ArrayList;
 
 public class LabyrinthBuilder extends JPanel implements MouseListener {
     private Board _board = new Board();
 
     public Coordinate _window = null;
+
+    /**
+     * Constructs a new labyrinth builder.
+     *
+     * @param  x  The width of the new board.
+     * @param  y  The height of the new board.
+     */
 
     public LabyrinthBuilder(int x, int y) {
         try {
@@ -36,7 +43,7 @@ public class LabyrinthBuilder extends JPanel implements MouseListener {
 
             _window = new Coordinate(x * 50, y * 50);
 
-            Vector<Piece> ooBoard = bg.generateBoard();
+            ArrayList<Piece> ooBoard = bg.generateBoard();
 
             for (Piece pc : ooBoard)
                 pc.setBoard(_board);
@@ -50,6 +57,12 @@ public class LabyrinthBuilder extends JPanel implements MouseListener {
 
         }
     }
+
+    /**
+     * Getter for the board object.
+     *
+     * @return The generated Board object.
+     */
 
     public Board getBoard() {
         return _board;
@@ -159,6 +172,13 @@ public class LabyrinthBuilder extends JPanel implements MouseListener {
         }
     }
 
+    /**
+     * Changes a piece at a given coordinate.
+     *
+     * @param crd The coordinate of the piece to change.
+     * @throws Exception An exception will be thrown when an invalid coordinate is passed.
+     */
+
     public void changePieceAtCoordinate(Coordinate crd) throws Exception {
         Piece pc = _board.getPiece(crd);
         Piece newPiece;
@@ -193,24 +213,30 @@ public class LabyrinthBuilder extends JPanel implements MouseListener {
         revalidate();
     }
 
-    public boolean validateBoard() {
+    /**
+     * Checks the board for logic errors.
+     *
+     * @return true if the board is valid, false if not.
+     */
+
+    public Boolean validateBoard() {
         try {
-            Vector<Piece> heroPcs = _board.getPiecesWithType(Board.Type.HERO);
+            ArrayList<Piece> heroPcs = _board.getPiecesWithType(Board.Type.HERO);
 
             if (heroPcs.size() != 1)
                 return false;
 
-            Vector<Piece> swordPcs = _board.getPiecesWithType(Board.Type.SWORD);
+            ArrayList<Piece> swordPcs = _board.getPiecesWithType(Board.Type.SWORD);
 
             if (swordPcs.size() != 1)
                 return false;
 
-            Vector<Piece> exitPcs = _board.getPiecesWithType(Board.Type.EXIT);
+            ArrayList<Piece> exitPcs = _board.getPiecesWithType(Board.Type.EXIT);
 
             if (exitPcs.size() != 1)
                 return false;
 
-            Vector<Piece> dragonPcs = _board.getPiecesWithType(Board.Type.DRAGON);
+            ArrayList<Piece> dragonPcs = _board.getPiecesWithType(Board.Type.DRAGON);
 
             if (dragonPcs.size() == 0)
                 return false;

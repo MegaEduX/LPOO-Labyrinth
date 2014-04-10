@@ -12,34 +12,55 @@ import pt.up.fe.lpoo.logic.piece.Piece;
 
 public class Eagle extends ItemizablePiece {
     public Boolean _onGround = false;
-    protected Coordinate FirstPos;
+    protected Coordinate _firstPosition;
+
+    /**
+     * Constructs a new Eagle.
+     * 
+     * @param onGround true if the eagle starts on the ground, false if not.
+     * @param pos The eagle's starting position.
+     */
 
     public Eagle(Boolean onGround, Coordinate pos) {
         super();
+        
         _onGround = onGround;
-        FirstPos = new Coordinate(pos.x, pos.y);
+        _firstPosition = new Coordinate(pos.x, pos.y);
         _position = pos;
     }
 
-    public void setOnGround() {
+    /**
+     * Lands the eagle.
+     */
+
+    public void landEagle() {
         _onGround = true;
     }
 
-    public void setIsFlying() {
+    /**
+     * Launches the eagle.
+     */
+
+    public void launchEagle() {
         _onGround = false;
     }
+
+    /**
+     * Getter for the flying state of the eagle.
+     *
+     * @return true if the eagle is flying, false if not.
+     */
 
     public Boolean isFlying() {
         return !_onGround;
     }
-
 
     @Override
     public Boolean move(Board.Direction Dir) throws Exception {
         throw new Exception("This can't be called, bro!");
     }
 
-    public Boolean moveEagle(Board.Direction dir) throws Exception {
+    private Boolean moveEagle(Board.Direction dir) throws Exception {
         Piece nextObj;
         Coordinate crdDiff = new Coordinate(0, 0);
 
@@ -64,6 +85,15 @@ public class Eagle extends ItemizablePiece {
 
         return true;
     }
+
+    /**
+     * Tells the eagle to move to a new coordinate.
+     *
+     * @param c1 The coordinate to move the eagle to.
+     * @return true if possible, false if not.
+     *
+     * @throws Exception Throws an exception if anything went wrong.
+     */
 
     public Boolean move(Coordinate c1) throws Exception {
         // Sword on the same line
