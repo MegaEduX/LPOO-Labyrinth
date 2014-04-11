@@ -44,6 +44,10 @@ public class Board implements Serializable {
     }
 
     public Piece getPiece(Coordinate crd) throws Exception {
+        if (_eagle != null)
+            if (_eagle.getCoordinate().x == crd.x && _eagle.getCoordinate().y == crd.y)
+                return _eagle;
+
         for (Piece pc : _boardPieces)
             if (pc.getCoordinate().equals(crd))
                 return pc;
@@ -223,6 +227,14 @@ public class Board implements Serializable {
 
         for (Piece d : dragons) {
             Dragon drag = (Dragon) d;
+
+            if (_eagle.getCoordinate().x == drag.getCoordinate().x && !_eagle.isFlying())
+                if (_eagle.getCoordinate().y == drag.getCoordinate().y || _eagle.getCoordinate().y - 1 == drag.getCoordinate().y || _eagle.getCoordinate().y + 1 == drag.getCoordinate().y)
+                    return DragonSearchResult.FOUND;
+
+            if (_eagle.getCoordinate().y == drag.getCoordinate().y && !_eagle.isFlying())
+                if (_eagle.getCoordinate().x == drag.getCoordinate().x || _eagle.getCoordinate().x - 1 == drag.getCoordinate().x || _eagle.getCoordinate().x + 1 == drag.getCoordinate().x)
+                    return DragonSearchResult.FOUND;
 
             if (hero.getCoordinate().x == drag.getCoordinate().x)
                 if (hero.getCoordinate().y == drag.getCoordinate().y || hero.getCoordinate().y - 1 == drag.getCoordinate().y || hero.getCoordinate().y + 1 == drag.getCoordinate().y)

@@ -45,9 +45,12 @@ public class Printer {
                     System.out.print(((Hero) pc).getHasItem() ? "A" : "H");
                 else if (pc instanceof Blank && ((Blank) pc).getHasItem())
                     System.out.print("E");
-                else if (pc instanceof Eagle)
-                    System.out.print(((Eagle) pc).isFlying() ? "X" : "^");
-                else if (pc instanceof Dragon) {
+                else if (pc instanceof Eagle) {
+                    if (((Eagle) pc).isFlying())
+                        System.out.print(((Eagle) pc).getHasItem() ? "x" : "X");
+                    else
+                        System.out.print(((Eagle) pc).getHasItem() ? "~" : "^");
+                } else if (pc instanceof Dragon) {
                     if (((Dragon) pc).getIsSleeping())
                         System.out.print(((Dragon) pc).getHasItem() ? "F" : "d");
                     else {

@@ -35,7 +35,7 @@ public class Hero extends ItemizablePiece {
 
         Integer x = crdDiff.x, y = crdDiff.y;
 
-        if (nextObj instanceof Blank) {
+        if (nextObj instanceof Blank || nextObj instanceof Eagle) {
             if (((Blank) nextObj).getIsExit()) {
                 if (!getHasItem())
                     return false;

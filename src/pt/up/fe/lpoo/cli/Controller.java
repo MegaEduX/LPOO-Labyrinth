@@ -21,7 +21,7 @@ import java.io.InputStreamReader;
 import java.util.Vector;
 
 public class Controller {
-    static Boolean isit = false;
+    static Blank _swordPiece = null;
 
     public static void main(String args[]) {
         Board brd = new Board();
@@ -199,6 +199,7 @@ public class Controller {
                             Coordinate crd = heroPiece.getCoordinate();
                             egl = new Eagle(false, new Coordinate(crd.x, crd.y));
                             brd.setEagle(egl);
+                            egl.setBoard(brd);
                         }
                     }
 
@@ -211,21 +212,37 @@ public class Controller {
 
                     Vector<Piece> blankPieces = brd.getPiecesWithType(Board.Type.BLANK);
 
-                    Blank p1 = null;
-
-                    for (Piece pc : blankPieces)
-                        if (((Blank) pc).getHasItem())
-                            p1 = (Blank) pc;
+                    if (_swordPiece == null)
+                        for (Piece pc : blankPieces)
+                            if (((Blank) pc).getHasItem())
+                                _swordPiece = (Blank) pc;
 
                     if (egl != null) {
-                        if (p1.getCoordinate().x == egl.getCoordinate().x && p1.getCoordinate().y == egl.getCoordinate().y) {
-                            egl.setOnGround();
-                        egl.setHasItem(true);
+                        if (_swordPiece.getCoordinate().x == egl.getCoordinate().x && _swordPiece.getCoordinate().y == egl.getCoordinate().y) {
+                            if (egl.isFlying()) {
+                                egl.setHasItem(true);
+                                egl.setOnGround();
 
-                        egl.move(heroPiece.getCoordinate());
-                    } else
-                        egl.move(p1.getCoordinate());
+                            }
+                            if (egl.getHasItem()) {
+
+                                egl.setIsFlying();
+                                egl.move(egl.getFirstPos());
+                            }
+                        } else {
+                            if (egl.getCoordinate().x == egl.getFirstPos().x && egl.getCoordinate().y == egl.getFirstPos().y && egl.getHasItem())
+                                egl.setOnGround();
+
+                            if (egl.getHasItem() && egl.isFlying()) {
+                                egl.move(egl.getFirstPos());
+                            }
+                            if (!egl.getHasItem() && egl.isFlying()) {
+                                egl.move(_swordPiece.getCoordinate());
+                            }
+                        }
+
                     }
+
                 } catch (Exception exc) {
 
                 }
