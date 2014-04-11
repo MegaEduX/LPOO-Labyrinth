@@ -21,10 +21,6 @@ public class Eagle extends ItemizablePiece {
         _position = pos;
     }
 
-    public Coordinate getFirstPos() {
-        return FirstPos;
-    }
-
     public void setOnGround() {
         _onGround = true;
     }

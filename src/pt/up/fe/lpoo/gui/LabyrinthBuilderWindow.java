@@ -1,12 +1,15 @@
 /**
  * Labyrinth
  *
- * Created by Eduardo Almeida and João Almeida.
+ * Created by Eduardo Almeida and Joao Almeida.
  */
 
 package pt.up.fe.lpoo.gui;
 
+import pt.up.fe.lpoo.logic.GameDataManager;
+
 import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -17,13 +20,20 @@ public class LabyrinthBuilderWindow {
 
     private LabyrinthBuilder _lb;
 
-    public void spawnNewBuilder() {
+    /**
+     * Creates and spawns a new labyrinth builder window.
+     *
+     * @param x The new labyrinth width.
+     * @param y The new labyrinth height.
+     */
+
+    public void spawnNewBuilder(int x, int y) {
         _frame = new JFrame("Labyrinth Game View");
         _frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        _frame.setPreferredSize(new Dimension(500, 600));
+        _frame.setPreferredSize(new Dimension(50 * x, 50 * y + 100));
         _frame.getContentPane().setLayout(new BorderLayout());
 
-        _lb = new LabyrinthBuilder();
+        _lb = new LabyrinthBuilder(x, y);
 
         _frame.getContentPane().add(_lb, BorderLayout.CENTER);
 
@@ -55,7 +65,34 @@ public class LabyrinthBuilderWindow {
         saveButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                if (!_lb.validateBoard())
+                    JOptionPane.showMessageDialog(null, "Your board didn't pass validation. You may save the level anyway, but it will probably not work.", "Oops.", JOptionPane.INFORMATION_MESSAGE);
 
+                final FileNameExtensionFilter extension = new FileNameExtensionFilter("Labyrinth Game State (*.lpoo)", "lpoo");
+
+                final JFileChooser saveChooser = new JFileChooser();
+
+                saveChooser.setAcceptAllFileFilterUsed(false);
+                saveChooser.setMultiSelectionEnabled(false);
+
+                saveChooser.setFileFilter(extension);
+
+                int returnVal = saveChooser.showSaveDialog(_frame);
+
+                if (returnVal == JFileChooser.APPROVE_OPTION) {
+                    try {
+                        String path = saveChooser.getSelectedFile().getAbsolutePath();
+
+                        if (!path.contains(".lpoo"))
+                            path += ".lpoo";
+
+                        GameDataManager.saveGameState(_lb.getBoard(), path);
+                    } catch (Exception exc) {
+                        System.out.println("Err!");
+                    }
+                } else {
+                    System.out.println("Open command cancelled by user.");
+                }
             }
         });
 

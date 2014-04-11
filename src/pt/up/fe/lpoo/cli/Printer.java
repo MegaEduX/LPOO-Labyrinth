@@ -1,7 +1,7 @@
 /**
  * Labyrinth
  *
- * Created by Eduardo Almeida and João Almeida.
+ * Created by Eduardo Almeida and Joao Almeida.
  */
 
 package pt.up.fe.lpoo.cli;
@@ -22,9 +22,19 @@ public class Printer {
         //  You shall not... call this!
     }
 
+    /**
+     * Constructs a Printer object with a given Board.
+     *
+     * @param  board  The board to assign the Printer with.
+     */
+
     public Printer(Board board) {
         _board = board;
     }
+
+    /**
+     * Prints a board on the CLI.
+     */
 
     public void printBoard() {
         for (int i = 0; i < _board.getHeight(); i++) {

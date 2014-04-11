@@ -212,35 +212,24 @@ public class Controller {
 
                     Vector<Piece> blankPieces = brd.getPiecesWithType(Board.Type.BLANK);
 
-                    if (_swordPiece == null)
-                        for (Piece pc : blankPieces)
-                            if (((Blank) pc).getHasItem())
-                                _swordPiece = (Blank) pc;
+                    Blank p1 = null;
+
+                    for (Piece pc : blankPieces)
+                        if (((Blank) pc).getHasItem())
+                            p1 = (Blank) pc;
 
                     if (egl != null) {
                         if (_swordPiece.getCoordinate().x == egl.getCoordinate().x && _swordPiece.getCoordinate().y == egl.getCoordinate().y) {
                             if (egl.isFlying()) {
                                 egl.setHasItem(true);
                                 egl.setOnGround();
+                        if (p1.getCoordinate().x == egl.getCoordinate().x && p1.getCoordinate().y == egl.getCoordinate().y) {
+                            egl.landEagle();
+                        egl.setHasItem(true);
 
-                            }
-                            if (egl.getHasItem()) {
-
-                                egl.setIsFlying();
-                                egl.move(egl.getFirstPos());
-                            }
-                        } else {
-                            if (egl.getCoordinate().x == egl.getFirstPos().x && egl.getCoordinate().y == egl.getFirstPos().y && egl.getHasItem())
-                                egl.setOnGround();
-
-                            if (egl.getHasItem() && egl.isFlying()) {
-                                egl.move(egl.getFirstPos());
-                            }
-                            if (!egl.getHasItem() && egl.isFlying()) {
-                                egl.move(_swordPiece.getCoordinate());
-                            }
-                        }
-
+                        egl.move(heroPiece.getCoordinate());
+                    } else
+                        egl.move(p1.getCoordinate());
                     }
 
                 } catch (Exception exc) {

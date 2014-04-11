@@ -1,7 +1,7 @@
 /**
  * Labyrinth
  *
- * Created by Eduardo Almeida and João Almeida.
+ * Created by Eduardo Almeida and Joao Almeida.
  */
 
 package pt.up.fe.lpoo.gui;
@@ -14,18 +14,16 @@ import pt.up.fe.lpoo.logic.piece.itemizable.Blank;
 import pt.up.fe.lpoo.logic.piece.itemizable.Dragon;
 import pt.up.fe.lpoo.logic.piece.itemizable.Eagle;
 import pt.up.fe.lpoo.logic.piece.itemizable.Hero;
-import sun.audio.AudioPlayer;
 
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.image.BufferedImage;
 
+import javax.swing.*;
+
 import java.io.File;
 
 import javax.imageio.ImageIO;
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.swing.*;
 
 public class GamePanel extends JPanel implements KeyListener {
     public Coordinate _window = new Coordinate(500, 500);
@@ -39,6 +37,15 @@ public class GamePanel extends JPanel implements KeyListener {
 
     private String _eagleBinding = "e";
 
+    private Boolean _presentedModalState = false;
+
+    /**
+     * Constructs a GamePanel object.
+     *
+     * @param  board  The board to assign the game panel with.
+     * @param  windowSize  The size of the panel (in pixels).
+     */
+
     public GamePanel(Board board, Coordinate windowSize) {
         //  _board = boardSize;
 
@@ -50,6 +57,16 @@ public class GamePanel extends JPanel implements KeyListener {
 
         setFocusable(true);
     }
+
+    /**
+     * Configures the key bindings for the GUI.
+     *
+     * @param  up  The "move up" key binding.
+     * @param  left  The "move left" key binding.
+     * @param  down  The "move down" key binding.
+     * @param  right  The "move right" key binding.
+     * @param  eagle  The "launch eagle" key binding.
+     */
 
     public void setKeyBindings(String up, String left, String down, String right, String eagle) {
         _upBinding = up;
@@ -68,16 +85,6 @@ public class GamePanel extends JPanel implements KeyListener {
         for (int i = 1; i <= _board.getWidth(); i++) {
             g.drawLine(sepX * i, 0, sepX * i, _window.y);
             g.drawLine(0, sepY * i, _window.x, sepY * i);
-        }
-
-        File img = new File("HootHoot.png");
-
-        try {
-            BufferedImage bimg = ImageIO.read(img);
-
-            g.drawImage(bimg, 0, 0, sepX, sepY, null);
-        } catch (Exception e) {
-
         }
 
         for (int i = 0; i < _board.getHeight(); i++) {
@@ -133,9 +140,17 @@ public class GamePanel extends JPanel implements KeyListener {
                         } catch (Exception e) {
 
                         }
-                    } else if (pc instanceof Eagle)
-                        System.out.print(((Eagle) pc).isFlying() ? "X" : "E");
-                    else if (pc instanceof Dragon) {
+                    } else if (pc instanceof Eagle) {
+                        File img = new File("HootHoot.png");
+
+                        try {
+                            BufferedImage egl = ImageIO.read(img);
+
+                            g.drawImage(egl, 0 + sepX * j, 0 + sepY * i, sepX, sepY, null);
+                        } catch (Exception e) {
+
+                        }
+                    } else if (pc instanceof Dragon) {
                         File dragon = new File(((Dragon) pc).getIsSleeping() ? "gyarados_zzz.png" : "gyarados.png");
 
                         try {
@@ -160,6 +175,17 @@ public class GamePanel extends JPanel implements KeyListener {
                     }
                 }
             }
+        }
+
+        if (!_presentedModalState) {
+            if (_board.getGameState() == Board.State.WON)
+                JOptionPane.showMessageDialog(null, "Congratulations!", "You won!", JOptionPane.INFORMATION_MESSAGE);
+            else if (_board.getGameState() == Board.State.LOST)
+                JOptionPane.showMessageDialog(null, "Sorry...", "You lost.", JOptionPane.INFORMATION_MESSAGE);
+            else
+                return;
+
+            _presentedModalState = true;
         }
     }
 
@@ -192,6 +218,8 @@ public class GamePanel extends JPanel implements KeyListener {
 
         }
 
+        //  TODO: Implement eagle in GUI mode.
+
         try {
             _board.moveDragon();
             _board.checkDragon();
@@ -200,7 +228,7 @@ public class GamePanel extends JPanel implements KeyListener {
 
         }
 
-        playVictorySound();
+        //  playVictorySound();
 
         repaint();
         revalidate();
@@ -208,25 +236,5 @@ public class GamePanel extends JPanel implements KeyListener {
 
     public void keyReleased(KeyEvent e) {
 
-    }
-
-    //
-    //  Sound Implementation
-    //
-
-    public void playVictorySound() {
-        //
-        //  Fix this!
-        //
-
-        try {
-            File soundFile = new File("Victory_Fanfare.wav");
-            AudioInputStream ais = AudioSystem.getAudioInputStream(soundFile);
-            AudioPlayer.player.start(ais);
-        } catch (Exception exc) {
-            System.out.println(exc.getMessage());
-        }
-
-        System.out.println("...");
     }
 }

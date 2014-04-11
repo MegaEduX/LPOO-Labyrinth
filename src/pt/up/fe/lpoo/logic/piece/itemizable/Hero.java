@@ -1,7 +1,7 @@
 /**
  * Labyrinth
  *
- * Created by Eduardo Almeida and João Almeida.
+ * Created by Eduardo Almeida and Joao Almeida.
  */
 
 package pt.up.fe.lpoo.logic.piece.itemizable;
@@ -11,13 +11,31 @@ import pt.up.fe.lpoo.logic.Coordinate;
 import pt.up.fe.lpoo.logic.piece.Piece;
 
 public class Hero extends ItemizablePiece {
+
+    /**
+     * Constructs a new Hero.
+     */
+
     public Hero() {
         _position = new Coordinate(-1, -1);
     }
 
+    /**
+     * Constructs a new Hero.
+     *
+     * @param crd Hero's position.
+     */
+
     public Hero(Coordinate crd) {
         _position = crd;
     }
+
+    /**
+     * Constructs a new Hero.
+     *
+     * @param x Hero's x position.
+     * @param y Hero's y position.
+     */
 
     public Hero(int x, int y) {
         _position = new Coordinate(x, y);
