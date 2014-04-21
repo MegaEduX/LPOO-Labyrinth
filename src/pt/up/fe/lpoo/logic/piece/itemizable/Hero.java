@@ -53,7 +53,7 @@ public class Hero extends ItemizablePiece {
 
         Integer x = crdDiff.x, y = crdDiff.y;
 
-        if (nextObj instanceof Blank || nextObj instanceof Eagle) {
+        if (nextObj instanceof Blank) {
             if (((Blank) nextObj).getIsExit()) {
                 if (!getHasItem())
                     return false;
@@ -70,6 +70,18 @@ public class Hero extends ItemizablePiece {
             nextObj.setCoordinate(_position);
 
             _position = new Coordinate(_position.x + x, _position.y + y);
+
+            return true;
+        } else if (nextObj instanceof Eagle) {
+            Eagle eg = (Eagle) nextObj;
+
+            if (eg.getHasItem()) {
+                this.setHasItem(true);
+
+                eg.setHasItem(false);
+
+                this.getBoard().setEagle(null);
+            }
 
             return true;
         }

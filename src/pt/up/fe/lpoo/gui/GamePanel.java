@@ -22,6 +22,7 @@ import java.awt.image.BufferedImage;
 import javax.swing.*;
 
 import java.io.File;
+import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 
@@ -38,6 +39,10 @@ public class GamePanel extends JPanel implements KeyListener {
     private String _eagleBinding = "e";
 
     private Boolean _presentedModalState = false;
+
+    private Eagle _egl = null;
+
+    private Blank _swordPiece = null;
 
     /**
      * Constructs a GamePanel object.
@@ -121,7 +126,7 @@ public class GamePanel extends JPanel implements KeyListener {
                     }
 
                     if (pc instanceof Hero) {
-                        File hero = new File("teemo.png");
+                        File hero = new File(((Hero) pc).getHasItem() ? "SuperTeemo.png" : "teemo.png");
 
                         try {
                             BufferedImage heroi = ImageIO.read(hero);
@@ -141,7 +146,12 @@ public class GamePanel extends JPanel implements KeyListener {
 
                         }
                     } else if (pc instanceof Eagle) {
-                        File img = new File("HootHoot.png");
+                        File img;
+
+                        if (!((Eagle) pc).getOnGround())
+                            img = new File(((Eagle) pc).getHasItem() ? "PidgeySword.png" : "pidgey.gif");
+                        else
+                            img = new File(((Eagle) pc).getHasItem() ? "HootHootSword.png" : "HootHoot.png");
 
                         try {
                             BufferedImage egl = ImageIO.read(img);
@@ -177,15 +187,17 @@ public class GamePanel extends JPanel implements KeyListener {
             }
         }
 
-        if (!_presentedModalState) {
-            if (_board.getGameState() == Board.State.WON)
-                JOptionPane.showMessageDialog(null, "Congratulations!", "You won!", JOptionPane.INFORMATION_MESSAGE);
-            else if (_board.getGameState() == Board.State.LOST)
-                JOptionPane.showMessageDialog(null, "Sorry...", "You lost.", JOptionPane.INFORMATION_MESSAGE);
-            else
-                return;
+        synchronized (this) {   //  For safety.
+            if (!_presentedModalState) {
+                if (_board.getGameState() == Board.State.WON)
+                    JOptionPane.showMessageDialog(null, "Congratulations!", "You won!", JOptionPane.INFORMATION_MESSAGE);
+                else if (_board.getGameState() == Board.State.LOST)
+                    JOptionPane.showMessageDialog(null, "Sorry...", "You lost.", JOptionPane.INFORMATION_MESSAGE);
+                else
+                    return;
 
-            _presentedModalState = true;
+                _presentedModalState = true;
+            }
         }
     }
 
@@ -212,23 +224,72 @@ public class GamePanel extends JPanel implements KeyListener {
             } else if (keyText.equalsIgnoreCase(_rightBinding)) {
                 hero.move(Board.Direction.RIGHT);
             } else if (keyText.equalsIgnoreCase(_eagleBinding)) {
-                //  Launch Eagle here.
+                if (_egl == null) {
+                    Coordinate crd = hero.getCoordinate();
+
+                    _egl = new Eagle(false, new Coordinate(crd.x, crd.y));
+
+                    _board.setEagle(_egl);
+                    _egl.setBoard(_board);
+
+                    ArrayList<Piece> blankPieces = _board.getPiecesWithType(Board.Type.BLANK);
+
+                    if (_swordPiece == null)
+                        for (Piece pc : blankPieces)
+                            if (((Blank) pc).getHasItem())
+                                _swordPiece = (Blank) pc;
+                }
             }
         } catch (Exception exc) {
 
         }
 
-        //  TODO: Implement eagle in GUI mode.
-
         try {
-            _board.moveDragon();
-            _board.checkDragon();
-            _board.recheckGameState();
+            if (_egl != null) {
+                if (_swordPiece != null && _swordPiece.getCoordinate().x == _egl.getCoordinate().x && _swordPiece.getCoordinate().y == _egl.getCoordinate().y) {
+                    if (!_egl.getOnGround()) {
+                        _egl.setOnGround(true);
+                        _egl.setHasItem(true);
+
+                        _swordPiece = null;
+                    } else {
+                        _egl.move(_egl.getFirstPosition());
+
+                        _egl.setOnGround(false);
+                    }
+                } else {
+                    if (!(_egl.getFirstPosition().equals(_egl.getCoordinate()) && _egl.getHasItem())) {
+                        _egl.setOnGround(false);
+
+                        if (_swordPiece != null)
+                            _egl.move(_swordPiece.getCoordinate());
+                        else
+                            _egl.move(_egl.getFirstPosition());
+                    } else
+                        _egl.setOnGround(true);
+                }
+            }
         } catch (Exception exc) {
 
         }
 
-        //  playVictorySound();
+        try {
+            _board.moveDragon();
+        } catch (Exception exc) {
+
+        }
+
+        try {
+            _board.checkDragon();
+        } catch (Exception exc) {
+
+        }
+
+        try {
+            _board.recheckGameState();
+        } catch (Exception exc) {
+
+        }
 
         repaint();
         revalidate();

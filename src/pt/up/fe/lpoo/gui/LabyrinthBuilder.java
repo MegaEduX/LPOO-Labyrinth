@@ -143,7 +143,7 @@ public class LabyrinthBuilder extends JPanel implements MouseListener {
 
                         }
                     } else if (pc instanceof Eagle)
-                        System.out.print(((Eagle) pc).isFlying() ? "X" : "E");
+                        System.out.print(((Eagle) pc).getOnGround() ? "E" : "X");
                     else if (pc instanceof Dragon) {
                         File dragon = new File(((Dragon) pc).getIsSleeping() ? "gyarados_zzz.png" : "gyarados.png");
 

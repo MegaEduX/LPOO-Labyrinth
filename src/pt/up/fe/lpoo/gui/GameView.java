@@ -232,7 +232,7 @@ public class GameView {
 
             gp.setFocusable(true);
 
-            frame.resize(50 * boardX, 50 * boardY + 100);
+            frame.setSize(50 * boardX, 50 * boardY + 100);
         } catch (Exception exc) {
 
         }
@@ -259,7 +259,7 @@ public class GameView {
 
             gp.setFocusable(true);
 
-            frame.resize(50 * theBoard.getWidth(), 50 * theBoard.getHeight() + 100);
+            frame.setSize(50 * theBoard.getWidth(), 50 * theBoard.getHeight() + 100);
         } catch (Exception exc) {
 
         }

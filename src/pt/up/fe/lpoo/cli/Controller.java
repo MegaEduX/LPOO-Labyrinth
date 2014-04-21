@@ -1,7 +1,7 @@
 /**
  * Labyrinth
  *
- * Created by Eduardo Almeida and João Almeida.
+ * Created by Eduardo Almeida and Joao Almeida.
  */
 
 package pt.up.fe.lpoo.cli;
@@ -18,10 +18,12 @@ import pt.up.fe.lpoo.logic.piece.itemizable.Hero;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Vector;
+import java.util.ArrayList;
 
 public class Controller {
     static Blank _swordPiece = null;
+
+    static Eagle egl = null;
 
     public static void main(String args[]) {
         Board brd = new Board();
@@ -118,6 +120,11 @@ public class Controller {
                     readLine = br.readLine();
                 }
 
+                if (readLine.equalsIgnoreCase("m"))
+                    bhv = Dragon.Behavior.NO_SLEEP;
+                else if (readLine.equalsIgnoreCase("r"))
+                    bhv = Dragon.Behavior.SLEEP;
+
                 System.out.println("Board Size is " + width + "w * " + height + "h.");
                 System.out.println("Number of Dragons: " + dragons + " .");
             }
@@ -137,12 +144,16 @@ public class Controller {
             try {
                 BoardGenerator brdGen = new BoardGenerator(width, height, dragons);
 
-                Vector<Piece> ooBoard;
+                ArrayList<Piece> ooBoard;
 
                 ooBoard = (skipBoardGeneration ? brdGen.getDefaultBoard() : brdGen.generateBoard());
 
-                for (Piece pc : ooBoard)
+                for (Piece pc : ooBoard) {
                     pc.setBoard(brd);
+
+                    if (pc instanceof Dragon)
+                        ((Dragon) pc).setBehavior(bhv);
+                }
 
                 brd.setBoardPieces(ooBoard);
 
@@ -157,8 +168,11 @@ public class Controller {
             }
         }
 
-        if (!boardGenSuccess)
+        if (!boardGenSuccess) {
             System.out.println("Unable to get a board.");
+
+            System.exit(1);
+        }
 
         Printer prt = new Printer(brd);
 
@@ -182,7 +196,6 @@ public class Controller {
             readLine = br.readLine();
 
             System.out.println();
-            Eagle egl = null;
 
             while (!readLine.equalsIgnoreCase("quit")) {
                 try {
@@ -194,15 +207,27 @@ public class Controller {
                         heroPiece.move(Board.Direction.RIGHT);
                     else if (readLine.equalsIgnoreCase("left") || readLine.equalsIgnoreCase("l"))
                         heroPiece.move(Board.Direction.LEFT);
-                    else if (readLine.equalsIgnoreCase("E") || readLine.equalsIgnoreCase("e")) {
+                    else if (readLine.equalsIgnoreCase("e")) {
                         if (egl == null) {
                             Coordinate crd = heroPiece.getCoordinate();
+
                             egl = new Eagle(false, new Coordinate(crd.x, crd.y));
+
                             brd.setEagle(egl);
                             egl.setBoard(brd);
-                        }
-                    }
 
+                            ArrayList<Piece> blankPieces = brd.getPiecesWithType(Board.Type.BLANK);
+
+                            if (_swordPiece == null)
+                                for (Piece pc : blankPieces)
+                                    if (((Blank) pc).getHasItem())
+                                        _swordPiece = (Blank) pc;
+                        }
+                    } else {
+                        readLine = br.readLine();
+
+                        continue;
+                    }
                 } catch (Exception exc) {
 
                 }
@@ -210,28 +235,30 @@ public class Controller {
                 try {
                     brd.moveDragon();
 
-                    Vector<Piece> blankPieces = brd.getPiecesWithType(Board.Type.BLANK);
-
-                    Blank p1 = null;
-
-                    for (Piece pc : blankPieces)
-                        if (((Blank) pc).getHasItem())
-                            p1 = (Blank) pc;
-
                     if (egl != null) {
-                        if (_swordPiece.getCoordinate().x == egl.getCoordinate().x && _swordPiece.getCoordinate().y == egl.getCoordinate().y) {
-                            if (egl.isFlying()) {
+                        if (_swordPiece != null && _swordPiece.getCoordinate().x == egl.getCoordinate().x && _swordPiece.getCoordinate().y == egl.getCoordinate().y) {
+                            if (!egl.getOnGround()) {
+                                egl.setOnGround(true);
                                 egl.setHasItem(true);
-                                egl.setOnGround();
-                        if (p1.getCoordinate().x == egl.getCoordinate().x && p1.getCoordinate().y == egl.getCoordinate().y) {
-                            egl.landEagle();
-                        egl.setHasItem(true);
 
-                        egl.move(heroPiece.getCoordinate());
-                    } else
-                        egl.move(p1.getCoordinate());
+                                _swordPiece = null;
+                            } else {
+                                egl.move(egl.getFirstPosition());
+
+                                egl.setOnGround(false);
+                            }
+                        } else {
+                            if (!(egl.getFirstPosition().equals(egl.getCoordinate()) && egl.getHasItem())) {
+                                egl.setOnGround(false);
+
+                                if (_swordPiece != null)
+                                    egl.move(_swordPiece.getCoordinate());
+                                else
+                                    egl.move(egl.getFirstPosition());
+                            } else
+                                egl.setOnGround(true);
+                        }
                     }
-
                 } catch (Exception exc) {
 
                 }

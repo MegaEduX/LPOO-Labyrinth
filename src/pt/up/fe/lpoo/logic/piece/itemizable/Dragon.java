@@ -65,6 +65,13 @@ public class Dragon extends ItemizablePiece {
                     return true;
                 }
 
+                if (nextObj instanceof Eagle) {
+                    if (((Eagle) nextObj).getOnGround())
+                        _board.setGameState(Board.State.LOST);
+
+                    return true;
+                }
+
                 return false;
             }
 

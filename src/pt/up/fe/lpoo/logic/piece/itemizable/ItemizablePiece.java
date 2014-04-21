@@ -92,6 +92,13 @@ public class ItemizablePiece extends Piece {
             return true;
         }
 
+        if (nextObj instanceof Eagle) {
+            if (((Eagle) nextObj).getOnGround())
+                _board.setGameState(Board.State.LOST);
+
+            return true;
+        }
+
         return false;
     }
 }

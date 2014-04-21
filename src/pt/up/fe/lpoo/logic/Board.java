@@ -1,7 +1,7 @@
 /**
  * Labyrinth
  *
- * Created by Eduardo Almeida and João Almeida.
+ * Created by Eduardo Almeida and Joao Almeida.
  */
 
 package pt.up.fe.lpoo.logic;
@@ -15,7 +15,7 @@ import pt.up.fe.lpoo.logic.piece.itemizable.Hero;
 
 import java.io.Serializable;
 import java.util.Random;
-import java.util.Vector;
+import java.util.ArrayList;
 
 public class Board implements Serializable {
     public enum Type {WALL, HERO, SWORD, DRAGON, MIXED_SD, EXIT, BLANK, LOCKED_WALL, EAGLE};
@@ -26,9 +26,9 @@ public class Board implements Serializable {
     private enum DragonFightResult {NOT_FOUND, ALREADY_DEFEATED, LOST, WON};
     private enum DragonSearchResult {NOT_FOUND, FOUND, ALREADY_DEFEATED};
 
-    private State gameState = State.RUNNING;
+    private State _gameState = State.RUNNING;
 
-    private Vector<Piece> _boardPieces = new Vector<Piece>();
+    private ArrayList<Piece> _boardPieces = new ArrayList<Piece>();
 
     private int width = 10;
     private int height = 10;
@@ -39,11 +39,19 @@ public class Board implements Serializable {
         _eagle = E1;
     }
 
+    public void setGameState(State st) {
+        _gameState = st;
+    }
+
     public Eagle getEagle() {
         return _eagle;
     }
 
     public Piece getPiece(Coordinate crd) throws Exception {
+        if (_eagle != null)
+            if (_eagle.getCoordinate().equals(crd))
+                return _eagle;
+
         for (Piece pc : _boardPieces)
             if (pc.getCoordinate().equals(crd))
                 return pc;
@@ -51,8 +59,8 @@ public class Board implements Serializable {
         throw new Exception("404: Piece Not Found");
     }
 
-    public Vector<Piece> getPiecesWithType(Type type) throws Exception {
-        Vector<Piece> pcs = new Vector<Piece>();
+    public ArrayList<Piece> getPiecesWithType(Type type) throws Exception {
+        ArrayList<Piece> pcs = new ArrayList<Piece>();
 
         for (Piece pc : _boardPieces) {
             switch (type) {
@@ -140,19 +148,19 @@ public class Board implements Serializable {
     }
 
     public State getGameState() {
-        return gameState;
+        return _gameState;
     }
 
-    public void setBoardPieces(Vector<Piece> board) {
+    public void setBoardPieces(ArrayList<Piece> board) {
         _boardPieces = board;
     }
 
-    public Vector<Piece> getBoardPieces() {
+    public ArrayList<Piece> getBoardPieces() {
         return _boardPieces;
     }
 
-    private Vector<Direction> _getMovePossibilities(Piece pc) throws Exception {
-        Vector<Direction> pb = new Vector<Direction>();
+    private ArrayList<Direction> _getMovePossibilities(Piece pc) throws Exception {
+        ArrayList<Direction> pb = new ArrayList<Direction>();
 
         try {
             getPiece(new Coordinate(pc.getCoordinate().x - 1, pc.getCoordinate().y));
@@ -190,11 +198,11 @@ public class Board implements Serializable {
     }
 
     public void moveDragon() throws Exception {
-        Vector<Piece> dragons = getPiecesWithType(Type.DRAGON);
+        ArrayList<Piece> dragons = getPiecesWithType(Type.DRAGON);
 
         for (Piece drag : dragons) {
             try {
-                Vector<Direction> dir = _getMovePossibilities(drag);
+                ArrayList<Direction> dir = _getMovePossibilities(drag);
 
                 Random rand = new Random();
 
@@ -217,7 +225,7 @@ public class Board implements Serializable {
             return DragonSearchResult.ALREADY_DEFEATED;
         }
 
-        Vector<Piece> dragons = getPiecesWithType(Type.DRAGON);
+        ArrayList<Piece> dragons = getPiecesWithType(Type.DRAGON);
 
         Hero hero = (Hero) getPiecesWithType(Type.HERO).get(0);
 
@@ -243,7 +251,7 @@ public class Board implements Serializable {
             throw exc;
         }
 
-        Vector<Piece> dragons = getPiecesWithType(Type.DRAGON);
+        ArrayList<Piece> dragons = getPiecesWithType(Type.DRAGON);
 
         Hero hero = (Hero) getPiecesWithType(Type.HERO).get(0);
 
@@ -290,27 +298,30 @@ public class Board implements Serializable {
 
         removePiece(hero);
 
-        gameState = State.LOST;
+        _gameState = State.LOST;
 
         return DragonFightResult.LOST;
     }
 
     public void recheckGameState() throws Exception {
-        Vector<Piece> blanks = getPiecesWithType(Type.BLANK);
+        if (_gameState == State.LOST || _gameState == State.WON)
+            return;
+
+        ArrayList<Piece> blanks = getPiecesWithType(Type.BLANK);
 
         if (getPiecesWithType(Type.HERO).size() == 0) {
-            gameState = State.LOST;
+            _gameState = State.LOST;
 
             return;
         }
 
         for (Piece bl : blanks)
             if (((Blank) bl).getIsExit()) {
-                gameState = State.RUNNING;
+                _gameState = State.RUNNING;
 
                 return;
             }
 
-        gameState = State.WON;
+        _gameState = State.WON;
     }
 }
